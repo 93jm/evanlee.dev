@@ -7,6 +7,7 @@ import { Fragment } from "react";
 import ProgressBar from "./ProgressBar";
 import e100 from "/public/e-100.png";
 import Image from "next/image";
+import IMG_NOTION from "/public/notion.png";
 
 type Props = {
   name: string;
@@ -39,7 +40,7 @@ export default function Navbar({ target }: ProgressbarProps) {
   return (
     <header className={css.navSectionWrapper}>
       <nav className={css.navSectionFlex}>
-        <div>
+        <div className={css.navLeftSection}>
           <Link href="/" className={css.imageBox}>
             <Image src={e100} alt="블로그 로고" width={35} height={35} />
           </Link>
@@ -60,7 +61,27 @@ export default function Navbar({ target }: ProgressbarProps) {
             })}
           </ul>
         </div>
-        <div></div>
+        <div className={css.navRightSection}>
+          <Link
+            href="https://open.kakao.com/me/93jm"
+            target="_blank"
+            className={css.navRightBadge}
+          >
+            커피챗도 환영합니다
+          </Link>
+          <Link
+            href="https://93jm.notion.site/7cbfb7a93236454ab3e10f3d16780ad4?pvs=4"
+            target="_blank"
+          >
+            <Image
+              src={IMG_NOTION}
+              className={css.imageBox}
+              alt="노션 버튼"
+              width={25}
+              height={25}
+            />
+          </Link>
+        </div>
       </nav>
       <div className={css.navSectionBottomBar} />
       <ProgressBar target={target} />

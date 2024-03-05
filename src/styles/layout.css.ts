@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import {
+  flexRow,
   flexRowBetween,
   flexColumnCenter,
   flexRowCenter,
@@ -43,7 +44,7 @@ export const navSectionFlex = style({
   padding: "0 16px",
 });
 
-globalStyle(`${navSectionFlex} > div`, {
+export const navLeftSection = style({
   ...flexRowCenter,
   minWidth: 400,
 });
@@ -84,6 +85,23 @@ export const navSectionBottomBar = style({
 
 export const imageBox = style({
   display: "flex",
+});
+
+export const navRightSection = style({
+  ...flexRowCenter,
+  position: "relative",
+});
+
+export const navRightBadge = style({
+  padding: 4,
+  marginRight: 5,
+  fontSize: 11,
+  border: "2px solid #f5f5f5",
+  borderRadius: 10,
+
+  ":hover": {
+    color: "gray",
+  },
 });
 
 //progress bar
