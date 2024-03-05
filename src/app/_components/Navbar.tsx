@@ -21,7 +21,7 @@ type ProgressbarProps = {
 const NAV_DATA = [
   {
     name: "About",
-    link: "/about",
+    link: "/",
   },
   {
     name: "Project",
@@ -50,7 +50,10 @@ export default function Navbar({ target }: ProgressbarProps) {
                   <NavButton
                     name={nav.name}
                     link={nav.link}
-                    active={pathname === nav.link}
+                    active={
+                      pathname === nav.link ||
+                      (pathname === "/about" && nav.link === "/")
+                    }
                   />
                 </Fragment>
               );

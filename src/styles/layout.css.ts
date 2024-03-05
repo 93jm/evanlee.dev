@@ -18,7 +18,7 @@ import {
 export const pageLayoutWrapper = style({
   maxWidth: 800,
   margin: "0 auto",
-  height: "100dvh",
+  minHeight: "100dvh",
   transform: "translateY(50px)",
   opacity: 0,
   animation: `400ms ease ${mainFadeUp}`,
@@ -96,7 +96,8 @@ export const progressBarWrapper = style({
 
 export const progressBar = style({
   height: 3,
-  backgroundColor: "rgb(255, 217, 184)",
+  // backgroundColor: "rgb(255, 217, 184)",
+  backgroundColor: "#2c2c2c",
 });
 
 //footer
@@ -129,4 +130,16 @@ export const descriptionSection = style({
   fontSize: 14,
   lineHeight: 1.5,
   color: "gray",
+});
+
+//not found
+
+export const notFoundWrapper = style({
+  ...flexRowCenter,
+  height: "100dvh",
+});
+
+export const notFoundBox = style({
+  ...flexColumnCenter,
+  gap: 15,
 });

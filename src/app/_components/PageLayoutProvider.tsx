@@ -19,7 +19,7 @@ export default function PageLayoutProvider({
   const mainRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div ref={mainRef} style={{ backgroundColor: "blue" }}>
+    <div ref={mainRef}>
       <Navbar target={mainRef} />
       <div className={css.pageLayoutWrapper}>
         {title && <div className={css.titleSection}>{title}</div>}

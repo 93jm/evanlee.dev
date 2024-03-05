@@ -10,6 +10,8 @@ import {
 
 import { mainFadeUp } from "./keyframes";
 
+import { colors } from "./colors";
+
 export {
   absoluteFit,
   flexRow,
@@ -19,4 +21,5 @@ export {
   flexRowCenter,
   flexColumnCenter,
   mainFadeUp,
+  colors,
 };

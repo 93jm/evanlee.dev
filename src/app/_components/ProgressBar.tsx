@@ -16,25 +16,15 @@ export default function ProgressBar({ target }: ProgressbarProps) {
     }
 
     const el = target.current;
-    const totalHeight = el.clientHeight - el.offsetTop - window.innerHeight;
-    console.log(
-      "0 >> ",
-      el.scrollHeight,
-      "1 >> ",
-      //화면에 보이는 값
-      el.clientHeight,
-      "2 >> ",
-      el.offsetTop,
-      "3 >> ",
-      window.innerHeight,
-      "4 >> ",
-      totalHeight
-    );
+    const totalHeight =
+      //198 = footer height
+      el.clientHeight - el.offsetTop - window.innerHeight + 198;
+
     const windowScrollTop =
       window.scrollY ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
-    console.log("windowScrollTop >> ", windowScrollTop);
+
     if (windowScrollTop === 0) {
       return setProgressPercent(0);
     }
