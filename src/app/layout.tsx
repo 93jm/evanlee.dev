@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/ogImage.png",
+        width: 600,
+        height: 400,
       },
     ],
   },
