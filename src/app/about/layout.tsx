@@ -1,4 +1,4 @@
-import { getCarrerRange } from "@/utils/date";
+import { getCarrerRange } from "@/app/utils/date";
 import { PageLayoutProvider } from "../_component";
 
 export default function Layout({

@@ -1,14 +1,14 @@
 import { style } from "@vanilla-extract/css";
-import { flexColumn, flexRow } from "@/app/styles/layout";
 
 export const aboutSectionWrapper = style({
-  ...flexColumn,
+  display: "flex",
+  flexDirection: "column",
   paddingTop: 40,
   gap: 40,
 });
 
 export const contentSectionWrapper = style({
-  ...flexRow,
+  display: "flex",
   alignItems: "flex-start",
   gap: 20,
 });

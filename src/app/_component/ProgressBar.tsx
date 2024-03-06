@@ -1,6 +1,6 @@
 "use client";
 
-import * as css from "@/app/_component/componentLayout";
+import * as css from "@/app/_component/componentLayout.css";
 import { useCallback, useEffect, useState } from "react";
 
 type ProgressbarProps = {

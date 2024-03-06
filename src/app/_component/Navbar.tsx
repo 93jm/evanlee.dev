@@ -1,6 +1,6 @@
 "use client";
 
-import * as css from "@/app/_component/componentLayout";
+import * as css from "@/app/_component/componentLayout.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";

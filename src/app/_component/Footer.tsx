@@ -1,4 +1,4 @@
-import * as css from "@/app/_component/componentLayout";
+import * as css from "@/app/_component/componentLayout.css";
 import IMG_GITHUB from "/public/github.png";
 import IMG_INSTAGRAM from "/public/instagram.png";
 import IMG_NOTION from "/public/notion.png";

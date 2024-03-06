@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
-import { flexColumn } from "@/app/styles/layout";
 
 export const resumeSectionWrapper = style({
-  ...flexColumn,
+  display: "flex",
+  flexDirection: "column",
   marginTop: 40,
   padding: "40px 16px 20px",
   gap: 40,
@@ -22,12 +22,14 @@ export const resumeTextBox = style({
 });
 
 export const resumeCardWrapper = style({
-  ...flexColumn,
+  display: "flex",
+  flexDirection: "column",
   gap: 12,
 });
 
 export const resumeCard = style({
-  ...flexColumn,
+  display: "flex",
+  flexDirection: "column",
   position: "relative",
   padding: 12,
   gap: 8,
@@ -37,7 +39,8 @@ export const resumeCard = style({
 });
 
 export const resumeListWrapper = style({
-  ...flexColumn,
+  display: "flex",
+  flexDirection: "column",
   padding: 12,
   color: `${colors.gray}`,
   gap: 8,

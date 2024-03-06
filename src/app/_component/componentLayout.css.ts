@@ -1,10 +1,4 @@
-import { globalStyle, style, keyframes } from "@vanilla-extract/css";
-import {
-  flexRowCenter,
-  flexRowBetween,
-  flexRow,
-  flexColumnCenter,
-} from "@/app/styles/layout";
+import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
 
 const mainFadeUp = keyframes({
@@ -44,24 +38,32 @@ export const navSectionWrapper = style({
 });
 
 export const navSectionFlex = style({
-  ...flexRowBetween,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
   height: "100%",
   padding: "0 16px",
 });
 
 export const navLeftSection = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   minWidth: 400,
 });
 
 export const navSectionGrid = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   width: "100% ",
   height: "100%",
 });
 
 globalStyle(`${navSectionGrid} li`, {
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   listStyleType: "none",
 });
 
@@ -89,11 +91,13 @@ export const navSectionBottomBar = style({
 });
 
 export const imageBox = style({
-  ...flexRow,
+  display: "flex",
 });
 
 export const navRightSection = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   position: "relative",
 });
 
@@ -125,7 +129,9 @@ export const progressBar = style({
 //footer
 
 export const footerSectionWrapper = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   width: "100%",
   padding: "64px 0px",
   backgroundColor: colors.realLightGray,
@@ -135,7 +141,9 @@ export const footerSectionWrapper = style({
 });
 
 export const footerLinkWrapper = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   width: "100%",
   gap: 20,
 });
@@ -157,11 +165,16 @@ export const descriptionSection = style({
 //not found
 
 export const notFoundWrapper = style({
-  ...flexRowCenter,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   height: "100dvh",
 });
 
 export const notFoundBox = style({
-  ...flexColumnCenter,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   gap: 15,
 });
