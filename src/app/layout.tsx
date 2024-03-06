@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Just Evan, 프론트엔드 개발자 블로그, 포트폴리오, 웹사이트",
     images: [
       {
-        url: "/github.png",
+        url: "https://evanlee-dev.com/ogImage.png",
         width: 600,
         height: 400,
       },
