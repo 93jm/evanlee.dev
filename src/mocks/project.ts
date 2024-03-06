@@ -2,6 +2,29 @@ import { ProjectProps } from "@/types/project";
 
 export const PROJECTS_DATA: ProjectProps[] = [
   {
+    projectName: "evanlee-dev",
+    imgUrl: "/ogImage.png",
+    links: [
+      {
+        type: "notion",
+        url: "https://www.notion.so/93jm/evanlee-dev-3d2d067b52c4478bbbc9ee7567b24f40?pvs=4",
+      },
+      {
+        type: "github",
+        url: "https://github.com/93jm/evanlee.dev",
+      },
+      {
+        type: "link",
+        url: "https://evanlee-dev.com",
+      },
+    ],
+    period: "2024/03 ~ ing",
+    isWorking: true,
+    stack: ["Nextjs", "React", "Typescript", "VanillaExtract"],
+    otherStack: ["Vercel Build", "AWS Route 53"],
+    description: "Just Evan Blog <br /> 저를 소개하고 저희 활동을 기록합니다.",
+  },
+  {
     projectName: "마이프차 (B2C)",
     imgUrl: "/project-b2c.png",
     links: [
@@ -105,6 +128,39 @@ export const PROJECTS_DATA: ProjectProps[] = [
     otherStack: [],
     description:
       "프로메테우스 커뮤니티 사용자를 위한 Exporter를 제공하는 허브 사이트인 Exporterhub.io의 오픈소스 Contributor로 참여",
+  },
+  {
+    projectName: "E.com",
+    imgUrl: "/project-e-com.png",
+    links: [
+      // {
+      //   type: "notion",
+      //   url: "https://www.notion.so/93jm/Exporterhub-2a0eaa5ff77e4780ac813368662ac2cf?pvs=4",
+      // },
+      // {
+      //   type: "link",
+      //   url: "https://exporterhub.io/",
+      // },
+      {
+        type: "github",
+        url: "https://github.com/93jm/e-com",
+      },
+    ],
+    period: "2024/02 ~ 2024/03",
+    isWorking: false,
+    stack: [
+      "Nextjs",
+      "React",
+      "Typescript",
+      "CSSModule",
+      "VanillaExtract",
+      "Zustand",
+      "ContextAPI",
+      "MSW",
+    ],
+    otherStack: [],
+    description:
+      "nextjs 14v App Router 기능을 활용한 X.COM 클론 코딩 (Only Front)",
   },
   {
     projectName: "그로스해킹 TF",

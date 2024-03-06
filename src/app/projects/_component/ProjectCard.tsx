@@ -1,5 +1,3 @@
-"use client";
-
 import { ProjectProps } from "@/types/project";
 import * as css from "../project.css";
 import StackBadge from "./StackBadge";
@@ -10,6 +8,7 @@ import IMG_NOTION from "/public/notion.png";
 import ICON_LINK from "/public/website.png";
 import { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
+import sanitize from "sanitize-html";
 
 type Props = {
   item: ProjectProps;
@@ -86,7 +85,13 @@ export default function ProjectCard({ item }: Props) {
             ))}
           </div>
         )}
-        {newItem.description && <p>{newItem.description}</p>}
+        {newItem.description && (
+          <p
+            dangerouslySetInnerHTML={{
+              __html: sanitize(newItem.description),
+            }}
+          />
+        )}
       </div>
     </div>
   );

@@ -5,14 +5,20 @@ export type StackBadgeProps =
   | "Javascript"
   | "Emotion"
   | "StyleComponent"
+  | "CSSModule"
+  | "VanillaExtract"
   | "StoryBook"
   | "AntDesign"
   | "Redux"
   | "Recoil"
   | "Jotai"
+  | "Zustand"
+  | "ContextAPI"
+  | "Express"
   | "REST"
   | "GraphQL"
   | "ApolloClient"
+  | "MSW"
   | "ReactQuery";
 
 export interface ProjectProps {

@@ -1,6 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
-import { flexColumn, flexRowCenter } from "@/app/styles/layout";
+import { flexColumn } from "@/app/styles/layout";
 
 export const projectsSectionWrapper = style({
   display: "grid",

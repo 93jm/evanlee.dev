@@ -33,15 +33,12 @@ const StackBadge = ({ stack }: Props) => {
       );
     //css & style
     case "Emotion":
-      return (
-        <span style={{ backgroundColor: "#AEE2FF", color: "white" }}>
-          Emotion
-        </span>
-      );
     case "StyleComponent":
+    case "CSSModule":
+    case "VanillaExtract":
       return (
         <span style={{ backgroundColor: "#AEE2FF", color: "white" }}>
-          StyleComponent
+          {stack}
         </span>
       );
     case "StoryBook":
@@ -58,23 +55,16 @@ const StackBadge = ({ stack }: Props) => {
       );
     //전역 상태 관리
     case "Redux":
-      return (
-        <span style={{ backgroundColor: "#B2A4FF", color: "white" }}>
-          Redux
-        </span>
-      );
     case "Recoil":
-      return (
-        <span style={{ backgroundColor: "#B2A4FF", color: "white" }}>
-          Recoil
-        </span>
-      );
     case "Jotai":
+    case "Zustand":
+    case "ContextAPI":
       return (
         <span style={{ backgroundColor: "#B2A4FF", color: "white" }}>
-          Jotai
+          {stack}
         </span>
       );
+
     //API 통신
     case "REST":
       return (
@@ -87,15 +77,22 @@ const StackBadge = ({ stack }: Props) => {
         </span>
       );
     case "ApolloClient":
+    case "MSW":
       return (
         <span style={{ backgroundColor: "#F4B183", color: "white" }}>
-          ApolloClient
+          {stack}
         </span>
       );
     case "ReactQuery":
       return (
         <span style={{ backgroundColor: "#B2A4FF", color: "white" }}>
           ReactQuery
+        </span>
+      );
+    case "Express":
+      return (
+        <span style={{ backgroundColor: "#87A922", color: "white" }}>
+          {stack}
         </span>
       );
     default:
