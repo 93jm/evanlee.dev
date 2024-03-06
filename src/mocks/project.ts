@@ -18,7 +18,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
         url: "https://evanlee-dev.com",
       },
     ],
-    period: "2024/03 ~ ing",
+    period: "2024/03 ~",
     isWorking: true,
     stack: ["Nextjs", "React", "Typescript", "VanillaExtract"],
     otherStack: ["Vercel Build", "AWS Route 53"],

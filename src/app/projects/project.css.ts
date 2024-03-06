@@ -36,6 +36,16 @@ export const projectItemImgBox = style({
   },
 });
 
+export const projectWorkBadge = style({
+  position: "absolute",
+  bottom: 0,
+  padding: "4px 8px",
+  backgroundColor: colors.deepBegie,
+  color: colors.gray,
+  fontSize: 14,
+  fontWeight: 500,
+});
+
 export const projectItemContentBox = style({
   ...flexColumn,
   padding: 10,

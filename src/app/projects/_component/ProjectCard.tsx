@@ -51,6 +51,9 @@ export default function ProjectCard({ item }: Props) {
         ) : (
           <Skeleton height={"100%"} style={{ position: "absolute" }} />
         )}
+        {item.isWorking && (
+          <span className={css.projectWorkBadge}>~ ing 🧑🏻‍💻</span>
+        )}
       </div>
       <div className={css.projectItemContentBox}>
         <div
