@@ -135,7 +135,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
     links: [
       {
         type: "notion",
-        url: "https://www.notion.so/93jm/Exporterhub-2a0eaa5ff77e4780ac813368662ac2cf?pvs=4",
+        url: "https://www.notion.so/93jm/E-com-e73d5d45fadf4d46ba974aa0a8a21ac9?pvs=4",
       },
       {
         type: "github",
