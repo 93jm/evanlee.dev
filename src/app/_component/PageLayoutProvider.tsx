@@ -2,7 +2,7 @@
 
 import sanitize from "sanitize-html";
 import { ReactNode, useRef } from "react";
-import * as css from "@/styles/layout.css";
+import * as css from "@/app/_component/componentLayout";
 import { Navbar } from ".";
 
 interface IProps {

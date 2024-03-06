@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
-import { flexRow, flexColumn, colors } from "@/styles/mixins";
+import { colors } from "@/app/styles/colors";
+import { flexColumn } from "@/app/styles/layout";
 
 export const resumeSectionWrapper = style({
   ...flexColumn,
@@ -12,19 +13,13 @@ export const resumeSectionWrapper = style({
 export const divider = style({
   marginTop: 12,
   marginBottom: 12,
-  borderBottom: "1px solid #e5e7eb",
+  borderBottom: `1px solid ${colors.lightGray}`,
 });
 
 export const resumeTextBox = style({
   fontSize: 12,
   lineHeight: 1.5,
 });
-
-export const resumeIntroduceWrapper = style({});
-
-export const resumeExperienceWrapper = style({});
-
-export const resumeOtherExperienceWrapper = style({});
 
 export const resumeCardWrapper = style({
   ...flexColumn,
@@ -34,17 +29,16 @@ export const resumeCardWrapper = style({
 export const resumeCard = style({
   ...flexColumn,
   position: "relative",
-  //   height: 400,
   padding: 12,
   gap: 8,
   backgroundColor: colors.deepBegie,
-  border: "1px solid #e5e7eb",
+  border: `1px solid ${colors.lightGray}`,
   borderRadius: 10,
 });
 
 export const resumeListWrapper = style({
   ...flexColumn,
   padding: 12,
-  color: "gray",
+  color: `${colors.gray}`,
   gap: 8,
 });

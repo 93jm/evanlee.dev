@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { flexRow, flexColumn } from "@/styles/mixins";
+import { flexColumn, flexRow } from "@/app/styles/layout";
 
 export const aboutSectionWrapper = style({
   ...flexColumn,

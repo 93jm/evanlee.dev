@@ -1,4 +1,4 @@
-import * as css from "@/styles/_pages/resume.css";
+import * as css from "@/app/resume/resume.css";
 import { ExperienceData, OtehrExperienceData } from "@/mocks/resume";
 import { Fragment } from "react";
 import sanitize from "sanitize-html";
@@ -10,7 +10,7 @@ import ResumeCard from "./_component/ResumeCard";
 export default function ResumeMain() {
   return (
     <div className={css.resumeSectionWrapper} style={{ paddingTop: 20 }}>
-      <section className={css.resumeExperienceWrapper}>
+      <section>
         <h3>Introduce 🧑🏻‍💻</h3>
         <div className={css.divider} />
         <p className={css.resumeTextBox} style={{ fontSize: 14 }}>
@@ -24,7 +24,7 @@ export default function ResumeMain() {
           나의 결과로 증명된다고 믿고 있습니다.
         </p>
       </section>
-      <section className={css.resumeExperienceWrapper}>
+      <section>
         <h3>Experience 🧑🏻‍💻</h3>
         <div className={css.divider} />
         {ExperienceData.map((company, cIdx) => {
@@ -44,7 +44,7 @@ export default function ResumeMain() {
           );
         })}
       </section>
-      <section className={css.resumeOtherExperienceWrapper}>
+      <section>
         <h3>Other Experience 🧑🏻‍💻</h3>
         <div className={css.divider} />
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>

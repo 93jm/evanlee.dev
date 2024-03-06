@@ -1,5 +1,5 @@
 import Image from "next/image";
-import * as css from "@/styles/_pages/about.css";
+import * as css from "@/app/about/about.css";
 import IMAGE_STANDUP from "/public/standMe1.jpeg";
 import IMAGE_SITEDOWN from "/public/sitdownMe.png";
 

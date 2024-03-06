@@ -1,7 +1,6 @@
 import { getCarrerRange } from "@/utils/date";
-import { PageLayoutProvider } from "./_components";
-import AboutMain from "./_components/AboutMain";
-import RedirectToAbout from "./_components/RedirectAbout";
+import { PageLayoutProvider } from "./_component";
+import AboutMain from "./about/_component/AboutMain";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 "use client";
-import * as css from "@/styles/_pages/resume.css";
+import * as css from "@/app/resume/resume.css";
 import ICON_LINK from "/public/icon_link.png";
 import Image from "next/image";
 import Link from "next/link";

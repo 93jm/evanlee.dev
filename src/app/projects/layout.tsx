@@ -1,4 +1,4 @@
-import { PageLayoutProvider } from "../_components";
+import { PageLayoutProvider } from "../_component";
 
 export default function Layout({
   children,

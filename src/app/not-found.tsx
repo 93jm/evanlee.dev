@@ -1,4 +1,4 @@
-import * as css from "@/styles/layout.css";
+import * as css from "@/app/_component/componentLayout";
 import Link from "next/link";
 import IMAGE_NOTFOUND from "/public/notFound.png";
 import Image from "next/image";
