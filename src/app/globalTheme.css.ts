@@ -49,6 +49,7 @@ globalStyle("*", {
   boxSizing: "border-box",
   padding: 0,
   margin: 0,
+  userSelect: "none",
 });
 
 globalStyle("html", {

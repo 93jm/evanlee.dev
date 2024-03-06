@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "react-loading-skeleton/dist/skeleton.css";
 import "./globalTheme.css";
 import { Footer } from "./_component";
 import { Inter } from "next/font/google";
