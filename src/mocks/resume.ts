@@ -45,6 +45,7 @@ export const ExperienceData: ExperienceProps[] = [
           "Jotai",
           "GraphQL",
           "Apollo Client",
+          "ReactQuery",
         ],
         description:
           "B2C 고객(예비창업자) 대상으로 브랜드 찾기, 정보공개서 데이터, 상권 분석 서비스를 제공하며 App 서비스 제공",
@@ -104,7 +105,7 @@ export const ExperienceData: ExperienceProps[] = [
         title: "B1000 프로젝트",
         period: "2022.11 ~ 2023.07",
         link: "",
-        skills: [],
+        skills: ["Google Optimize", "Google Analytics", "Clarity"],
         description:
           "사내 개별 프로젝트로 B2C 서비스의 pain point를 분석하여 기획부터 개발까지 참여하는 프로젝트",
         contents: ["현재 지표 분석 및 pain point 탐색", "기획 및 개발 참여"],

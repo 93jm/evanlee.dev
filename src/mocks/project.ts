@@ -2,7 +2,7 @@ import { ProjectProps } from "@/types/project";
 
 export const PROJECTS_DATA: ProjectProps[] = [
   {
-    projectName: "evanlee-dev",
+    projectName: "Just Evan",
     imgUrl: "/ogImage.png",
     links: [
       {
@@ -22,7 +22,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
     isWorking: true,
     stack: ["Nextjs", "React", "Typescript", "VanillaExtract"],
     otherStack: ["Vercel Build", "AWS Route 53"],
-    description: "Just Evan Blog <br /> 저를 소개하고 저희 활동을 기록합니다.",
+    description: "evanlee-dev <br /> 저를 소개하고 저의 활동을 기록합니다.",
   },
   {
     projectName: "마이프차 (B2C)",
@@ -37,7 +37,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
         url: "https://myfranchise.kr",
       },
     ],
-    period: "2021/07 ~ 2023/11",
+    period: "2022/09 ~ 2023/11",
     isWorking: false,
     stack: [
       "Nextjs",
@@ -133,14 +133,10 @@ export const PROJECTS_DATA: ProjectProps[] = [
     projectName: "E.com",
     imgUrl: "/project-e-com.png",
     links: [
-      // {
-      //   type: "notion",
-      //   url: "https://www.notion.so/93jm/Exporterhub-2a0eaa5ff77e4780ac813368662ac2cf?pvs=4",
-      // },
-      // {
-      //   type: "link",
-      //   url: "https://exporterhub.io/",
-      // },
+      {
+        type: "notion",
+        url: "https://www.notion.so/93jm/Exporterhub-2a0eaa5ff77e4780ac813368662ac2cf?pvs=4",
+      },
       {
         type: "github",
         url: "https://github.com/93jm/e-com",
@@ -190,7 +186,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
     period: "2022/11 ~ 2023/07",
     isWorking: false,
     stack: [],
-    otherStack: [],
+    otherStack: ["GoogleOptimize", "GoogleAnalytics", "Clarity"],
     description:
       "사내 개별 프로젝트로 B2C 서비스의 pain point를 분석하여 기획부터 개발까지 참여하는 프로젝트",
   },
