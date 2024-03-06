@@ -17,6 +17,11 @@ export const metadata: Metadata = {
         width: 600,
         height: 400,
       },
+      {
+        url: "https://www.evanlee-dev.com/ogImage.png",
+        width: 600,
+        height: 400,
+      },
     ],
   },
 };
