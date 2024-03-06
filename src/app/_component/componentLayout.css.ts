@@ -24,14 +24,15 @@ export const pageLayoutWrapper = style({
   animation: `400ms ease ${mainFadeUp}`,
   animationFillMode: "forwards",
 
-  padding: "30px 20px 64px",
+  padding: "86px 20px 64px",
 });
 
 // nav bar
 export const navSectionWrapper = style({
-  position: "sticky",
+  position: "fixed",
   top: 0,
-  width: "inherit",
+  left: 0,
+  right: 0,
   height: 56,
   backdropFilter: "saturate(180%) blur(10px)",
   zIndex: 999,
@@ -130,6 +131,7 @@ export const progressBar = style({
 
 export const footerSectionWrapper = style({
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
