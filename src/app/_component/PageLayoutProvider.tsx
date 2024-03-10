@@ -4,6 +4,7 @@ import sanitize from "sanitize-html";
 import { ReactNode, useRef } from "react";
 import * as css from "@/app/_component/componentLayout.css";
 import { Navbar } from ".";
+import { usePathname } from "next/navigation";
 
 interface IProps {
   children: ReactNode;
@@ -17,11 +18,18 @@ export default function PageLayoutProvider({
   description,
 }: IProps) {
   const mainRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   return (
     <div ref={mainRef}>
       <Navbar target={mainRef} />
-      <div className={css.pageLayoutWrapper}>
+      <div
+        id="mainLayoutProvider"
+        // className={
+        //   pathname === "/" ? css.mainPageLayoutWrapper : css.pageLayoutWrapper
+        // }
+        className={css.pageLayoutWrapper}
+      >
         {title && <div className={css.titleSection}>{title}</div>}
         {description && (
           <div

@@ -15,6 +15,12 @@ const mainFadeUp = keyframes({
  */
 
 //main layout provider
+export const mainPageLayoutWrapper = style({
+  marginTop: "60px",
+  minHeight: "100dvh",
+  // backgroundColor: "tomato",
+});
+
 export const pageLayoutWrapper = style({
   maxWidth: 800,
   margin: "0 auto",
