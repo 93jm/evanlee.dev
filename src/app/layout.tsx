@@ -35,6 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <meta
+        name="google-site-verification"
+        content="-oAemPV8KKPNAJ5WxgsK75aADtccbcqfmDkuKr-jQww"
+      />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
         {children}
