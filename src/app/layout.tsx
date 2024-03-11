@@ -39,6 +39,10 @@ export default function RootLayout({
         name="google-site-verification"
         content="-oAemPV8KKPNAJ5WxgsK75aADtccbcqfmDkuKr-jQww"
       />
+      <meta
+        name="naver-site-verification"
+        content="b82da0c0f804bcc1a23bd19659f094bd4c534cb4"
+      />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
         {children}
