@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const MAIN_URL = "https://evanlee-dev.com";
+const MAIN_URL = "https://www.evanlee-dev.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/about", "/projects", "/resume"].map((route) => ({
