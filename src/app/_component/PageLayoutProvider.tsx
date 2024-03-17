@@ -5,6 +5,7 @@ import { ReactNode, useRef } from "react";
 import * as css from "@/app/_component/componentLayout.css";
 import { Navbar } from ".";
 import { usePathname } from "next/navigation";
+import { vars } from "../styles/theme.css";
 
 interface IProps {
   children: ReactNode;
@@ -21,7 +22,10 @@ export default function PageLayoutProvider({
   const pathname = usePathname();
 
   return (
-    <div ref={mainRef}>
+    <div
+      ref={mainRef}
+      style={{ backgroundColor: vars.themeColor.backgroundColor.color }}
+    >
       <Navbar target={mainRef} />
       <div
         id="mainLayoutProvider"

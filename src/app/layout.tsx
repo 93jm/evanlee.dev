@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./globalTheme.css";
-import { Footer } from "./_component";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import ThemeProvider from "./_component/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,9 +45,10 @@ export default function RootLayout({
       />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
-        {children}
-        <Analytics />
-        <Footer />
+        <ThemeProvider>
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,63 +1,11 @@
-import {
-  assignVars,
-  createGlobalTheme,
-  createGlobalThemeContract,
-  globalStyle,
-} from "@vanilla-extract/css";
-
-//theme 이름을 정하는 contract
-export const global = createGlobalThemeContract({
-  background: {
-    color: "bg-color",
-  },
-  foreground: {
-    color: "fg-color",
-  },
-});
-
-const whiteGrobalTheme = {
-  background: {
-    color: "rgb(255, 255, 255)",
-  },
-  foreground: {
-    color: "rgb(0, 0, 0)",
-  },
-};
-
-const darkGlobalTheme = {
-  background: {
-    color: "rgb(0, 0, 0)",
-  },
-  foreground: {
-    color: "rgb(255, 255, 255)",
-  },
-};
-
-//root의 기본 global theme 값은 white
-createGlobalTheme(":root", global, whiteGrobalTheme);
-
-globalStyle(":root", {
-  "@media": {
-    //root의 theme가 dark일 때에 darkGlobalTheme 적용
-    "(prefers-color-scheme: dark)": {
-      vars: assignVars(global, darkGlobalTheme),
-    },
-  },
-});
+import { globalStyle } from "@vanilla-extract/css";
+import { vars } from "./styles/theme.css";
 
 globalStyle("*", {
-  boxSizing: "border-box",
   padding: 0,
   margin: 0,
+  boxSizing: "border-box",
   userSelect: "none",
-});
-
-globalStyle("html", {
-  "@media": {
-    "(prefers-color-scheme: dark)": {
-      colorScheme: "dark",
-    },
-  },
 });
 
 globalStyle("html, body", {
@@ -65,11 +13,28 @@ globalStyle("html, body", {
   overflowX: "hidden",
 });
 
-globalStyle("body", {
-  color: global.foreground.color,
+globalStyle("a", {
+  textDecoration: "none",
+});
+
+globalStyle("h1, h2, h3, h4, h5", {
+  margin: 0,
+  color: vars.themeColor.fontColor.color,
+});
+
+globalStyle("p, span", {
+  color: vars.themeColor.fontColor.color,
+});
+
+globalStyle("nav", {
+  backgroundColor: vars.themeColor.backgroundColor.color,
 });
 
 globalStyle("a", {
-  color: "inherit",
-  textDecoration: "none",
+  color: vars.themeColor.fontColor.color,
+});
+
+globalStyle("footer", {
+  backgroundColor: vars.themeColor.backgroundColor.footerColor,
+  borderTop: `2px solid ${vars.themeColor.borderColor.color}`,
 });

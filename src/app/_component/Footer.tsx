@@ -1,48 +1,69 @@
+"use client";
+
 import * as css from "@/app/_component/componentLayout.css";
-import IMG_GITHUB from "/public/github.png";
-import IMG_INSTAGRAM from "/public/instagram.png";
-import IMG_NOTION from "/public/notion.png";
-import IMG_KAKAO from "/public/kakao.png";
-import IMG_BLOG from "/public/blog.png";
+import IMG_GITHUB_BLACK from "/public/github.png";
+import IMG_GITHUB_WHITE from "/public/github_white.png";
+import IMG_INSTAGRAM_BLACK from "/public/instagram.png";
+import IMG_INSTAGRAM_WHITE from "/public/instagram_white.png";
+import IMG_NOTION_BLACK from "/public/notion.png";
+import IMG_NOTION_WHITE from "/public/notion_white.png";
+import IMG_KAKAO_BLACK from "/public/kakao.png";
+import IMG_KAKAO_WHITE from "/public/kakao_white.png";
+import IMG_BLOG_BLACK from "/public/blog.png";
+import IMG_BLOG_WHITE from "/public/blog_white.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeProvider";
 
 const IMG_ICON = [
   {
     id: "github",
-    src: IMG_GITHUB,
+    lightSrc: IMG_GITHUB_BLACK,
+    darkSrc: IMG_GITHUB_WHITE,
     link: "https://github.com/93jm",
   },
   {
     id: "instagram",
-    src: IMG_INSTAGRAM,
+    lightSrc: IMG_INSTAGRAM_BLACK,
+    darkSrc: IMG_INSTAGRAM_WHITE,
     link: "https://www.instagram.com/meeeeen93",
   },
   {
     id: "notion",
-    src: IMG_NOTION,
+    lightSrc: IMG_NOTION_BLACK,
+    darkSrc: IMG_NOTION_WHITE,
     link: "https://93jm.notion.site/7cbfb7a93236454ab3e10f3d16780ad4?pvs=4",
   },
   {
     id: "kakao",
-    src: IMG_KAKAO,
+    lightSrc: IMG_KAKAO_BLACK,
+    darkSrc: IMG_KAKAO_WHITE,
     link: "https://open.kakao.com/me/93jm",
   },
   {
     id: "blog",
-    src: IMG_BLOG,
+    lightSrc: IMG_BLOG_BLACK,
+    darkSrc: IMG_BLOG_WHITE,
     link: "https://meeeeen93.tistory.com/",
   },
 ];
 
 export default function Footer() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  const isDarkMode = theme === "dark" ? true : false;
   return (
     <footer className={css.footerSectionWrapper}>
       <div className={css.footerLinkWrapper}>
         {IMG_ICON.map((item) => (
           <div key={item.id}>
             <Link href={item.link} target="_blank">
-              <Image src={item.src} alt={item.id} width={30} height={30} />
+              <Image
+                src={isDarkMode ? item.darkSrc : item.lightSrc}
+                alt={item.id}
+                width={30}
+                height={30}
+              />
             </Link>
           </div>
         ))}

@@ -3,11 +3,13 @@
 import * as css from "@/app/_component/componentLayout.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, use } from "react";
 import ProgressBar from "./ProgressBar";
-import e100 from "/public/e-100.png";
+import logoBlack from "/public/e-logo-black.png";
+import logoWhite from "/public/e-logo-white.png";
 import Image from "next/image";
-import IMG_NOTION from "/public/notion.png";
+import ToggleTheme from "./ToggleTheme";
+import { ThemeContext } from "./ThemeProvider";
 
 type Props = {
   name: string;
@@ -36,13 +38,20 @@ const NAV_DATA = [
 
 export default function Navbar({ target }: ProgressbarProps) {
   const pathname = usePathname();
+  const { theme } = use(ThemeContext);
+  const isDarkMode = theme === "dark" ? true : false;
 
   return (
     <header className={css.navSectionWrapper}>
       <nav className={css.navSectionFlex}>
         <div className={css.navLeftSection}>
           <Link href="/" className={css.imageBox}>
-            <Image src={e100} alt="블로그 로고" width={35} height={35} />
+            <Image
+              src={isDarkMode ? logoWhite : logoBlack}
+              alt="블로그 로고"
+              width={isDarkMode ? 36 : 35}
+              height={isDarkMode ? 36 : 35}
+            />
           </Link>
           <ul className={css.navSectionGrid}>
             {NAV_DATA.map((nav, idx) => {
@@ -69,18 +78,7 @@ export default function Navbar({ target }: ProgressbarProps) {
           >
             커피챗도 환영합니다
           </Link>
-          <Link
-            href="https://93jm.notion.site/7cbfb7a93236454ab3e10f3d16780ad4?pvs=4"
-            target="_blank"
-          >
-            <Image
-              src={IMG_NOTION}
-              className={css.imageBox}
-              alt="노션 버튼"
-              width={25}
-              height={25}
-            />
-          </Link>
+          <ToggleTheme />
         </div>
       </nav>
       <div className={css.navSectionBottomBar} />

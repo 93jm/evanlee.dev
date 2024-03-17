@@ -1,5 +1,6 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
+import { vars } from "../styles/theme.css";
 
 const mainFadeUp = keyframes({
   "0%": { transform: "translateY(50px)", opacity: 0 },
@@ -8,12 +9,15 @@ const mainFadeUp = keyframes({
 
 /**
  * 구성 목록
+ * theme provider
  * main layout provider
  * nav bar
  * progress bar
  * footer
  */
 
+//theme provider
+export const themeLayoutWrapper = style({});
 //main layout provider
 export const mainPageLayoutWrapper = style({
   marginTop: "60px",
@@ -77,10 +81,11 @@ globalStyle(`${navSectionGrid} li`, {
 export const navSectionButton = style({
   minWidth: 70,
   fontWeight: 400,
-  color: colors.gray,
+
+  color: vars.themeColor.fontColor.notActiveColor,
 
   ":hover": {
-    color: "black",
+    color: vars.themeColor.fontColor.activeColor,
   },
 });
 
@@ -89,12 +94,12 @@ export const navSectionActiveButton = style({
   fontSize: 16,
 
   fontWeight: 600,
-  color: "black",
+  color: vars.themeColor.fontColor.activeColor,
 });
 
 export const navSectionBottomBar = style({
   width: "100%",
-  borderBottom: `2px solid ${colors.realLightGray}`,
+  borderBottom: `2px solid ${vars.themeColor.borderColor.color}`,
 });
 
 export const imageBox = style({
@@ -109,10 +114,10 @@ export const navRightSection = style({
 });
 
 export const navRightBadge = style({
-  padding: 4,
-  marginRight: 5,
+  padding: "6px 8px",
+  marginRight: 10,
   fontSize: 11,
-  border: `2px solid ${colors.realLightGray}`,
+  border: `2px solid ${vars.themeColor.borderColor.color}`,
   borderRadius: 10,
 
   ":hover": {
@@ -130,7 +135,7 @@ export const progressBarWrapper = style({
 
 export const progressBar = style({
   height: 3,
-  backgroundColor: colors.black,
+  backgroundColor: vars.themeColor.borderColor.blackToWhite,
 });
 
 //footer
@@ -142,7 +147,6 @@ export const footerSectionWrapper = style({
   justifyContent: "center",
   width: "100%",
   padding: "64px 0px",
-  backgroundColor: colors.realLightGray,
   color: colors.gray,
   fontSize: 14,
   gap: 20,
@@ -161,13 +165,15 @@ export const footerLinkWrapper = style({
 export const titleSection = style({
   fontSize: 28,
   fontWeight: 600,
+  color: vars.themeColor.fontColor.activeColor,
 });
 
 export const descriptionSection = style({
   paddingTop: 20,
   fontSize: 14,
   lineHeight: 1.5,
-  color: colors.gray,
+  // color: colors.gray,
+  color: vars.themeColor.fontColor.notActiveColor,
 });
 
 //not found
