@@ -28,5 +28,6 @@ export const black = {
 };
 
 export const bgBlack = {
-  100: "rgb(60, 60, 60);",
+  100: "rgb(60, 60, 60)",
+  200: "rgb(40, 40, 40)",
 };

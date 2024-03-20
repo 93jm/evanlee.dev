@@ -1,9 +1,8 @@
 "use client";
-import * as css from "@/app/resume/resume.css";
-import ICON_LINK from "/public/icon_link.png";
-import Image from "next/image";
 import Link from "next/link";
 import { ResumeProject } from "@/types/resume";
+import ImageBox from "@/app/_component/ImageBox";
+import * as css from "@/app/resume/resume.css";
 
 type Props = {
   project: ResumeProject;
@@ -20,9 +19,8 @@ export default function ResumeCard({ project }: Props) {
             style={{ position: "absolute", top: 2 }}
             target="_blank"
           >
-            <Image
-              src={ICON_LINK}
-              alt="링크 아이콘"
+            <ImageBox
+              type="link"
               width={14}
               style={{ marginLeft: 5, marginTop: 0 }}
             />
@@ -30,16 +28,14 @@ export default function ResumeCard({ project }: Props) {
         )}
       </div>
       {project.skills.length > 0 && (
-        <div className={css.resumeTextBox}>{project.skills.join(", ")}</div>
+        <div className={css.resumeSubTextBox}>{project.skills.join(", ")}</div>
       )}
-      <p className={css.resumeTextBox} style={{ color: "gray" }}>
-        {project.description}
-      </p>
+      <p className={css.resumeSubTextBox}>{project.description}</p>
       <ul className={css.resumeListWrapper} style={{ paddingTop: 0 }}>
         {project.contents.map((content, cIdx) => (
           <li
             key={cIdx}
-            className={css.resumeTextBox}
+            className={css.resumeSubTextBox}
             style={{
               listStylePosition: "inside",
               listStyleType: "square",
@@ -50,7 +46,7 @@ export default function ResumeCard({ project }: Props) {
         ))}
       </ul>
       {project.results.map((result, rIdx) => (
-        <p key={rIdx} className={css.resumeTextBox} style={{ color: "gray" }}>
+        <p key={rIdx} className={css.resumeSubTextBox}>
           {result}
         </p>
       ))}

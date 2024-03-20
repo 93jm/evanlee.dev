@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "./globalTheme.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import ThemeProvider from "./_component/ThemeProvider";
+import { ThemeProvider } from "@/app/_component";
 
 const inter = Inter({ subsets: ["latin"] });
 

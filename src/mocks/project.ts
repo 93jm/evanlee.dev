@@ -6,15 +6,15 @@ export const PROJECTS_DATA: ProjectProps[] = [
     imgUrl: "/ogImage.png",
     links: [
       {
-        type: "notion",
-        url: "https://www.notion.so/93jm/evanlee-dev-3d2d067b52c4478bbbc9ee7567b24f40?pvs=4",
-      },
-      {
         type: "github",
         url: "https://github.com/93jm/evanlee.dev",
       },
       {
-        type: "link",
+        type: "notion",
+        url: "https://www.notion.so/93jm/evanlee-dev-3d2d067b52c4478bbbc9ee7567b24f40?pvs=4",
+      },
+      {
+        type: "website",
         url: "https://evanlee-dev.com",
       },
     ],
@@ -33,7 +33,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
         url: "https://www.notion.so/93jm/B2C-80d0c172300e4abcad9885ed4428c056?pvs=4",
       },
       {
-        type: "link",
+        type: "website",
         url: "https://myfranchise.kr",
       },
     ],
@@ -62,7 +62,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
         url: "https://www.notion.so/93jm/B2B-40d7e38d6cda42e2999c846bcb3ff758?pvs=4",
       },
       {
-        type: "link",
+        type: "website",
         url: "https://partner.myfranchise.kr",
       },
     ],
@@ -110,16 +110,16 @@ export const PROJECTS_DATA: ProjectProps[] = [
     imgUrl: "/project-exporthub.png",
     links: [
       {
+        type: "github",
+        url: "https://github.com/NexClipper/exporterhub.io",
+      },
+      {
         type: "notion",
         url: "https://www.notion.so/93jm/Exporterhub-2a0eaa5ff77e4780ac813368662ac2cf?pvs=4",
       },
       {
-        type: "link",
+        type: "website",
         url: "https://exporterhub.io/",
-      },
-      {
-        type: "github",
-        url: "https://github.com/NexClipper/exporterhub.io",
       },
     ],
     period: "2021/03 ~ 2021/04",
@@ -134,12 +134,12 @@ export const PROJECTS_DATA: ProjectProps[] = [
     imgUrl: "/project-e-com.png",
     links: [
       {
-        type: "notion",
-        url: "https://www.notion.so/93jm/E-com-e73d5d45fadf4d46ba974aa0a8a21ac9?pvs=4",
-      },
-      {
         type: "github",
         url: "https://github.com/93jm/e-com",
+      },
+      {
+        type: "notion",
+        url: "https://www.notion.so/93jm/E-com-e73d5d45fadf4d46ba974aa0a8a21ac9?pvs=4",
       },
     ],
     period: "2024/02 ~ 2024/03",

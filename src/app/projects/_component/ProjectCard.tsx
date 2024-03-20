@@ -3,35 +3,16 @@ import * as css from "../project.css";
 import StackBadge from "./StackBadge";
 import Image from "next/image";
 import Link from "next/link";
-import IMG_GITHUB from "/public/blackGithub.png";
-import IMG_NOTION from "/public/notion.png";
-import ICON_LINK from "/public/website.png";
 import { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
 import sanitize from "sanitize-html";
+import { ImageBox } from "@/app/_component";
 
 type Props = {
   item: ProjectProps;
 };
 
 export default function ProjectCard({ item }: Props) {
-  const getImgType = (type?: string) => {
-    if (!type) {
-      return "";
-    }
-
-    switch (type) {
-      case "github":
-        return IMG_GITHUB;
-      case "notion":
-        return IMG_NOTION;
-      case "link":
-        return ICON_LINK;
-      default:
-        return "";
-    }
-  };
-
   const newItem = {
     ...item,
     stack: [...item.stack, ...item.otherStack],
@@ -69,11 +50,7 @@ export default function ProjectCard({ item }: Props) {
               {newItem.links.map((i, idx) => (
                 <Fragment key={idx}>
                   <Link href={i.url} target="_blank">
-                    <Image
-                      src={getImgType(i.type)}
-                      alt="링크 아이콘"
-                      width={20}
-                    />
+                    <ImageBox type={i.type || "link"} width={20} style={{}} />
                   </Link>
                 </Fragment>
               ))}

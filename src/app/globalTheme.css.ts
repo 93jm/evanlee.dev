@@ -17,13 +17,13 @@ globalStyle("a", {
   textDecoration: "none",
 });
 
-globalStyle("h1, h2, h3, h4, h5", {
+globalStyle("h1, h2, h3, h4, h5, b", {
   margin: 0,
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.fontColor.activeColor,
 });
 
 globalStyle("p, span", {
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.fontColor.notActiveColor,
 });
 
 globalStyle("nav", {

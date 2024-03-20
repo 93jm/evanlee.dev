@@ -4,12 +4,11 @@ import * as css from "@/app/_component/componentLayout.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, use } from "react";
-import ProgressBar from "./ProgressBar";
 import logoBlack from "/public/e-logo-black.png";
 import logoWhite from "/public/e-logo-white.png";
 import Image from "next/image";
-import ToggleTheme from "./ToggleTheme";
-import { ThemeContext } from "./ThemeProvider";
+import { ToggleTheme, ProgressBar } from "@/app/_component";
+import { ThemeContext } from "@/app/_component/ThemeProvider";
 
 type Props = {
   name: string;

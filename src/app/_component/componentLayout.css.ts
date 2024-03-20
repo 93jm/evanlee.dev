@@ -147,7 +147,7 @@ export const footerSectionWrapper = style({
   justifyContent: "center",
   width: "100%",
   padding: "64px 0px",
-  color: colors.gray,
+  color: vars.themeColor.fontColor.activeColor,
   fontSize: 14,
   gap: 20,
 });

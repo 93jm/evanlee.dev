@@ -3,9 +3,8 @@ import { ExperienceData, OtehrExperienceData } from "@/mocks/resume";
 import { Fragment } from "react";
 import sanitize from "sanitize-html";
 import Link from "next/link";
-import ICON_LINK from "/public/icon_link.png";
-import Image from "next/image";
 import ResumeCard from "./_component/ResumeCard";
+import { ImageBox } from "@/app/_component";
 
 export default function ResumeMain() {
   return (
@@ -13,7 +12,7 @@ export default function ResumeMain() {
       <section>
         <h3>Introduce 🧑🏻‍💻</h3>
         <div className={css.divider} />
-        <p className={css.resumeTextBox} style={{ fontSize: 14 }}>
+        <p className={css.resumeSubTextBox} style={{ fontSize: 14 }}>
           안녕하세요 좋은 개발자가 되기 전에 좋은 사람이 먼저 되고 싶은 3년차
           프론트엔드 개발자 이정민(Evan) 입니다. <br /> 저는 지식을 공유하고
           말하고 대화하는 것을 좋아해요. 또한 주도적인 환경 속에서 스스로의
@@ -66,9 +65,8 @@ export default function ResumeMain() {
                           {i.link ? (
                             <Link href={i.link} target="_blank">
                               {i.text}
-                              <Image
-                                src={ICON_LINK}
-                                alt="링크 아이콘"
+                              <ImageBox
+                                type="link"
                                 width={12}
                                 style={{ marginLeft: 5 }}
                               />

@@ -1,6 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
 import { flexColumn } from "@/app/styles/layout";
+import { vars } from "../styles/theme.css";
 
 export const projectsSectionWrapper = style({
   display: "grid",
@@ -12,14 +13,14 @@ export const projectsSectionWrapper = style({
 export const projectItemCard = style({
   ...flexColumn,
   minHeight: 350,
-  border: `1px solid ${colors.realLightGray}`,
+  border: `1px solid ${vars.themeColor.borderColor.color}`,
   borderRadius: 10,
   backgroundColor: "transparent",
   boxShadow:
     "rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;",
   ":hover": {
     transition: "background 200ms ease-in 0s",
-    backgroundColor: `${colors.realLightGray}`,
+    backgroundColor: `${vars.themeColor.hoverColor.color}`,
   },
 });
 
@@ -64,7 +65,7 @@ globalStyle(`${projectItemContentBox} h4`, {
 globalStyle(`${projectItemContentBox} p`, {
   fontSize: 12,
   lineHeight: 1.5,
-  color: `${colors.gray}`,
+  color: `${vars.themeColor.fontColor.notActiveColor}`,
 });
 
 export const projectStackBadgeWrapper = style({
