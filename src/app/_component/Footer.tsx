@@ -13,8 +13,7 @@ import IMG_BLOG_BLACK from "/public/blog.png";
 import IMG_BLOG_WHITE from "/public/blog_white.png";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext } from "react";
-import { ThemeContext } from "./ThemeProvider";
+import { useTheme } from "next-themes";
 
 const IMG_ICON = [
   {
@@ -50,8 +49,8 @@ const IMG_ICON = [
 ];
 
 export default function Footer() {
-  const { theme, setTheme } = useContext(ThemeContext);
-  const isDarkMode = theme === "dark" ? true : false;
+  const { resolvedTheme } = useTheme();
+  const isDarkMode = resolvedTheme === "light" ? false : true;
   return (
     <footer className={css.footerSectionWrapper}>
       <div className={css.footerLinkWrapper}>

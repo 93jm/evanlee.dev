@@ -3,12 +3,12 @@
 import * as css from "@/app/_component/componentLayout.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment, use } from "react";
+import { Fragment } from "react";
 import logoBlack from "/public/e-logo-black.png";
 import logoWhite from "/public/e-logo-white.png";
 import Image from "next/image";
 import { ToggleTheme, ProgressBar } from "@/app/_component";
-import { ThemeContext } from "@/app/_component/ThemeProvider";
+import { useTheme } from "next-themes";
 
 type Props = {
   name: string;
@@ -37,8 +37,8 @@ const NAV_DATA = [
 
 export default function Navbar({ target }: ProgressbarProps) {
   const pathname = usePathname();
-  const { theme } = use(ThemeContext);
-  const isDarkMode = theme === "dark" ? true : false;
+  const { resolvedTheme } = useTheme();
+  const isDarkMode = resolvedTheme === "light" ? false : true;
 
   return (
     <header className={css.navSectionWrapper}>

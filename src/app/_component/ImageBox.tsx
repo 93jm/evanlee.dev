@@ -1,7 +1,6 @@
 "use client";
 
-import { CSSProperties, use } from "react";
-import { ThemeContext } from "./ThemeProvider";
+import { CSSProperties } from "react";
 import IMG_GITHUB from "/public/blackGithub.png";
 import IMG_GITHUB_WHITE from "/public/github_white.png";
 import IMG_NOTION from "/public/notion.png";
@@ -11,6 +10,7 @@ import IMG_WEBSITE_WHITE from "/public/website_white.png";
 import IMG_LINK from "/public/icon_link.png";
 import IMG_LINK_WHITE from "/public/icon_link_white.png";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 interface IProps {
   width: number;
@@ -19,10 +19,11 @@ interface IProps {
 }
 
 export default function ImageBox({ width, style, type }: IProps) {
-  const { theme } = use(ThemeContext);
+  const { resolvedTheme } = useTheme();
+  const isDarkMode = resolvedTheme === "light" ? false : true;
 
   const getImgType = (type: string) => {
-    if (theme === "light") {
+    if (!isDarkMode) {
       switch (type) {
         case "github":
           return IMG_GITHUB;
@@ -33,11 +34,11 @@ export default function ImageBox({ width, style, type }: IProps) {
         case "link":
           return IMG_LINK;
         default:
-          return "";
+          return IMG_LINK;
       }
     }
 
-    if (theme === "dark") {
+    if (isDarkMode) {
       switch (type) {
         case "github":
           return IMG_GITHUB_WHITE;
@@ -48,11 +49,11 @@ export default function ImageBox({ width, style, type }: IProps) {
         case "link":
           return IMG_LINK_WHITE;
         default:
-          return "";
+          return IMG_LINK_WHITE;
       }
     }
 
-    return "";
+    return IMG_LINK;
   };
 
   return (

@@ -1,23 +1,26 @@
 "use client";
 
-import { useContext } from "react";
+import { useEffect, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { ThemeContext } from "./ThemeProvider";
+import { useTheme } from "next-themes";
 
 export default function ToggleTheme() {
-  const { theme, setTheme } = useContext(ThemeContext);
-  //   const localTheme = localStorage.getItem("theme");
-  const isDarkMode = theme === "dark" ? true : false;
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  const handleChangeTheme = () => {
-    setTheme(!isDarkMode ? "dark" : "light");
-    localStorage.setItem("theme", !isDarkMode ? "dark" : "light");
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  //layout shift를 피하기 위한 default div
+  if (!mounted) {
+    return <div style={{ width: 35, height: 35 }} />;
+  }
 
   return (
     <DarkModeSwitch
-      checked={isDarkMode}
-      onChange={handleChangeTheme}
+      checked={resolvedTheme === "light" ? false : true}
+      onChange={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
       size={35}
     />
   );

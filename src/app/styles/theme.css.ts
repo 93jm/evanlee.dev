@@ -2,6 +2,7 @@ import {
   createGlobalTheme,
   createTheme,
   createThemeContract,
+  globalStyle,
 } from "@vanilla-extract/css";
 import { begie, bgBlack, black, gray, white } from "./colors";
 
@@ -84,3 +85,7 @@ export const darkTheme = createTheme(themeColor, {
 });
 
 export const vars = { ...root, themeColor };
+
+// globalStyle("body", {
+//   backgroundColor: themeColor.backgroundColor.color,
+// });
