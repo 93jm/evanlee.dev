@@ -23,7 +23,7 @@ type ProgressbarProps = {
 const NAV_DATA = [
   {
     name: "About",
-    link: "/",
+    link: "/about",
   },
   {
     name: "Project",
