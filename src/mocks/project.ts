@@ -11,7 +11,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
       },
       {
         type: "notion",
-        url: "https://www.notion.so/93jm/evanlee-dev-3d2d067b52c4478bbbc9ee7567b24f40?pvs=4",
+        url: "https://www.notion.so/93jm/Just-Evan-e83cac4276af48cfbadff7b2efcfcaaf?pvs=4",
       },
       {
         type: "website",
@@ -25,7 +25,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
     description: "evanlee-dev <br /> 저를 소개하고 저의 활동을 기록합니다.",
   },
   {
-    projectName: "마이프차 (B2C)",
+    projectName: "마이프차 - B2C",
     imgUrl: "/project-b2c.png",
     links: [
       {
@@ -54,7 +54,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
       "B2C 고객(예비창업자) 대상으로 브랜드 찾기, 정보공개서 데이터, 상권 분석 서비스를 제공하며 App 서비스 제공",
   },
   {
-    projectName: "마이프차 파트너 (B2B)",
+    projectName: "마이프차 - B2B",
     imgUrl: "/project-b2b.png",
     links: [
       {
@@ -106,6 +106,58 @@ export const PROJECTS_DATA: ProjectProps[] = [
     description: "B2B, B2C 서비스를 관리하는 사내 관리자 사이트",
   },
   {
+    projectName: "E-Quiz",
+    imgUrl: "/project-e-quiz.png",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/93jm/E-Quiz",
+      },
+      {
+        type: "notion",
+        url: "https://www.notion.so/93jm/E-Quiz-88f3c37074c74980ac6d525902b69644?pvs=4",
+      },
+      {
+        type: "website",
+        url: "https://e-quiz-lake.vercel.app/",
+      },
+    ],
+    period: "2024/03",
+    isWorking: false,
+    stack: ["Nextjs", "React", "Typescript", "CSSModule", "Recoil"],
+    otherStack: ["Echarts", "Jest"],
+    description: "오픈 API를 활용한 간단한 영어 퀴즈 사이트입니다.",
+  },
+  {
+    projectName: "E.com",
+    imgUrl: "/project-e-com.png",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/93jm/e-com",
+      },
+      {
+        type: "notion",
+        url: "https://www.notion.so/93jm/E-com-7daf77f7999747cbb872f53696f36438?pvs=4",
+      },
+    ],
+    period: "2024/02 ~ 2024/03",
+    isWorking: false,
+    stack: [
+      "Nextjs",
+      "React",
+      "Typescript",
+      "CSSModule",
+      "VanillaExtract",
+      "Zustand",
+      "ContextAPI",
+      "MSW",
+    ],
+    otherStack: [],
+    description:
+      "nextjs 14v App Router 기능을 활용한 X.COM 클론 코딩 (Only Front)",
+  },
+  {
     projectName: "Exporterhub 컨트리뷰터",
     imgUrl: "/project-exporthub.png",
     links: [
@@ -128,35 +180,6 @@ export const PROJECTS_DATA: ProjectProps[] = [
     otherStack: [],
     description:
       "프로메테우스 커뮤니티 사용자를 위한 Exporter를 제공하는 허브 사이트인 Exporterhub.io의 오픈소스 Contributor로 참여",
-  },
-  {
-    projectName: "E.com",
-    imgUrl: "/project-e-com.png",
-    links: [
-      {
-        type: "github",
-        url: "https://github.com/93jm/e-com",
-      },
-      {
-        type: "notion",
-        url: "https://www.notion.so/93jm/E-com-e73d5d45fadf4d46ba974aa0a8a21ac9?pvs=4",
-      },
-    ],
-    period: "2024/02 ~ 2024/03",
-    isWorking: false,
-    stack: [
-      "Nextjs",
-      "React",
-      "Typescript",
-      "CSSModule",
-      "VanillaExtract",
-      "Zustand",
-      "ContextAPI",
-      "MSW",
-    ],
-    otherStack: [],
-    description:
-      "nextjs 14v App Router 기능을 활용한 X.COM 클론 코딩 (Only Front)",
   },
   {
     projectName: "그로스해킹 TF",
