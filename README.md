@@ -2,6 +2,6 @@
 
 --
 
-Nextjs 14 (app router), vanilla extract
+Nextjs 14 (app router), vanilla extract, next-themes
 
 --
