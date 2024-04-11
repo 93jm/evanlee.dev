@@ -1,10 +1,16 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
 import { vars } from "../styles/theme.css";
+import { responsiveStyle } from "../styles/media";
 
 const mainFadeUp = keyframes({
   "0%": { transform: "translateY(50px)", opacity: 0 },
   "100%": { transform: "translateY(0px)", opacity: 1 },
+});
+
+const sideFadeUp = keyframes({
+  "0%": { transform: "translateX(40%)", opacity: 0 },
+  "100%": { transform: "translateX(0px)", opacity: 1 },
 });
 
 /**
@@ -12,12 +18,11 @@ const mainFadeUp = keyframes({
  * theme provider
  * main layout provider
  * nav bar
+ * mobile nav bar
  * progress bar
  * footer
  */
 
-//theme provider
-export const themeLayoutWrapper = style({});
 //main layout provider
 export const mainPageLayoutWrapper = style({
   marginTop: "60px",
@@ -25,17 +30,18 @@ export const mainPageLayoutWrapper = style({
   // backgroundColor: "tomato",
 });
 
-export const pageLayoutWrapper = style({
-  maxWidth: 800,
-  margin: "0 auto",
-  minHeight: "100dvh",
-  transform: "translateY(50px)",
-  opacity: 0,
-  animation: `400ms ease ${mainFadeUp}`,
-  animationFillMode: "forwards",
-
-  padding: "86px 20px 64px",
-});
+export const pageLayoutWrapper = style([
+  {
+    maxWidth: 800,
+    margin: "0 auto",
+    minHeight: "100dvh",
+    transform: "translateY(50px)",
+    opacity: 0,
+    animation: `400ms ease ${mainFadeUp}`,
+    animationFillMode: "forwards",
+    padding: "86px 20px 64px",
+  },
+]);
 
 // nav bar
 export const navSectionWrapper = style({
@@ -56,12 +62,21 @@ export const navSectionFlex = style({
   padding: "0 16px",
 });
 
-export const navLeftSection = style({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minWidth: 400,
-});
+export const navLeftSection = style([
+  {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: 400,
+  },
+  responsiveStyle({
+    mobile: {
+      minWidth: 0,
+      width: "100%",
+      justifyContent: "space-between",
+    },
+  }),
+]);
 
 export const navSectionGrid = style({
   display: "flex",
@@ -78,16 +93,18 @@ globalStyle(`${navSectionGrid} li`, {
   listStyleType: "none",
 });
 
-export const navSectionButton = style({
-  minWidth: 70,
-  fontWeight: 400,
+export const navSectionButton = style([
+  {
+    minWidth: 70,
+    fontWeight: 400,
 
-  color: vars.themeColor.fontColor.notActiveColor,
+    color: vars.themeColor.fontColor.notActiveColor,
 
-  ":hover": {
-    color: vars.themeColor.fontColor.activeColor,
+    ":hover": {
+      color: vars.themeColor.fontColor.activeColor,
+    },
   },
-});
+]);
 
 export const navSectionActiveButton = style({
   minWidth: 70,
@@ -123,6 +140,77 @@ export const navRightBadge = style({
   ":hover": {
     color: colors.gray,
   },
+});
+
+//mobile nav bar
+
+export const mobileNavContainer = style({
+  position: "fixed",
+  top: 0,
+  right: 0,
+  zIndex: 9999,
+
+  display: "flex",
+  flexDirection: "column",
+  minWidth: "100px",
+  padding: 24,
+  width: "70%",
+  height: "100%",
+
+  backgroundColor: vars.themeColor.backgroundColor.color,
+  opacity: 0,
+  transform: "translateX(40%)",
+  animation: `400ms ease ${sideFadeUp}`,
+  animationFillMode: "forwards",
+});
+
+export const mobileNavGrid = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: 10,
+
+  listStyleType: "none",
+});
+
+export const mobileNavDim = style({
+  position: "fixed",
+  inset: 0,
+  zIndex: 9998,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgb(0, 0, 0, 0.8)",
+});
+
+export const mobileNavMenuButton = style({
+  width: 30,
+  height: 30,
+  padding: 2,
+
+  backgroundColor: "transparent",
+  border: "none",
+  borderRadius: 5,
+  cursor: "pointer",
+});
+
+export const mobileNavMenuList = style({
+  padding: "12px 0px",
+  width: "100%",
+});
+
+export const mobileNavSectionButton = style({
+  fontWeight: 400,
+  color: vars.themeColor.fontColor.notActiveColor,
+
+  ":hover": {
+    color: vars.themeColor.fontColor.activeColor,
+  },
+});
+
+export const mobileNavSectionActiveButton = style({
+  fontSize: 16,
+  fontWeight: 600,
+  color: vars.themeColor.fontColor.activeColor,
 });
 
 //progress bar

@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
+import { useBreakpoints } from "../_hooks";
 
 export default function ToggleTheme() {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const { checkMobile } = useBreakpoints();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -21,7 +23,7 @@ export default function ToggleTheme() {
     <DarkModeSwitch
       checked={resolvedTheme === "light" ? false : true}
       onChange={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
-      size={35}
+      size={checkMobile ? 30 : 35}
     />
   );
 }

@@ -7,12 +7,10 @@ export default function AboutMain() {
   return (
     <div className={css.aboutSectionWrapper}>
       <div className={css.contentSectionWrapper}>
-        <Image
-          className={css.imageBox}
-          src={IMAGE_STANDUP}
-          alt="발표하는 사진"
-          width={300}
-        />
+        <div className={css.imageBox}>
+          <Image src={IMAGE_STANDUP} alt="발표하는 사진" layout="responsive" />
+        </div>
+
         <div>
           <h3>이야기를 듣고 말하는 것을 좋아합니다.</h3>
           <br />
@@ -58,12 +56,14 @@ export default function AboutMain() {
           </p>
           <br />
         </div>
-        <Image
-          className={css.imageBox}
-          src={IMAGE_SITEDOWN}
-          alt="일하는 사진"
-          width={350}
-        />
+        <div className={css.imageBox}>
+          <Image
+            className={css.imageBox}
+            src={IMAGE_SITEDOWN}
+            alt="일하는 사진"
+            layout="responsive"
+          />
+        </div>
       </div>
     </div>
   );

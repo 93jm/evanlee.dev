@@ -3,7 +3,7 @@
 import sanitize from "sanitize-html";
 import { ReactNode, useRef } from "react";
 import * as css from "@/app/_component/componentLayout.css";
-import { Navbar } from ".";
+import { MobileNavbar, Navbar } from ".";
 import { usePathname } from "next/navigation";
 import { vars } from "../styles/theme.css";
 
@@ -45,6 +45,7 @@ export default function PageLayoutProvider({
         )}
         {children}
       </div>
+      <MobileNavbar />
     </div>
   );
 }

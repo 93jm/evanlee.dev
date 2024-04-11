@@ -2,13 +2,22 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { colors } from "@/app/styles/colors";
 import { flexColumn } from "@/app/styles/layout";
 import { vars } from "../styles/theme.css";
+import { responsiveStyle } from "../styles/media";
 
-export const projectsSectionWrapper = style({
-  display: "grid",
-  gridTemplateColumns: "repeat(2, calc(50% - 7px))",
-  gap: 15,
-  paddingTop: 40,
-});
+export const projectsSectionWrapper = style([
+  {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, calc(50% - 7px))",
+    gap: 15,
+    paddingTop: 40,
+  },
+  responsiveStyle({
+    mobile: {
+      display: "flex",
+      flexDirection: "column",
+    },
+  }),
+]);
 
 export const projectItemCard = style({
   ...flexColumn,
@@ -47,14 +56,21 @@ export const projectWorkBadge = style({
   fontWeight: 500,
 });
 
-export const projectItemContentBox = style({
-  ...flexColumn,
-  padding: 10,
-  height: 150,
-  gap: 5,
-  borderBottomLeftRadius: 10,
-  borderBottomRightRadius: 10,
-});
+export const projectItemContentBox = style([
+  {
+    ...flexColumn,
+    padding: 10,
+    height: 150,
+    gap: 5,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  responsiveStyle({
+    mobile: {
+      height: "100%",
+    },
+  }),
+]);
 
 globalStyle(`${projectItemContentBox} h4`, {
   fontSize: 14,
