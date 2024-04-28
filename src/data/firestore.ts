@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { ProjectProps } from "@/types/project";
@@ -38,7 +37,7 @@ export async function fetchProjects() {
     console.log(doc.id, " => ", doc.data());
 
     const obj = {
-      id: doc.id,
+      id: doc.data()["id"],
       projectName: doc.data()["projectName"],
       imgUrl: doc.data()["imgUrl"],
       links: doc.data()["links"],
@@ -52,3 +51,5 @@ export async function fetchProjects() {
   });
   return fetchedProjects;
 }
+
+export async function addProjects() {}

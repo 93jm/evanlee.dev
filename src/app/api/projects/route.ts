@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { fetchProjects } from "@/data/firestore";
+import { fetchProjects, addProjects } from "@/data/firestore";
 
 export async function GET() {
   const fetchedProjects = await fetchProjects();
@@ -13,4 +13,13 @@ export async function GET() {
   });
 }
 
-export async function POST() {}
+export async function POST() {
+  const addedProject = await addProjects();
+
+  const response = {
+    message: "프로젝트 추가 테스트",
+    data: addedProject,
+  };
+
+  return Response.json(response, { status: 200 });
+}

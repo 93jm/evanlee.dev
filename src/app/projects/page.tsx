@@ -13,11 +13,13 @@ export default async function ProjectsMain() {
   const { message, data: projects }: IFetchedData = await getProjectAllData();
   return (
     <section className={css.projectsSectionWrapper}>
-      {projects.map((project, idx) => (
-        <Fragment key={idx}>
-          <ProjectCard item={project} />
-        </Fragment>
-      ))}
+      {projects
+        .sort((a, b) => a.id - b.id)
+        .map((project, idx) => (
+          <Fragment key={idx}>
+            <ProjectCard item={project} />
+          </Fragment>
+        ))}
     </section>
   );
 }

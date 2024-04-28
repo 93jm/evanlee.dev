@@ -22,6 +22,7 @@ export type StackBadgeProps =
   | "ReactQuery";
 
 export interface ProjectProps {
+  id: number;
   projectName: string;
   imgUrl: string;
   links: {
