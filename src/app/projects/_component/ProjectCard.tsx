@@ -1,4 +1,6 @@
-import { ProjectProps } from "@/types/project";
+"use client";
+
+import { ProjectProps, StackBadgeProps } from "@/types/project";
 import * as css from "../project.css";
 import StackBadge from "./StackBadge";
 import Image from "next/image";
@@ -8,18 +10,35 @@ import Skeleton from "react-loading-skeleton";
 import sanitize from "sanitize-html";
 import { ImageBox } from "@/app/_component";
 
-type Props = {
+interface IProps {
   item: ProjectProps;
-};
+}
 
-export default function ProjectCard({ item }: Props) {
-  const newItem = {
+interface NewProjectItem extends ProjectProps {
+  newStack: StackBadgeProps[] | string[];
+}
+
+export default function ProjectCard({ item }: IProps) {
+  const newItem: NewProjectItem = {
     ...item,
-    stack: [...item.stack, ...item.otherStack],
+    newStack: [...item.stack, ...item.otherStack],
+  };
+
+  const handleMainClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const target = event.target as HTMLElement;
+
+    if (target.tagName.toLowerCase() !== "img") {
+      // Link 컴포넌트가 아니라면 실행
+      const { links } = newItem;
+      const notionLink = links.filter((link) => link.type.includes("notion"));
+      if (notionLink.length > 0) {
+        window.open(notionLink[0].url, "_blank");
+      }
+    }
   };
 
   return (
-    <div className={css.projectItemCard}>
+    <button className={css.projectItemCard} onClick={handleMainClick}>
       <div className={css.projectItemImgBox}>
         {item.imgUrl ? (
           <Image
@@ -58,9 +77,9 @@ export default function ProjectCard({ item }: Props) {
           )}
         </div>
         <p>{item.period}</p>
-        {newItem.stack.length > 0 && (
+        {newItem.newStack.length > 0 && (
           <div className={css.projectStackBadgeWrapper}>
-            {newItem.stack.map((i, idx) => (
+            {newItem.newStack.map((i, idx) => (
               <StackBadge key={idx} stack={i} />
             ))}
           </div>
@@ -73,6 +92,6 @@ export default function ProjectCard({ item }: Props) {
           />
         )}
       </div>
-    </div>
+    </button>
   );
 }

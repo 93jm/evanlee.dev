@@ -14,6 +14,7 @@ import IMG_BLOG_WHITE from "/public/blog_white.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useFirstRender } from "@/app/_hooks";
 
 const IMG_ICON = [
   {
@@ -50,7 +51,13 @@ const IMG_ICON = [
 
 export default function Footer() {
   const { resolvedTheme } = useTheme();
+  const isRendered = useFirstRender();
   const isDarkMode = resolvedTheme === "light" ? false : true;
+
+  if (!isRendered) {
+    return null;
+  }
+
   return (
     <footer className={css.footerSectionWrapper}>
       <div className={css.footerLinkWrapper}>

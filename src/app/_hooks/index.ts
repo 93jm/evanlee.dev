@@ -1,3 +1,4 @@
+import useFirstRender from "./useFirstRender";
 import { useMQMatch, useBreakpoints } from "./media";
 
-export { useMQMatch, useBreakpoints };
+export { useMQMatch, useBreakpoints, useFirstRender };

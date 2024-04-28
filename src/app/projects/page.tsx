@@ -6,11 +6,10 @@ import { ProjectProps } from "@/types/project";
 
 export default async function ProjectsMain() {
   const res: ProjectProps[] = await getProjectAllData();
-  const newData = res || Array.from({ length: 6 }, () => {});
 
   return (
     <section className={css.projectsSectionWrapper}>
-      {newData.map((project, idx) => (
+      {res.map((project, idx) => (
         <Fragment key={idx}>
           <ProjectCard item={project} />
         </Fragment>

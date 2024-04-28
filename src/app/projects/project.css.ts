@@ -27,6 +27,7 @@ export const projectItemCard = style({
   backgroundColor: "transparent",
   boxShadow:
     "rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px;",
+  textAlign: "start",
   ":hover": {
     transition: "background 200ms ease-in 0s",
     backgroundColor: `${vars.themeColor.hoverColor.color}`,
@@ -36,6 +37,7 @@ export const projectItemCard = style({
 export const projectItemImgBox = style({
   position: "relative",
   flexGrow: 1,
+  width: "100%",
   borderBottom: `1px solid ${colors.lightGray}`,
 
   borderTopLeftRadius: 10,

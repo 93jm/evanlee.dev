@@ -11,6 +11,7 @@ import IMG_LINK from "/public/icon_link.png";
 import IMG_LINK_WHITE from "/public/icon_link_white.png";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useFirstRender } from "@/app/_hooks";
 
 interface IProps {
   width: number;
@@ -20,6 +21,7 @@ interface IProps {
 
 export default function ImageBox({ width, style, type }: IProps) {
   const { resolvedTheme } = useTheme();
+  const isRendered = useFirstRender();
   const isDarkMode = resolvedTheme === "light" ? false : true;
 
   const getImgType = (type: string) => {
@@ -55,6 +57,10 @@ export default function ImageBox({ width, style, type }: IProps) {
 
     return IMG_LINK;
   };
+
+  if (!isRendered) {
+    return null;
+  }
 
   return (
     <Image

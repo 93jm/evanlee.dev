@@ -13,6 +13,13 @@ globalStyle("html, body", {
   overflowX: "hidden",
 });
 
+globalStyle("button", {
+  borderRadius: 0,
+  border: "none",
+  background: "inherit",
+  cursor: "pointer",
+});
+
 globalStyle("a", {
   textDecoration: "none",
 });
