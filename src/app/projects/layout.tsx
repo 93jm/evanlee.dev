@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { PageLayoutProvider } from "../_component";
 
 export default function Layout({

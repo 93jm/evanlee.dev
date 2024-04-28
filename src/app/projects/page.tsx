@@ -1,15 +1,19 @@
 import * as css from "./project.css";
 import ProjectCard from "./_component/ProjectCard";
 import { Fragment } from "react";
-import { getProjectAllData } from "@/app/api/project/server";
+import { getProjectAllData } from "@/app/api/projects/server";
 import { ProjectProps } from "@/types/project";
 
-export default async function ProjectsMain() {
-  const res: ProjectProps[] = await getProjectAllData();
+interface IFetchedData {
+  message: string;
+  data: ProjectProps[];
+}
 
+export default async function ProjectsMain() {
+  const { message, data: projects }: IFetchedData = await getProjectAllData();
   return (
     <section className={css.projectsSectionWrapper}>
-      {res.map((project, idx) => (
+      {projects.map((project, idx) => (
         <Fragment key={idx}>
           <ProjectCard item={project} />
         </Fragment>
