@@ -183,7 +183,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
   },
   {
     projectName: "그로스해킹 TF",
-    imgUrl: "",
+    imgUrl: "/noImage.png",
     links: [
       {
         type: "notion",
@@ -199,7 +199,7 @@ export const PROJECTS_DATA: ProjectProps[] = [
   },
   {
     projectName: "B1000",
-    imgUrl: "",
+    imgUrl: "/noImage.png",
     links: [
       {
         type: "notion",

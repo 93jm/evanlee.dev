@@ -4,8 +4,6 @@ import { ProjectProps, StackBadgeProps } from "@/types/project";
 import * as css from "../project.css";
 import StackBadge from "./StackBadge";
 import Image from "next/image";
-import Link from "next/link";
-import { Fragment } from "react";
 import Skeleton from "react-loading-skeleton";
 import sanitize from "sanitize-html";
 import { ImageBox } from "@/app/_component";
@@ -24,17 +22,18 @@ export default function ProjectCard({ item }: IProps) {
     newStack: [...item.stack, ...item.otherStack],
   };
 
-  const handleMainClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const target = event.target as HTMLElement;
-
-    if (target.tagName.toLowerCase() !== "img") {
-      // Link 컴포넌트가 아니라면 실행
-      const { links } = newItem;
-      const notionLink = links.filter((link) => link.type.includes("notion"));
-      if (notionLink.length > 0) {
-        window.open(notionLink[0].url, "_blank");
-      }
+  const handleMainClick = () => {
+    const { links } = newItem;
+    const notionLink = links.filter((link) => link.type.includes("notion"));
+    if (notionLink.length > 0) {
+      window.open(notionLink[0].url, "_blank");
     }
+  };
+
+  const handleSubClick = (event: React.MouseEvent, url: string) => {
+    event.stopPropagation();
+
+    window.open(url, "_blank");
   };
 
   return (
@@ -67,11 +66,13 @@ export default function ProjectCard({ item }: IProps) {
           {newItem.links.length > 0 && (
             <div style={{ display: "flex", gap: 10 }}>
               {newItem.links.map((i, idx) => (
-                <Fragment key={idx}>
-                  <Link href={i.url} target="_blank">
-                    <ImageBox type={i.type || "link"} width={20} style={{}} />
-                  </Link>
-                </Fragment>
+                <div
+                  key={idx}
+                  role="button"
+                  onClick={(event) => handleSubClick(event, i.url)}
+                >
+                  <ImageBox type={i.type || "link"} width={20} style={{}} />
+                </div>
               ))}
             </div>
           )}
