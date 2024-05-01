@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, useContext, useEffect, useState } from "react";
-
+import {} from "firebase/auth";
 import Image, { StaticImageData } from "next/image";
 import { ToggleTheme, ProgressBar } from "@/app/_component";
 import { useTheme } from "next-themes";
@@ -15,6 +15,7 @@ import logoBlack from "/public/e-logo-black.png";
 import logoWhite from "/public/e-logo-white.png";
 import MENU_BLACK from "/public/menu-black.png";
 import MENU_WHITE from "/public/menu-white.png";
+import { signInWithPopup, GithubAuthProvider, getAuth } from "@/data/firestore";
 
 type Props = {
   name: string;
@@ -76,6 +77,7 @@ export default function Navbar({ target }: ProgressbarProps) {
         </div>
         {checkDesktop && (
           <div className={css.navRightSection}>
+            <GithubButton />
             <Link
               href="https://open.kakao.com/me/93jm"
               target="_blank"
@@ -106,5 +108,22 @@ export const NavButton = ({ name, link, active }: Props) => {
         </Link>
       )}
     </li>
+  );
+};
+
+export const GithubButton = () => {
+  const handleClick = async () => {
+    try {
+      const auth = getAuth();
+      const provider = new GithubAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  return (
+    <button className={css.gitHubButton} onClick={handleClick}>
+      깃허브 테스트
+    </button>
   );
 };

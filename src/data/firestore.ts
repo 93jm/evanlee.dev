@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { ProjectProps } from "@/types/project";
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,8 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// const analytics = getAnalytics(app);
-
+// const analytics = getAnalytics(app)
 //프로젝트 가져오기
 export async function fetchProjects() {
   const querySnapshot = await getDocs(collection(db, "projects"));
@@ -53,3 +53,5 @@ export async function fetchProjects() {
 }
 
 export async function addProjects() {}
+
+export { getAuth, GithubAuthProvider, signInWithPopup };

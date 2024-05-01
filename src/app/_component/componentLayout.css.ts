@@ -280,3 +280,5 @@ export const notFoundBox = style({
   justifyContent: "center",
   gap: 15,
 });
+
+export const gitHubButton = style({});
