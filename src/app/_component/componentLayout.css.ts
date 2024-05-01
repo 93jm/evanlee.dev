@@ -128,11 +128,12 @@ export const navRightSection = style({
   alignItems: "center",
   justifyContent: "center",
   position: "relative",
+
+  gap: 10,
 });
 
 export const navRightBadge = style({
   padding: "6px 8px",
-  marginRight: 10,
   fontSize: 11,
   border: `2px solid ${vars.themeColor.borderColor.color}`,
   borderRadius: 10,

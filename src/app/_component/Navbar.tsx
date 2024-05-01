@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, useContext, useEffect, useState } from "react";
-import {} from "firebase/auth";
+import { User, getAuth } from "firebase/auth";
 import Image, { StaticImageData } from "next/image";
 import { ToggleTheme, ProgressBar } from "@/app/_component";
 import { useTheme } from "next-themes";
@@ -15,7 +15,7 @@ import logoBlack from "/public/e-logo-black.png";
 import logoWhite from "/public/e-logo-white.png";
 import MENU_BLACK from "/public/menu-black.png";
 import MENU_WHITE from "/public/menu-white.png";
-import { signInWithPopup, GithubAuthProvider, getAuth } from "@/data/firestore";
+import { signInWithPopup, GithubAuthProvider, signOut } from "@/data/firestore";
 
 type Props = {
   name: string;
@@ -112,18 +112,45 @@ export const NavButton = ({ name, link, active }: Props) => {
 };
 
 export const GithubButton = () => {
-  const handleClick = async () => {
+  const auth = getAuth();
+  const [currentName, setCurrentName] = useState<User | null>(null);
+  const handleClick = async (type: "login" | "logout") => {
     try {
-      const auth = getAuth();
-      const provider = new GithubAuthProvider();
-      await signInWithPopup(auth, provider);
+      if (type === "login") {
+        const provider = new GithubAuthProvider();
+        await signInWithPopup(auth, provider);
+      } else {
+        await signOut(auth);
+      }
     } catch (e) {
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentName(user);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
-    <button className={css.gitHubButton} onClick={handleClick}>
-      깃허브 테스트
-    </button>
+    <>
+      {currentName ? (
+        <button
+          className={css.gitHubButton}
+          onClick={() => handleClick("logout")}
+        >
+          로그아웃
+        </button>
+      ) : (
+        <button
+          className={css.gitHubButton}
+          onClick={() => handleClick("login")}
+        >
+          로그인
+        </button>
+      )}
+    </>
   );
 };
