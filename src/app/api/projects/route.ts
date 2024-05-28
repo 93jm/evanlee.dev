@@ -21,5 +21,5 @@ export async function POST() {
     data: addedProject,
   };
 
-  return Response.json(response, { status: 200 });
+  return NextResponse.json(response, { status: 200 });
 }

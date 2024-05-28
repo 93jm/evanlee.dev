@@ -27,22 +27,24 @@ export default function ResumeMain() {
       <section>
         <h3>Experience 🧑🏻‍💻</h3>
         <div className={css.divider} />
-        {ExperienceData.map((company, cIdx) => {
-          return (
-            <div key={cIdx} className={css.resumeCardWrapper}>
-              <h4>
-                {company.companyName} {company.companyPeriod}
-              </h4>
-              {company.projects.map((project, pIdx) => {
-                return (
-                  <Fragment key={pIdx}>
-                    <ResumeCard project={project} />
-                  </Fragment>
-                );
-              })}
-            </div>
-          );
-        })}
+        <div className={css.resumeCardFlexBox}>
+          {ExperienceData.map((company, cIdx) => {
+            return (
+              <div key={cIdx} className={css.resumeCardFlexBox}>
+                <h4>
+                  {company.companyName} {company.companyPeriod}
+                </h4>
+                {company.projects.map((project, pIdx) => {
+                  return (
+                    <Fragment key={pIdx}>
+                      <ResumeCard project={project} />
+                    </Fragment>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
       </section>
       <section>
         <h3>Other Experience 🧑🏻‍💻</h3>

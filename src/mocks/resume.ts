@@ -2,6 +2,11 @@ import { ExperienceProps, OtherExperienceProps } from "@/types/resume";
 
 export const ExperienceData: ExperienceProps[] = [
   {
+    companyName: "위허들링",
+    companyPeriod: "(2024.04 ~ )",
+    projects: [],
+  },
+  {
     companyName: "마이프랜차이즈",
     companyPeriod: "(2021.07 ~ 2023.11)",
     projects: [

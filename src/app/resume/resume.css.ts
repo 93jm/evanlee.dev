@@ -31,7 +31,7 @@ export const resumeSubTextBox = style({
   color: vars.themeColor.fontColor.notActiveColor,
 });
 
-export const resumeCardWrapper = style({
+export const resumeCardFlexBox = style({
   display: "flex",
   flexDirection: "column",
   gap: 12,
