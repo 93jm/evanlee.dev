@@ -6,12 +6,15 @@ import * as css from "@/app/_component/componentLayout.css";
 import { MobileNavbar, Navbar } from ".";
 import { usePathname } from "next/navigation";
 import { vars } from "../styles/theme.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface IProps {
   children: ReactNode;
   title?: string;
   description?: string;
 }
+
+const queryClient = new QueryClient();
 
 export default function PageLayoutProvider({
   children,
@@ -22,30 +25,32 @@ export default function PageLayoutProvider({
   const pathname = usePathname();
 
   return (
-    <div
-      ref={mainRef}
-      style={{ backgroundColor: vars.themeColor.backgroundColor.color }}
-    >
-      <Navbar target={mainRef} />
+    <QueryClientProvider client={queryClient}>
       <div
-        id="mainLayoutProvider"
-        // className={
-        //   pathname === "/" ? css.mainPageLayoutWrapper : css.pageLayoutWrapper
-        // }
-        className={css.pageLayoutWrapper}
+        ref={mainRef}
+        style={{ backgroundColor: vars.themeColor.backgroundColor.color }}
       >
-        {title && <div className={css.titleSection}>{title}</div>}
-        {description && (
-          <div
-            className={css.descriptionSection}
-            dangerouslySetInnerHTML={{
-              __html: sanitize(description),
-            }}
-          />
-        )}
-        {children}
+        <Navbar target={mainRef} />
+        <div
+          id="mainLayoutProvider"
+          // className={
+          //   pathname === "/" ? css.mainPageLayoutWrapper : css.pageLayoutWrapper
+          // }
+          className={css.pageLayoutWrapper}
+        >
+          {title && <div className={css.titleSection}>{title}</div>}
+          {description && (
+            <div
+              className={css.descriptionSection}
+              dangerouslySetInnerHTML={{
+                __html: sanitize(description),
+              }}
+            />
+          )}
+          {children}
+        </div>
+        <MobileNavbar />
       </div>
-      <MobileNavbar />
-    </div>
+    </QueryClientProvider>
   );
 }

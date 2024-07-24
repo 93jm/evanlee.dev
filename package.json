@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.11",
     "@vanilla-extract/css": "^1.14.1",
     "@vercel/analytics": "^1.2.2",
     "firebase": "^10.11.1",
