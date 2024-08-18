@@ -13,7 +13,7 @@ export default function ResumeMain() {
         <h3>Introduce 🧑🏻‍💻</h3>
         <div className={css.divider} />
         <p className={css.resumeSubTextBox} style={{ fontSize: 14 }}>
-          안녕하세요 좋은 개발자가 되기 전에 좋은 사람이 먼저 되고 싶은 3년차
+          안녕하세요 좋은 개발자가 되기 전에 좋은 사람이 먼저 되고 싶은 4년차
           프론트엔드 개발자 이정민(Evan) 입니다. <br /> 저는 지식을 공유하고
           말하고 대화하는 것을 좋아해요. 또한 주도적인 환경 속에서 스스로의
           역량을 늘리는 시간을 굉장히 값지게 생각하고 있어요. 왜냐하면 결국
