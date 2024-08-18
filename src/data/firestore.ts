@@ -39,6 +39,7 @@ export async function fetchProjects() {
     };
     fetchedProjects.push(obj);
   });
+
   return fetchedProjects;
 }
 

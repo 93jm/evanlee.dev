@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { ResumeProject } from "@/types/resume";
 import ImageBox from "@/app/_component/ImageBox";

@@ -27,7 +27,7 @@ export default function ResumeMain() {
       <section>
         <h3>Experience 🧑🏻‍💻</h3>
         <div className={css.divider} />
-        <div className={css.resumeCardFlexBox}>
+        <div className={css.resumeCardFlexBox} style={{ gap: 16 }}>
           {ExperienceData.map((company, cIdx) => {
             return (
               <div key={cIdx} className={css.resumeCardFlexBox}>

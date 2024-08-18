@@ -2,18 +2,12 @@
 
 import * as css from "./project.css";
 import ProjectCard from "./_component/ProjectCard";
-import { ProjectProps } from "@/types/project";
-import { useQuery } from "@tanstack/react-query";
-import { fetchProjects } from "@/data/firestore";
 import { Fragment } from "react";
-import Error from "next/error";
 import Skeleton from "react-loading-skeleton";
+import { useProjects } from "@/service/project/useProjectService";
 
 export default function ProjectsMain() {
-  const { data, isLoading } = useQuery<ProjectProps[], Error>({
-    queryKey: ["projects"],
-    queryFn: fetchProjects,
-  });
+  const { data, isLoading } = useProjects();
 
   const emptySkeletons = Array.from({ length: 6 }, () => ({}));
 

@@ -77,7 +77,7 @@ export default function Navbar({ target }: ProgressbarProps) {
         </div>
         {checkDesktop && (
           <div className={css.navRightSection}>
-            <GithubButton />
+            {/* <GithubButton /> */}
             <Link
               href="https://open.kakao.com/me/93jm"
               target="_blank"

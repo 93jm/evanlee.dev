@@ -2,9 +2,60 @@ import { ExperienceProps, OtherExperienceProps } from "@/types/resume";
 
 export const ExperienceData: ExperienceProps[] = [
   {
+    companyName: "N__BT",
+    companyPeriod: "(2024.07 ~ )",
+    projects: [
+      {
+        title: "애디슨 오퍼월 어드민",
+        period: "2024.07 ~ ",
+        link: "",
+        skills: [
+          "Nextjs v14",
+          "React v18",
+          "TypeScript",
+          "tRPC",
+          "Yup",
+          "React Query",
+          "React Hook Form - MUI",
+          "Material UI",
+          "Casl js",
+          "rjsf",
+        ],
+        description:
+          "프리미엄 광고 오퍼월 서비스인 애디슨의 광고 관리 사이트 개발",
+        contents: [
+          "기존 vue2로 개발되어 있는 프로젝트를 react로 리뉴얼",
+          "rjsf를 이용하여 json schema로 폼 핸들링 처리",
+        ],
+        results: [],
+      },
+    ],
+  },
+  {
     companyName: "위허들링",
-    companyPeriod: "(2024.04 ~ )",
-    projects: [],
+    companyPeriod: "(2024.04 ~ 2024.06)",
+    projects: [
+      {
+        title: "위잇 (B2C)",
+        period: "2024.04 ~ 2024.06",
+        link: "https://delight.weeat.kr",
+        skills: [
+          "React v17",
+          "TypeScript",
+          "Style Component",
+          "React Hook Form",
+          "Redux",
+          "Redux Thunk",
+        ],
+        description:
+          "도시락 및 샐러드 등의 점심 구독 서비스를 제공하는 B2C 서비스",
+        contents: [
+          "메뉴 옵션 상품 플로우 개발",
+          "Lighthouse 개선 - (https://meeeeen93.tistory.com/11)",
+        ],
+        results: [],
+      },
+    ],
   },
   {
     companyName: "마이프랜차이즈",
@@ -64,7 +115,7 @@ export const ExperienceData: ExperienceProps[] = [
         ],
       },
       {
-        title: "내부 관리자 페이지",
+        title: "마이프랜차이즈 어드민",
         period: "2022.01 ~ 2023.11",
         link: "",
         skills: [
@@ -128,6 +179,16 @@ export const OtehrExperienceData: OtherExperienceProps[] = [
   {
     title: "경력 및 교육",
     items: [
+      {
+        text: "엔비티 프론트엔드 개발자 (2024.07 ~ )",
+        link: "",
+        subText: "",
+      },
+      {
+        text: "위허들링 프론트엔드 개발자 (2024.04 ~ 2024.6)",
+        link: "",
+        subText: "",
+      },
       {
         text: "마이프랜차이즈 프론트엔드 개발자 (2021.07 ~ 2023.11)",
         link: "",
