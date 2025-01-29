@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, limit, orderBy, query } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { ProjectProps } from "@/types/project";
 import { signOut, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { GuestBookProps } from "@/types/guestbook";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -41,6 +42,27 @@ export async function fetchProjects() {
   });
 
   return fetchedProjects;
+}
+
+//방명록 가져오기
+export async function fetchGuestBooks() {
+  const querySnapshot = await getDocs(
+    query(collection(db, "guestbooks"), orderBy("createdAt", "desc"), limit(10))
+  );
+  const result: GuestBookProps[] = [];
+
+  querySnapshot.forEach((doc) => {
+    const obj = {
+      id: doc.id,
+      message: doc.data()["message"],
+      color: doc.data()["color"],
+      createdAt: doc.data()["createdAt"],
+    };
+
+    result.push(obj);
+  });
+
+  return result;
 }
 
 export async function addProjects() {}

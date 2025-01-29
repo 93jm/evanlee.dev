@@ -1,4 +1,4 @@
-import queryOptions from "@/service/project/queries";
+import queryOptions from "@/service/guestbook/queries";
 import { PageLayoutProvider } from "../_component";
 import { Hydrate, getDehydratedQuery } from "../utils/react-query";
 
@@ -11,9 +11,10 @@ export default async function Layout({
   const query = await getDehydratedQuery({ queryKey, queryFn });
   return (
     <PageLayoutProvider
-      title="프로젝트"
-      description="제가 작업하고 활동했던 내용을 기록하고 있어요."
+      title="방명록"
+      description={`놀러와서 남겨주신 말씀의 갯수 ${123}개`}
     >
+      {children}
       <Hydrate state={{ queries: [query] }}>{children}</Hydrate>
     </PageLayoutProvider>
   );
