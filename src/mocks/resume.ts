@@ -6,7 +6,7 @@ export const ExperienceData: ExperienceProps[] = [
     companyPeriod: "(2024.07 ~ )",
     projects: [
       {
-        title: "애디슨 오퍼월 어드민",
+        title: "애디슨 오퍼월 글로벌 광고 관리 사이트",
         period: "2024.07 ~ ",
         link: "",
         skills: [
@@ -15,17 +15,36 @@ export const ExperienceData: ExperienceProps[] = [
           "TypeScript",
           "tRPC",
           "Yup",
-          "React Query",
           "React Hook Form - MUI",
           "Material UI",
           "Casl js",
           "rjsf",
         ],
         description:
-          "프리미엄 광고 오퍼월 서비스인 애디슨의 광고 관리 사이트 개발",
+          "프리미엄 광고 오퍼월 서비스인 애디슨 글로벌의 광고 관리 사이트를 마이그레이션 하며 기능 개발 및 리포트 제공",
         contents: [
-          "기존 vue2로 개발되어 있는 프로젝트를 react로 리뉴얼",
+          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
           "rjsf를 이용하여 json schema로 폼 핸들링 처리",
+          "그 외에 모든 오퍼월 광고 관리 기능 기능 작업",
+        ],
+        results: [],
+      },
+      {
+        title: "애디슨 오퍼월 국내,글로벌 광고 웹뷰 페이지",
+        period: "2024.07 ~ ",
+        link: "",
+        skills: [
+          "Nextjs v15",
+          "React v19",
+          "TypeScript",
+          "React Query",
+          "Scss",
+        ],
+        description:
+          "프리미엄 광고 오퍼월 서비스인 애디슨의 국내, 글로벌 광고 웹뷰 제공 페이지를 마이그레이션 하며 기능 개발",
+        contents: [
+          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
+          "매체사에 맞는 광고 페이지 제공 작업",
         ],
         results: [],
       },
@@ -33,11 +52,11 @@ export const ExperienceData: ExperienceProps[] = [
   },
   {
     companyName: "위허들링",
-    companyPeriod: "(2024.04 ~ 2024.06)",
+    companyPeriod: "(2024.04 ~ 2024.07)",
     projects: [
       {
         title: "위잇 (B2C)",
-        period: "2024.04 ~ 2024.06",
+        period: "2024.04 ~ 2024.07",
         link: "https://delight.weeat.kr",
         skills: [
           "React v17",
@@ -185,7 +204,7 @@ export const OtehrExperienceData: OtherExperienceProps[] = [
         subText: "",
       },
       {
-        text: "위허들링 프론트엔드 개발자 (2024.04 ~ 2024.6)",
+        text: "위허들링 프론트엔드 개발자 (2024.04 ~ 2024.07)",
         link: "",
         subText: "",
       },
