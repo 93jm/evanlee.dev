@@ -22,6 +22,8 @@ export default function ProjectsMain() {
       ) : (
         data
           ?.sort((a, b) => a.id - b.id)
+          // E-Quiz 앱의 경우 현재 동작을 하지 않음 점검이 필요
+          .filter((i) => i.id !== 4)
           .map((project, idx) => (
             <Fragment key={idx}>
               <ProjectCard item={project} />
