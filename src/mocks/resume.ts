@@ -6,7 +6,31 @@ export const ExperienceData: ExperienceProps[] = [
     companyPeriod: "(2024.07 ~ )",
     projects: [
       {
-        title: "애디슨 오퍼월 글로벌 광고 관리 사이트",
+        title: "애디슨 오퍼월 국내 파트너센터",
+        period: "2024.07 ~ ",
+        link: "https://partner-center.adison.co/account/sign-in",
+        skills: [
+          "Nextjs v15",
+          "React v19",
+          "TypeScript",
+          "Zod",
+          "React Hook Form",
+          "Zustand",
+          "MSW",
+          "Storybook",
+          "Vanila-extract",
+        ],
+        description:
+          "국내 고객사들이 직접 오퍼월을 연동할 수 있도록 돕고 리포팅을 제공하는 셀프서비스형 프로젝트",
+        contents: [
+          "재사용 가능한 UI 컴포넌트 설계 및 스토리북을 활용하여 컴포넌트를 문서화하고 서비스 전반의 일관성 확보",
+          "MSW 활용으로 백엔드에 의존없이 API 모킹을 통해 프론트 개발 생산성 증가 및 예외 상황 테스트 처리",
+          "그 외에 셀프 연동 서비스 및 리포트 설계와 개발",
+        ],
+        results: [],
+      },
+      {
+        title: "애디슨 오퍼월 글로벌 광고 관리",
         period: "2024.07 ~ ",
         link: "",
         skills: [
@@ -18,19 +42,20 @@ export const ExperienceData: ExperienceProps[] = [
           "React Hook Form - MUI",
           "Material UI",
           "Casl js",
-          "rjsf",
+          "Rjsf",
+          "HandsonTable",
         ],
-        description:
-          "프리미엄 광고 오퍼월 서비스인 애디슨 글로벌의 광고 관리 사이트를 마이그레이션 하며 기능 개발 및 리포트 제공",
+        description: "글로벌 고객사의 광고 관리 및 리포팅 제공 서비스",
         contents: [
           "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
-          "rjsf를 이용하여 json schema로 폼 핸들링 처리",
-          "그 외에 모든 오퍼월 광고 관리 기능 기능 작업",
+          "Rjsf를 이용하여 json schema로 폼 핸들링 처리",
+          "HandsonTable을 사용하여 고객사 리포팅 테이블 개발",
+          "그 외에 모든 오퍼월 광고 관리 설계와 개발",
         ],
         results: [],
       },
       {
-        title: "애디슨 오퍼월 국내,글로벌 광고 웹뷰 페이지",
+        title: "애디슨 오퍼월 국내,글로벌 광고 웹뷰",
         period: "2024.07 ~ ",
         link: "",
         skills: [
@@ -38,13 +63,15 @@ export const ExperienceData: ExperienceProps[] = [
           "React v19",
           "TypeScript",
           "React Query",
+          "Storybook",
           "Scss",
         ],
         description:
-          "프리미엄 광고 오퍼월 서비스인 애디슨의 국내, 글로벌 광고 웹뷰 제공 페이지를 마이그레이션 하며 기능 개발",
+          "글로벌 및 국내 대상의 광고 적립, FAQ, 문의 기능 등을 제공하는 웹뷰 프로젝트",
         contents: [
           "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
-          "매체사에 맞는 광고 페이지 제공 작업",
+          "매체사에 맞는 광고 페이지 제공과 스토리북을 활용한 재사용 가능한 UI 컴포넌트 개발 및 문서화",
+          "웹뷰 프로젝트 설계 및 광고 적립부터 문의까지 전체 기능 개발",
         ],
         results: [],
       },
@@ -69,7 +96,8 @@ export const ExperienceData: ExperienceProps[] = [
         description:
           "도시락 및 샐러드 등의 점심 구독 서비스를 제공하는 B2C 서비스",
         contents: [
-          "메뉴 옵션 상품 플로우 개발",
+          "메뉴 옵션 상품 설계 및 개발",
+          "랜딩 페이지 재개편",
           "Lighthouse 개선 - (https://meeeeen93.tistory.com/11)",
         ],
         results: [],
