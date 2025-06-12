@@ -29,12 +29,12 @@ const IMG_ICON = [
     darkSrc: IMG_INSTAGRAM_WHITE,
     link: "https://www.instagram.com/meeeeen93",
   },
-  {
-    id: "notion",
-    lightSrc: IMG_NOTION_BLACK,
-    darkSrc: IMG_NOTION_WHITE,
-    link: "https://93jm.notion.site/7cbfb7a93236454ab3e10f3d16780ad4?pvs=4",
-  },
+  // {
+  //   id: "notion",
+  //   lightSrc: IMG_NOTION_BLACK,
+  //   darkSrc: IMG_NOTION_WHITE,
+  //   link: "https://93jm.notion.site/7cbfb7a93236454ab3e10f3d16780ad4?pvs=4",
+  // },
   {
     id: "kakao",
     lightSrc: IMG_KAKAO_BLACK,
