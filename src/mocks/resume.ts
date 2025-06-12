@@ -47,10 +47,10 @@ export const ExperienceData: ExperienceProps[] = [
         ],
         description: "글로벌 고객사의 광고 관리 및 리포팅 제공 서비스",
         contents: [
-          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
+          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션 (완료)",
           "Rjsf를 이용하여 json schema로 폼 핸들링 처리",
           "HandsonTable을 사용하여 고객사 리포팅 테이블 개발",
-          "그 외에 모든 오퍼월 광고 관리 설계와 개발",
+          "그 외에 모든 오퍼월 광고 관리, 리포팅 기능에 대한 프론트 설계 및 개발",
         ],
         results: [],
       },
@@ -67,11 +67,11 @@ export const ExperienceData: ExperienceProps[] = [
           "Scss",
         ],
         description:
-          "글로벌 및 국내 대상의 광고 적립, FAQ, 문의 기능 등을 제공하는 웹뷰 프로젝트",
+          "글로벌 및 국내 대상의 광고 적립 및 FAQ, 문의 기능등을 제공하는 웹뷰 프로젝트",
         contents: [
-          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션",
+          "nuxt로 되어있는 기존 프로젝트를 next로 마이그레이션 (완료)",
           "매체사에 맞는 광고 페이지 제공과 스토리북을 활용한 재사용 가능한 UI 컴포넌트 개발 및 문서화",
-          "웹뷰 프로젝트 설계 및 광고 적립부터 문의까지 전체 기능 개발",
+          "웹뷰 프로젝트 설계 및 광고 적립부터 문의까지 FE 전체 기능 개발",
         ],
         results: [],
       },
@@ -94,11 +94,11 @@ export const ExperienceData: ExperienceProps[] = [
           "Redux Thunk",
         ],
         description:
-          "도시락 및 샐러드 등의 점심 구독 서비스를 제공하는 B2C 서비스",
+          "도시락 및 샐러드 등의 점심 구독 서비스를 제공하는 B2C 프로젝트",
         contents: [
           "메뉴 옵션 상품 설계 및 개발",
           "랜딩 페이지 재개편",
-          "Lighthouse 개선 - (https://meeeeen93.tistory.com/11)",
+          "Lighthouse 개선",
         ],
         results: [],
       },
@@ -122,14 +122,13 @@ export const ExperienceData: ExperienceProps[] = [
           "Apollo Client",
         ],
         description:
-          "B2C 고객(예비창업자) 대상으로 브랜드 찾기, 정보공개서 데이터, 상권 분석 서비스를 제공하며 App 서비스 제공",
+          "B2C 고객(예비창업자) 대상으로 브랜드 찾기와 비교, 양도양수, 지도 상권 분석 서비스 제공을 하며 APP 서비스까지 제공",
         contents: [
-          "home 화면 및 서비스 랜딩 페이지",
-          "리스트 페이지 (브랜드, 태그, 테마, 랭킹 등)",
-          "브랜드 상세 페이지",
-          "매거진 페이지",
-          "지도 상권분석 기능",
-          "이벤트 페이지(다크호스 or 창업설명회)",
+          "React 프로젝트를 Next12로 리뉴얼 진행 (서비스 랜딩 속도 및 SEO 개선)",
+          "Lighthouse 성능 개선",
+          "브랜드 상세 페이지 리뉴얼 개편으로 창업문의 수 3배 이상 증가 - B1000 프로젝트",
+          "사이드프로젝트로 그로스해킹을 통해 A/B 테스트 도입",
+          "지도 상권분석 기능 외에 사이트 기능 개발 및 유지보수",
         ],
         results: [
           "기존 CRA로 구성되어 있던 서비스를 Next 전환 도입에 참여 후 서비스 랜딩 속도 개선 및 SEO 개선",
@@ -151,11 +150,11 @@ export const ExperienceData: ExperienceProps[] = [
           "ReactQuery",
         ],
         description:
-          "B2C 고객(예비창업자) 대상으로 브랜드 찾기, 정보공개서 데이터, 상권 분석 서비스를 제공하며 App 서비스 제공",
+          "파트너 고객 대상으로 브랜드 관리 및 매물 관리, 상권 분석 기능이 포함된 월 정액 멤버쉽 서비스 제공",
         contents: [
           "서비스 소개 페이지 리뉴얼",
           "매물 관리 페이지 개발 및 지도 연동",
-          "파트너사(유저)들의 등급, 권한등 사용자 관리 기능 개발 ",
+          "파트너사의 권한 및 사용자 관리 비즈니스 로직 개발",
         ],
         results: [
           "매물 관리 기능 출시 후 확보된 데이터를 이용하여 이후 사내의 부동산 관련 서비스의 기초 마련",
@@ -174,18 +173,16 @@ export const ExperienceData: ExperienceProps[] = [
           "GraphQL",
           "Apollo Client",
         ],
-        description: "B2B, B2C 서비스를 관리하는 사내 관리자 사이트",
+        description:
+          "B2C, B2B 서비스 내의 모든 기능들이 연동 및 관리되는 Admin 프로젝트",
         contents: [
-          "B2C, B2B 유저 관리(table 처리)",
-          "본사 및 브랜드 관리",
-          "브랜드 정보 검수 관리 및 양도 양수 검수 관리",
-          "서비스 내의 광고 및 매거진 등록 관리",
-          "푸시 알람 서비스",
-          "통계 페이지 및 사내 전체 결제 및 세금계산서(바로빌) 연동",
+          "서비스 내의 브랜드 관리 및 광고, 매거진 관리 기능 개발",
+          "푸시 알림 서비스 및 세그먼트 필터 기능 개발",
+          "통계 페이지 및 사내 결제 세금계산서 연동 개발",
+          "그 외에 모든 기능 FE 개발",
         ],
         results: [
-          "B2C와 B2B를 개발하면서 동시에 어드민 사이트 1인 개발 및 관리",
-          "기존 구성되어 있던 어드민 페이지 Ant Design 도입하여 전체 UI 리뉴얼 진행 -> 사용성 개선",
+          "B2C와 B2B를 관리하며 동시에 어드민 사이트 FE 1인 개발 및 관리",
         ],
       },
       {
@@ -194,13 +191,12 @@ export const ExperienceData: ExperienceProps[] = [
         link: "",
         skills: ["Google Optimize", "Google Analytics", "Clarity"],
         description:
-          "사내 개별 프로젝트로 다양한 팀의 구성원들이 모여 사내 지표를 분석하는 그로스해킹 도입",
+          "사내 사이드 프로젝트로 서비스 지표를 분석하고 그로스해킹 도입",
         contents: [
-          "A/B 테스트를 통해 지표를 개선하고 사내 그로스 해킹 문화 도입",
-          "GA 트래킹 및 내부 데이터 분석",
+          "GA 트래킹 및 내부 데이터 분석을 통해 A/B 테스트 진행",
+          "사내 전체 그로스 해킹 문화 도입",
         ],
         results: [
-          "업무 외의 프로젝트이며 그로스해킹의 중요성 사내에 인식",
           "총 2건의 A/B 테스트중 추 후에 1가지는 실제 B2C 서비스에 반영",
         ],
       },
@@ -210,12 +206,13 @@ export const ExperienceData: ExperienceProps[] = [
         link: "",
         skills: ["Google Optimize", "Google Analytics", "Clarity"],
         description:
-          "사내 개별 프로젝트로 B2C 서비스의 pain point를 분석하여 기획부터 개발까지 참여하는 프로젝트",
-        contents: ["현재 지표 분석 및 pain point 탐색", "기획 및 개발 참여"],
+          "사내 사이드 프로젝트로 B2C 서비스의 궁극 목표 달성을 위해 TF 팀 구성 후 기획부터 개발 참여",
+        contents: [
+          "GA 트래킹 및 내부 데이터 분석을 통해 현재 지표 pain point 분석",
+          "기획부터 FE 개발 및 유지보수까지 참여",
+        ],
         results: [
-          "업무 외의 프로젝트이며 실제 서비스에 반영",
-          "서비스 반영시에 B2C ADMIN 프론트 개발 전체 담당",
-          "23년 07월에 배포 후 08월, 11월 결과 분석 시 파트너 브랜드 가입 이전대비 대폭 증가",
+          "23년 7월 배포 후 11월 결과 분석 시 이전 지표 대비 3배 이상 증가",
         ],
       },
     ],
