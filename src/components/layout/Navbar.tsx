@@ -11,8 +11,8 @@ import { useBreakpoints } from "@/hooks";
 import { SideMenuContext } from "@/provider/ThemeProvider";
 import { NAV_DATA } from "@/mocks/common";
 import * as css from "@/components/componentLayout.css";
-import logoBlack from "/public/e-logo-black.png";
-import logoWhite from "/public/e-logo-white.png";
+import logoBlack from "/public/logo-dark.svg";
+import logoWhite from "/public/logo-light.svg";
 import MENU_BLACK from "/public/menu-black.png";
 import MENU_WHITE from "/public/menu-white.png";
 import { signInWithPopup, GithubAuthProvider, signOut } from "@/data/firestore";
@@ -45,7 +45,7 @@ export default function Navbar({ target }: ProgressbarProps) {
       <nav className={css.navSectionFlex}>
         <div className={css.navLeftSection}>
           <Link href="/" className={css.imageBox}>
-            {imageUrl && <Image src={imageUrl} alt="블로그 로고" width={36} />}
+            {imageUrl && <Image src={imageUrl} alt="블로그 로고" width={35} />}
           </Link>
           {checkDesktop && (
             <ul className={css.navSectionGrid}>
