@@ -1,6 +1,6 @@
 "use client";
 
-import * as css from "@/app/_component/componentLayout.css";
+import * as css from "@/components/componentLayout.css";
 import IMG_GITHUB_BLACK from "/public/github.png";
 import IMG_GITHUB_WHITE from "/public/github_white.png";
 import IMG_INSTAGRAM_BLACK from "/public/instagram.png";
@@ -14,7 +14,7 @@ import IMG_BLOG_WHITE from "/public/blog_white.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useFirstRender } from "@/app/_hooks";
+import { useFirstRender } from "@/hooks";
 
 const IMG_ICON = [
   {

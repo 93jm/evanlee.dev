@@ -1,6 +1,6 @@
 "use client";
 
-import { darkTheme, lightTheme } from "@/app/styles/theme.css";
+import { darkTheme, lightTheme } from "@/styles/theme.css";
 import { ReactNode, createContext, useState } from "react";
 
 import { Footer } from ".";

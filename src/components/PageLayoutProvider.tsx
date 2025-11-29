@@ -2,7 +2,7 @@
 
 import sanitize from "sanitize-html";
 import { ReactNode, useRef, useState } from "react";
-import * as css from "@/app/_component/componentLayout.css";
+import * as css from "@/components/componentLayout.css";
 import { MobileNavbar, Navbar } from ".";
 import { usePathname } from "next/navigation";
 import { vars } from "../styles/theme.css";

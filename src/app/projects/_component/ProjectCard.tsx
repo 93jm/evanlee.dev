@@ -6,7 +6,7 @@ import StackBadge from "./StackBadge";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import sanitize from "sanitize-html";
-import { ImageBox } from "@/app/_component";
+import { ImageBox } from "@/components";
 
 interface IProps {
   item: ProjectProps;

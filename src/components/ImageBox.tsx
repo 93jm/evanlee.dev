@@ -11,7 +11,7 @@ import IMG_LINK from "/public/icon_link.png";
 import IMG_LINK_WHITE from "/public/icon_link_white.png";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useFirstRender } from "@/app/_hooks";
+import { useFirstRender } from "@/hooks";
 
 interface IProps {
   width: number;

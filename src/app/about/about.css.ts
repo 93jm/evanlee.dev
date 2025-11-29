@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { responsiveStyle } from "../styles/media";
+import { responsiveStyle } from "@/styles/media";
 
 export const aboutSectionWrapper = style({
   display: "flex",

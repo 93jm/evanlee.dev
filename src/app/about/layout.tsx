@@ -1,5 +1,5 @@
-import { getCarrerRange } from "@/app/utils/date";
-import { PageLayoutProvider } from "../_component";
+import { getCarrerRange } from "@/utils/date";
+import { PageLayoutProvider } from "@/components";
 
 export default function Layout({
   children,

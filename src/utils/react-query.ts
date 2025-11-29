@@ -2,7 +2,6 @@ import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
-  QueryState,
   QueryKey,
 } from "@tanstack/react-query";
 import { cache } from "react";
@@ -17,10 +16,6 @@ interface QueryProps<ResponseType = unknown> {
   queryFn: () => Promise<ResponseType>;
 }
 
-interface DehydratedQueryExtended<TData = unknown, TError = unknown> {
-  state: QueryState<TData, TError>;
-}
-
 export async function getDehydratedQuery<Q extends QueryProps>({
   queryKey,
   queryFn,
@@ -33,9 +28,7 @@ export async function getDehydratedQuery<Q extends QueryProps>({
     isEqual(query.queryKey, queryKey)
   );
 
-  return dehydratedQuery as DehydratedQueryExtended<
-    UnwrapPromise<ReturnType<Q["queryFn"]>>
-  >;
+  return dehydratedQuery;
 }
 
 export async function getDehydratedQueries<Q extends QueryProps[]>(queries: Q) {
@@ -46,11 +39,7 @@ export async function getDehydratedQueries<Q extends QueryProps[]>(queries: Q) {
     )
   );
 
-  return dehydrate(queryClient).queries as DehydratedQueryExtended<
-    UnwrapPromise<ReturnType<Q[number]["queryFn"]>>
-  >[];
+  return dehydrate(queryClient).queries;
 }
 
 export const Hydrate = HydrationBoundary;
-
-export default {};
