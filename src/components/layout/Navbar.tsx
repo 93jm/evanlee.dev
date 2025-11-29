@@ -8,7 +8,7 @@ import Image, { StaticImageData } from "next/image";
 import { ToggleTheme, ProgressBar } from "@/components";
 import { useTheme } from "next-themes";
 import { useBreakpoints } from "@/hooks";
-import { SideMenuContext } from "./ThemeAndSideProvider";
+import { SideMenuContext } from "@/provider/ThemeProvider";
 import { NAV_DATA } from "@/mocks/common";
 import * as css from "@/components/componentLayout.css";
 import logoBlack from "/public/e-logo-black.png";

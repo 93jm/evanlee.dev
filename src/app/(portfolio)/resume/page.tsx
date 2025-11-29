@@ -1,4 +1,4 @@
-import * as css from "@/app/resume/resume.css";
+import * as css from "@/app/(portfolio)/resume/resume.css";
 import { ExperienceData, OtehrExperienceData } from "@/mocks/resume";
 import { Fragment } from "react";
 import sanitize from "sanitize-html";

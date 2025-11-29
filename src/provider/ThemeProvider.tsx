@@ -3,7 +3,7 @@
 import { darkTheme, lightTheme } from "@/styles/theme.css";
 import { ReactNode, createContext, useState } from "react";
 
-import { Footer } from ".";
+import { Footer } from "@/components/layout";
 import { ThemeProvider as ThemeWrapper } from "next-themes";
 
 interface IProps {
@@ -15,7 +15,7 @@ export const SideMenuContext = createContext({
   toggleSideMenu: (props: boolean) => {},
 });
 
-export default function ThemeAndSideProvider({ children }: IProps) {
+export default function ThemeProvider({ children }: IProps) {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   const toggleSideMenu = (props: boolean) => {

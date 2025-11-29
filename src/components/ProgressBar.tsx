@@ -25,6 +25,13 @@ export default function ProgressBar({ target }: ProgressbarProps) {
       document.documentElement.scrollTop ||
       document.body.scrollTop;
 
+    // 디버깅: 스크롤 이벤트 발생 시 위치 확인
+    // console.log("[ProgressBar] Scroll event:", {
+    //   windowScrollTop,
+    //   totalHeight,
+    //   percent: (windowScrollTop / totalHeight) * 100,
+    // });
+
     if (windowScrollTop === 0) {
       return setProgressPercent(0);
     }
@@ -37,6 +44,15 @@ export default function ProgressBar({ target }: ProgressbarProps) {
   }, [target]);
 
   useEffect(() => {
+    // 디버깅: 초기 스크롤 위치 확인
+    // console.log(
+    //   "[ProgressBar] Component mounted, initial scroll:",
+    //   window.scrollY
+    // );
+
+    // 초기 스크롤 위치 체크 (새로고침 시 브라우저가 스크롤 위치를 복원하는 경우)
+    // scrollEventListener();
+
     window.addEventListener("scroll", scrollEventListener);
 
     return () => window.removeEventListener("scroll", scrollEventListener);

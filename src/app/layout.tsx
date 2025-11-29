@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "@/styles/globalTheme.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { ThemeAndSideProvider } from "@/components";
+import { ThemeProvider, ReactQueryProvider } from "@/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +45,9 @@ export default function RootLayout({
       />
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
-        <ThemeAndSideProvider>{children}</ThemeAndSideProvider>
+        <ThemeProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

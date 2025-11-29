@@ -1,11 +1,11 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { colors } from "@/styles/colors";
-import { vars } from "../styles/theme.css";
+import { vars } from "@/styles/theme.css";
 import { responsiveStyle } from "../styles/media";
 
-const mainFadeUp = keyframes({
-  "0%": { transform: "translateY(50px)", opacity: 0 },
-  "100%": { transform: "translateY(0px)", opacity: 1 },
+const mainFadeIn = keyframes({
+  "0%": { opacity: 0 },
+  "100%": { opacity: 1 },
 });
 
 const sideFadeUp = keyframes({
@@ -24,24 +24,22 @@ const sideFadeUp = keyframes({
  */
 
 //main layout provider
-export const mainPageLayoutWrapper = style({
-  marginTop: "60px",
-  minHeight: "100dvh",
-  // backgroundColor: "tomato",
-});
+// export const mainPageLayoutWrapper = style({
+//   marginTop: "60px",
+//   minHeight: "100dvh",
+//   backgroundColor: "tomato",
+// });
 
-export const pageLayoutWrapper = style([
-  {
-    maxWidth: 800,
-    margin: "0 auto",
-    minHeight: "100dvh",
-    transform: "translateY(50px)",
-    opacity: 0,
-    animation: `400ms ease ${mainFadeUp}`,
-    animationFillMode: "forwards",
-    padding: "86px 20px 64px",
-  },
-]);
+export const pageLayoutWrapper = style({
+  maxWidth: 800,
+  margin: "0 auto",
+  marginTop: "56px",
+  minHeight: "100dvh",
+  padding: "30px 20px 64px",
+  opacity: 0,
+  animation: `400ms ease ${mainFadeIn}`,
+  animationFillMode: "forwards",
+});
 
 // nav bar
 export const navSectionWrapper = style({
