@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ResumeProject } from "@/types/resume";
 import ImageBox from "@/components/ImageBox";
-import * as css from "@/app/resume/resume.css";
+import * as css from "@/app/(portfolio)/resume/resume.css";
 
 type Props = {
   project: ResumeProject;

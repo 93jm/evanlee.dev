@@ -3,7 +3,7 @@
 import * as css from "@/components/componentLayout.css";
 import { useBreakpoints } from "@/hooks";
 import { Fragment, useContext, useEffect } from "react";
-import { SideMenuContext } from "./ThemeAndSideProvider";
+import { SideMenuContext } from "@/provider/ThemeProvider";
 import { NAV_DATA } from "@/mocks/common";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -11,8 +11,8 @@ import { useTheme } from "next-themes";
 import X_BLACK from "/public/x-black.png";
 import X_WHITE from "/public/x-white.png";
 import Image from "next/image";
-import { flexRowBetween } from "../styles/layout";
-import { ToggleTheme } from ".";
+import { flexRowBetween } from "@/styles/layout";
+import { ToggleTheme } from "@/components";
 
 type Props = {
   name: string;
