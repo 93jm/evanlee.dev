@@ -1,10 +1,10 @@
 "use client";
 
-import * as css from "@/app/_component/componentLayout.css";
+import * as css from "@/components/componentLayout.css";
 import { useCallback, useEffect, useState } from "react";
 
 type ProgressbarProps = {
-  target: React.RefObject<HTMLDivElement>;
+  target: React.RefObject<HTMLDivElement | null>;
 };
 
 export default function ProgressBar({ target }: ProgressbarProps) {

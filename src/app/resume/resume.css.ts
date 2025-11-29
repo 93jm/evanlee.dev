@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
-import { colors } from "@/app/styles/colors";
-import { vars } from "../styles/theme.css";
+import { colors } from "@/styles/colors";
+import { vars } from "@/styles/theme.css";
 
 export const resumeSectionWrapper = style({
   display: "flex",

@@ -1,5 +1,5 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
-import { colors } from "@/app/styles/colors";
+import { colors } from "@/styles/colors";
 import { vars } from "../styles/theme.css";
 import { responsiveStyle } from "../styles/media";
 

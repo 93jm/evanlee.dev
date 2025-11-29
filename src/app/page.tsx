@@ -1,7 +1,7 @@
-import { PageLayoutProvider } from "./_component";
-import StarField from "@/app/_component/StarField";
+import { PageLayoutProvider } from "@/components";
+import StarField from "@/components/StarField";
 import AboutMain from "./about/_component/AboutMain";
-import { getCarrerRange } from "./utils/date";
+import { getCarrerRange } from "@/utils/date";
 
 export default function Home() {
   return (

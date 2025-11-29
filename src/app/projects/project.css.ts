@@ -1,8 +1,8 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-import { colors } from "@/app/styles/colors";
-import { flexColumn } from "@/app/styles/layout";
-import { vars } from "../styles/theme.css";
-import { responsiveStyle } from "../styles/media";
+import { colors } from "@/styles/colors";
+import { flexColumn } from "@/styles/layout";
+import { vars } from "@/styles/theme.css";
+import { responsiveStyle } from "@/styles/media";
 
 export const projectsSectionWrapper = style([
   {

@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { User, getAuth } from "firebase/auth";
 import Image, { StaticImageData } from "next/image";
-import { ToggleTheme, ProgressBar } from "@/app/_component";
+import { ToggleTheme, ProgressBar } from "@/components";
 import { useTheme } from "next-themes";
-import { useBreakpoints } from "../_hooks";
+import { useBreakpoints } from "@/hooks";
 import { SideMenuContext } from "./ThemeAndSideProvider";
 import { NAV_DATA } from "@/mocks/common";
-import * as css from "@/app/_component/componentLayout.css";
+import * as css from "@/components/componentLayout.css";
 import logoBlack from "/public/e-logo-black.png";
 import logoWhite from "/public/e-logo-white.png";
 import MENU_BLACK from "/public/menu-black.png";
@@ -24,7 +24,7 @@ type Props = {
 };
 
 type ProgressbarProps = {
-  target: React.RefObject<HTMLDivElement>;
+  target: React.RefObject<HTMLDivElement | null>;
 };
 
 export default function Navbar({ target }: ProgressbarProps) {

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "react-loading-skeleton/dist/skeleton.css";
-import "./globalTheme.css";
+import "@/styles/globalTheme.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { ThemeAndSideProvider } from "@/app/_component";
+import { ThemeAndSideProvider } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 

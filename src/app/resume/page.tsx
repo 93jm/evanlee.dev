@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import sanitize from "sanitize-html";
 import Link from "next/link";
 import ResumeCard from "./_component/ResumeCard";
-import { ImageBox } from "@/app/_component";
+import { ImageBox } from "@/components";
 
 export default function ResumeMain() {
   return (

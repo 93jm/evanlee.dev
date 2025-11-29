@@ -1,7 +1,7 @@
 "use client";
 
-import * as css from "@/app/_component/componentLayout.css";
-import { useBreakpoints } from "../_hooks";
+import * as css from "@/components/componentLayout.css";
+import { useBreakpoints } from "@/hooks";
 import { Fragment, useContext, useEffect } from "react";
 import { SideMenuContext } from "./ThemeAndSideProvider";
 import { NAV_DATA } from "@/mocks/common";

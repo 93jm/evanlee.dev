@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
-import { useBreakpoints } from "../_hooks";
+import { useBreakpoints } from "@/hooks";
 
 export default function ToggleTheme() {
   const { resolvedTheme, setTheme } = useTheme();
