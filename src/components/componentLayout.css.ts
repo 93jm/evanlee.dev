@@ -1,7 +1,7 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { colors } from "@/styles/colors";
 import { vars } from "@/styles/theme.css";
-import { responsiveStyle } from "../styles/media";
+import { responsiveBlogStyle, responsiveStyle } from "../styles/media";
 
 const mainFadeIn = keyframes({
   "0%": { opacity: 0 },
@@ -17,6 +17,7 @@ const sideFadeUp = keyframes({
  * 구성 목록
  * theme provider
  * main layout provider
+ * blog layout
  * nav bar
  * mobile nav bar
  * progress bar
@@ -40,6 +41,23 @@ export const pageLayoutWrapper = style({
   animation: `400ms ease ${mainFadeIn}`,
   animationFillMode: "forwards",
 });
+
+export const blogLayoutWrapper = style([
+  responsiveBlogStyle({
+    mobile: {
+      maxWidth: "100%",
+      padding: "24px 0px 64px",
+    },
+    desktop: {
+      paddingBottom: "64px",
+    },
+  }),
+  {
+    margin: "0 auto",
+    marginTop: "56px",
+    minHeight: "100dvh",
+  },
+]);
 
 // nav bar
 export const navSectionWrapper = style({

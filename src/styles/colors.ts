@@ -31,3 +31,9 @@ export const bgBlack = {
   100: "rgb(60, 60, 60)",
   200: "rgb(40, 40, 40)",
 };
+
+export const chipGray = {
+  100: "rgb(82, 82, 91)", // hover
+  200: "rgb(63, 63, 70)", // 기본
+  300: "rgb(39, 39, 42)", // active
+};

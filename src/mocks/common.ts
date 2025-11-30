@@ -11,4 +11,8 @@ export const NAV_DATA = [
     name: "Resume",
     link: "/resume",
   },
+  {
+    name: "Blog",
+    link: "/blogs",
+  },
 ] as const;
