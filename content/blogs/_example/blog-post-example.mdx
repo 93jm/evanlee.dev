@@ -1,0 +1,169 @@
+---
+title: "블로그 포스트 제목을 입력하세요."
+description: "블로그 포스트의 간단한 설명을 1-2줄로 작성하세요. 이 내용은 카드에 표시됩니다."
+date: "2025-01-01"
+thumbnail: "/blog-thumbnails/your-image.png"
+keywords: ["키워드1", "키워드2", "키워드3"]
+author: "Evan Lee"
+draft: false
+---
+
+# 블로그 포스트 제목
+
+블로그 포스트의 인트로 문단을 작성하세요. 이 글에서 무엇을 다룰 것인지 간략하게 소개합니다.
+
+## 주요 섹션 1
+
+첫 번째 주제에 대한 내용을 작성합니다.
+
+### 하위 섹션 1-1
+
+더 세부적인 내용이 필요하면 하위 섹션을 사용하세요.
+
+```typescript
+// 코드 예제
+const example = "TypeScript 코드 예제";
+
+function hello() {
+  console.log("Hello World!");
+}
+```
+
+**강조할 내용**은 볼드체로 작성할 수 있습니다.
+
+*이탤릭체*도 사용 가능합니다.
+
+## 주요 섹션 2
+
+두 번째 주제를 설명합니다.
+
+### 리스트 예제
+
+순서 없는 리스트:
+
+- 첫 번째 항목
+- 두 번째 항목
+  - 중첩된 항목
+  - 또 다른 중첩 항목
+- 세 번째 항목
+
+순서 있는 리스트:
+
+1. 첫 번째 단계
+2. 두 번째 단계
+3. 세 번째 단계
+
+## 코드 블록 예제
+
+다양한 언어의 코드 블록을 사용할 수 있습니다:
+
+### JavaScript/TypeScript
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const user: User = {
+  id: 1,
+  name: "Evan",
+  email: "evan@example.com",
+};
+```
+
+### React 컴포넌트
+
+```tsx
+import { useState } from "react";
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>증가</button>
+    </div>
+  );
+}
+```
+
+### CSS/Styling
+
+```css
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+```
+
+## 인용문 예제
+
+> 중요한 인용문이나 주목할 만한 내용은 인용문 형태로 작성할 수 있습니다.
+>
+> 여러 줄로 작성할 수도 있습니다.
+
+## 링크 예제
+
+[Next.js 공식 문서](https://nextjs.org/docs)를 참고하세요.
+
+## 이미지 예제
+
+![대체 텍스트](/blog-images/example-image.png)
+
+## 표 예제
+
+| 항목       | 설명             | 비고          |
+| ---------- | ---------------- | ------------- |
+| Next.js    | React 프레임워크 | SSR/SSG 지원  |
+| TypeScript | 타입 시스템      | 타입 안정성   |
+| Tailwind   | CSS 프레임워크   | 유틸리티 우선 |
+
+## 체크리스트 예제
+
+- [x] 완료된 항목
+- [x] 또 다른 완료 항목
+- [ ] 아직 완료되지 않은 항목
+- [ ] 진행 중인 항목
+
+## 마무리
+
+블로그 포스트의 내용을 요약하고 마무리합니다.
+
+### 참고 자료
+
+- [참고 링크 1](https://example.com)
+- [참고 링크 2](https://example.com)
+
+---
+
+## 사용 방법
+
+1. 이 템플릿을 복사하여 적절한 카테고리 폴더로 이동
+
+   - `content/blogs/프론트엔드/`
+   - `content/blogs/백엔드/`
+   - `content/blogs/돌아보기/`
+
+2. 파일명을 kebab-case로 작성
+
+   - 예: `my-new-blog-post.mdx`
+
+3. Frontmatter 필드 설명:
+
+   - `title`: 블로그 제목 (필수)
+   - `description`: 간단한 설명, 카드에 표시 (필수)
+   - `date`: 발행일 YYYY-MM-DD 형식 (필수)
+   - `thumbnail`: 썸네일 이미지 경로 (권장 비율: 5:3, 1500x900px)
+   - `keywords`: 태그/키워드 배열 (최대 3-5개 권장)
+   - `author`: 작성자 이름 (필수)
+   - `draft`: true면 목록에 안 보임, false면 공개
+
+4. 썸네일 이미지는 `/public/blog-thumbnails/` 폴더에 저장
+
+5. 본문 이미지는 `/public/blog-images/` 폴더에 저장

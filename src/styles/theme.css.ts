@@ -2,9 +2,8 @@ import {
   createGlobalTheme,
   createTheme,
   createThemeContract,
-  globalStyle,
 } from "@vanilla-extract/css";
-import { begie, bgBlack, black, gray, white } from "./colors";
+import { begie, bgBlack, black, gray, white, chipGray } from "./colors";
 
 const root = createGlobalTheme(":root", {});
 
@@ -32,6 +31,13 @@ const themeColor = createThemeContract({
   hoverColor: {
     color: null,
   },
+  // 칩 버튼 색상
+  chipColor: {
+    base: null, // 기본 상태
+    hover: null, // hover 상태
+    active: null, // active/선택 상태
+    name: null,
+  },
 });
 
 export const lightTheme = createTheme(themeColor, {
@@ -57,6 +63,12 @@ export const lightTheme = createTheme(themeColor, {
   hoverColor: {
     color: gray[100],
   },
+  chipColor: {
+    base: gray[100],
+    hover: gray[200],
+    active: black[100],
+    name: white[100],
+  },
 });
 
 export const darkTheme = createTheme(themeColor, {
@@ -81,6 +93,12 @@ export const darkTheme = createTheme(themeColor, {
   },
   hoverColor: {
     color: bgBlack[200],
+  },
+  chipColor: {
+    base: chipGray[200], // 기본 상태
+    hover: chipGray[100], // hover 상태
+    active: chipGray[300], // active 상태
+    name: gray[400],
   },
 });
 
