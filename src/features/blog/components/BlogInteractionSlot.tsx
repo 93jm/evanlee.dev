@@ -64,8 +64,7 @@ export function BlogInteractionSlot({ slug }: BlogInteractionSlotProps) {
 
   useTrackPostView(slug);
 
-  const commentCount = stats?.commentCount ?? comments.length;
-  const likeCount = likeState?.likeCount ?? stats?.likeCount ?? 0;
+  const commentCount = comments.length;
   const bodyValidation = validateCommentBody(commentBody);
   const isSubmitDisabled = !author || !bodyValidation.ok || isCreatingComment;
 
@@ -118,7 +117,7 @@ export function BlogInteractionSlot({ slug }: BlogInteractionSlotProps) {
           aria-pressed={likeState?.liked ?? false}
         >
           <span>{likeState?.liked ? "좋아요 취소" : "좋아요"}</span>
-          <strong>{formatCount(likeCount)}</strong>
+          <strong>{likeState?.liked ? "완료" : "누르기"}</strong>
         </button>
         <div className={css.interactionMetric}>
           <span>댓글</span>

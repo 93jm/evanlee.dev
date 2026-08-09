@@ -1,5 +1,6 @@
 export const POST_STATS_COLLECTION = "postStats";
 export const POST_LIKES_COLLECTION = "postLikes";
+export const POST_LIKE_USERS_SUBCOLLECTION = "users";
 export const POST_COMMENTS_COLLECTION = "postComments";
 
 export const COMMENT_STATUS_VISIBLE = "visible";
@@ -12,6 +13,4 @@ export const LOCAL_VIEW_MARKER_PREFIX = "evanlee:v2:view";
 
 export const DEFAULT_POST_STATS_COUNTS = {
   viewCount: 0,
-  likeCount: 0,
-  commentCount: 0,
 } as const;

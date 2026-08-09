@@ -1,13 +1,11 @@
 import {
   Timestamp,
+  addDoc,
   collection,
-  doc,
   getDocs,
-  increment,
   query,
   serverTimestamp,
   where,
-  writeBatch,
 } from "firebase/firestore";
 import {
   GithubAuthProvider,
@@ -24,7 +22,6 @@ import {
   COMMENT_STATUS_VISIBLE,
   GITHUB_PROVIDER_ID,
   POST_COMMENTS_COLLECTION,
-  POST_STATS_COLLECTION,
 } from "../constants";
 import type {
   CommentAuthor,
@@ -185,29 +182,16 @@ export async function createPostComment(input: CreatePostCommentInput) {
   }
 
   const commentsRef = collection(db, POST_COMMENTS_COLLECTION);
-  const newCommentRef = doc(commentsRef);
-  const statsRef = doc(db, POST_STATS_COLLECTION, input.slug);
-  const batch = writeBatch(db);
-
-  batch.set(newCommentRef, {
+  const commentData = {
     slug: input.slug,
     body: validation.body,
     authorName: author.displayName,
-    authorPhotoURL: author.photoURL,
     authorUid: author.uid,
     status: COMMENT_STATUS_VISIBLE,
     createdAt: serverTimestamp(),
-  });
-  batch.set(
-    statsRef,
-    {
-      commentCount: increment(1),
-      updatedAt: serverTimestamp(),
-    },
-    { merge: true }
-  );
+  };
 
-  await batch.commit();
+  const newCommentRef = await addDoc(commentsRef, commentData);
 
   return newCommentRef.id;
 }

@@ -1,0 +1,161 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isGithubUser() {
+      return isSignedIn()
+        && (
+          request.auth.token.firebase.sign_in_provider == "github.com"
+          || (
+            request.auth.token.firebase.identities is map
+            && "github.com" in request.auth.token.firebase.identities
+          )
+        );
+    }
+
+    function changedKeys() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    function isNonNegativeInt(value) {
+      return value is int && value >= 0;
+    }
+
+    function hasUpdatedAt() {
+      return "updatedAt" in request.resource.data
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    function hasCreatedAt() {
+      return "createdAt" in request.resource.data
+        && request.resource.data.createdAt == request.time;
+    }
+
+    function hasAuthName() {
+      return "name" in request.auth.token
+        && request.auth.token.name is string
+        && request.auth.token.name.size() > 0;
+    }
+
+    function expectedAuthorName() {
+      return hasAuthName() ? request.auth.token.name : "GitHub 사용자";
+    }
+
+    function existingCount(field) {
+      return field in resource.data ? resource.data[field] : 0;
+    }
+
+    function nextCount(field) {
+      return request.resource.data[field];
+    }
+
+    function optionalCounterIsValid(field) {
+      return !(field in request.resource.data)
+        || isNonNegativeInt(request.resource.data[field]);
+    }
+
+    function isInitialStatsCreate(counter) {
+      return request.resource.data.keys().hasOnly([counter, "updatedAt"])
+        && request.resource.data[counter] == 1
+        && hasUpdatedAt();
+    }
+
+    function isStatsShapeValid() {
+      return request.resource.data.keys().hasOnly([
+          "viewCount",
+          "updatedAt"
+        ])
+        && optionalCounterIsValid("viewCount")
+        && hasUpdatedAt();
+    }
+
+    function isStatsUpdateValid(slug) {
+      return isStatsShapeValid()
+        && changedKeys().hasOnly([
+          "viewCount",
+          "updatedAt"
+        ])
+        && changedKeys().hasAny(["updatedAt"])
+        && isViewStatsUpdate();
+    }
+
+    function isViewStatsUpdate() {
+      return changedKeys().hasOnly(["viewCount", "updatedAt"])
+        && changedKeys().hasAny(["viewCount"])
+        && nextCount("viewCount") == existingCount("viewCount") + 1;
+    }
+
+    function isOwnLike(uid) {
+      return isSignedIn()
+        && uid == request.auth.uid;
+    }
+
+    function isValidLikeCreate(slug, uid) {
+      return request.resource.data.keys().hasOnly(["slug", "uid", "createdAt"])
+        && request.resource.data.slug == slug
+        && request.resource.data.uid == uid
+        && uid == request.auth.uid
+        && hasCreatedAt();
+    }
+
+    function isValidCommentCreate() {
+      return request.resource.data.keys().hasOnly([
+          "slug",
+          "body",
+          "authorName",
+          "authorUid",
+          "status",
+          "createdAt"
+        ])
+        && request.resource.data.slug is string
+        && request.resource.data.slug.size() > 0
+        && request.resource.data.body is string
+        && request.resource.data.body.size() > 0
+        && request.resource.data.body.size() <= 1000
+        && request.resource.data.authorName == expectedAuthorName()
+        && request.resource.data.authorUid == request.auth.uid
+        && request.resource.data.status == "visible"
+        && hasCreatedAt();
+    }
+
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /guestbooks/{guestbookId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /postStats/{slug} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && isInitialStatsCreate("viewCount");
+      allow update: if isSignedIn() && isStatsUpdateValid(slug);
+      allow delete: if false;
+    }
+
+    match /postLikes/{slug}/users/{uid} {
+      allow get: if isOwnLike(uid);
+      allow list: if false;
+      allow create: if isOwnLike(uid) && isValidLikeCreate(slug, uid);
+      allow update: if false;
+      allow delete: if isOwnLike(uid);
+    }
+
+    match /postComments/{commentId} {
+      allow read: if resource.data.status == "visible";
+      allow create: if isGithubUser() && isValidCommentCreate();
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
