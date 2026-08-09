@@ -10,53 +10,39 @@ type ProgressbarProps = {
 export default function ProgressBar({ target }: ProgressbarProps) {
   const [progressPercent, setProgressPercent] = useState(0);
 
-  const scrollEventListener = useCallback(() => {
-    if (!target.current) {
-      return;
-    }
+	const scrollEventListener = useCallback(() => {
+		if (!target.current) {
+			return;
+		}
 
-    const el = target.current;
-    const totalHeight =
-      //198 = footer height
-      el.clientHeight - el.offsetTop - window.innerHeight + 198;
+		const el = target.current;
+		const totalHeight = Math.max(0, el.scrollHeight - window.innerHeight);
+		const windowScrollTop =
+			window.scrollY ||
+			document.documentElement.scrollTop ||
+			document.body.scrollTop;
 
-    const windowScrollTop =
-      window.scrollY ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
+		if (totalHeight === 0 || windowScrollTop === 0) {
+			return setProgressPercent(0);
+		}
 
-    // 디버깅: 스크롤 이벤트 발생 시 위치 확인
-    // console.log("[ProgressBar] Scroll event:", {
-    //   windowScrollTop,
-    //   totalHeight,
-    //   percent: (windowScrollTop / totalHeight) * 100,
-    // });
+		setProgressPercent(Math.min(100, (windowScrollTop / totalHeight) * 100));
+	}, [target]);
 
-    if (windowScrollTop === 0) {
-      return setProgressPercent(0);
-    }
+	useEffect(() => {
+		const animationFrame = window.requestAnimationFrame(scrollEventListener);
 
-    if (windowScrollTop > totalHeight) {
-      return setProgressPercent(100);
-    }
+		window.addEventListener("scroll", scrollEventListener);
+		window.addEventListener("resize", scrollEventListener);
+		window.addEventListener("load", scrollEventListener);
 
-    setProgressPercent((windowScrollTop / totalHeight) * 100);
-  }, [target]);
-
-  useEffect(() => {
-    // 디버깅: 초기 스크롤 위치 확인
-    // console.log(
-    //   "[ProgressBar] Component mounted, initial scroll:",
-    //   window.scrollY
-    // );
-
-    // 초기 스크롤 위치 체크 (새로고침 시 브라우저가 스크롤 위치를 복원하는 경우)
-    // scrollEventListener();
-
-    window.addEventListener("scroll", scrollEventListener);
-
-    return () => window.removeEventListener("scroll", scrollEventListener);
-  }, [scrollEventListener]);
+		return () => {
+			window.cancelAnimationFrame(animationFrame);
+			window.removeEventListener("scroll", scrollEventListener);
+			window.removeEventListener("resize", scrollEventListener);
+			window.removeEventListener("load", scrollEventListener);
+		};
+	}, [scrollEventListener]);
 
   return (
     <div className={css.progressBarWrapper}>

@@ -55,7 +55,7 @@ export default function RootLayout({
         content="b82da0c0f804bcc1a23bd19659f094bd4c534cb4"
       />
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body className={pretendard.className}>
+      <body className={`${pretendard.className} ${pretendard.variable}`}>
         <ThemeProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>

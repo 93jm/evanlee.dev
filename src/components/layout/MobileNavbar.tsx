@@ -1,10 +1,9 @@
 "use client";
 
 import * as css from "@/components/componentLayout.css";
-import { useBreakpoints } from "@/hooks";
-import { Fragment, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { SideMenuContext } from "@/provider/ThemeProvider";
-import { NAV_DATA } from "@/mocks/common";
+import { NAV_DATA, isV2NavItemActive } from "@/mocks/common";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -15,17 +14,17 @@ import { flexRowBetween } from "@/styles/layout";
 import { ToggleTheme } from "@/components";
 
 type Props = {
-  name: string;
-  link: string;
+  label: string;
+  href: string;
   active: boolean;
+  onSelect: () => void;
 };
 
 export default function MobileNavbar() {
   const pathname = usePathname();
-  const { checkMobile } = useBreakpoints();
   const { resolvedTheme } = useTheme();
   const { isSideMenuOpen, toggleSideMenu } = useContext(SideMenuContext);
-  const isDarkMode = resolvedTheme === "light" ? false : true;
+  const isDarkMode = resolvedTheme === "dark";
 
   useEffect(() => {
     //페이지 이탈하여 컴포넌트 언마운트가 될때에
@@ -34,14 +33,14 @@ export default function MobileNavbar() {
     };
   }, [toggleSideMenu]);
 
-  if (!checkMobile || !isSideMenuOpen) {
+  if (!isSideMenuOpen) {
     return null;
   }
 
   return (
     <>
       <div className={css.mobileNavDim} onClick={() => toggleSideMenu(false)} />
-      <nav className={css.mobileNavContainer}>
+      <nav className={css.mobileNavContainer} aria-label="모바일 메뉴">
         <div
           style={{
             ...flexRowBetween,
@@ -49,44 +48,45 @@ export default function MobileNavbar() {
           }}
         >
           <button
+            type="button"
             className={css.mobileNavMenuButton}
+            aria-label="메뉴 닫기"
             onClick={() => toggleSideMenu(false)}
           >
-            <Image src={isDarkMode ? X_BLACK : X_WHITE} alt="닫기" width={25} />
+            <Image src={isDarkMode ? X_WHITE : X_BLACK} alt="" width={25} />
           </button>
           <ToggleTheme />
         </div>
 
         <ul className={css.mobileNavGrid}>
-          {NAV_DATA.map((nav, idx) => {
-            return (
-              <Fragment key={idx}>
-                <MobileNavButton
-                  name={nav.name}
-                  link={nav.link}
-                  active={pathname === nav.link}
-                />
-              </Fragment>
-            );
-          })}
+          {NAV_DATA.map((nav) => (
+            <MobileNavButton
+              key={nav.id}
+              label={nav.label}
+              href={nav.href}
+              active={isV2NavItemActive(pathname, nav)}
+              onSelect={() => toggleSideMenu(false)}
+            />
+          ))}
         </ul>
       </nav>
     </>
   );
 }
 
-export const MobileNavButton = ({ name, link, active }: Props) => {
+export const MobileNavButton = ({ label, href, active, onSelect }: Props) => {
   return (
     <li className={css.mobileNavMenuList}>
-      {active ? (
-        <Link href={link} className={css.navSectionActiveButton}>
-          {name}
-        </Link>
-      ) : (
-        <Link href={link} className={css.navSectionButton}>
-          {name}
-        </Link>
-      )}
+      <Link
+        href={href}
+        className={
+          active ? css.mobileNavSectionActiveButton : css.mobileNavSectionButton
+        }
+        aria-current={active ? "page" : undefined}
+        onClick={onSelect}
+      >
+        {label}
+      </Link>
     </li>
   );
 };

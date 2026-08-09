@@ -3,7 +3,6 @@
 import { darkTheme, lightTheme } from "@/styles/theme.css";
 import { ReactNode, createContext, useCallback, useState } from "react";
 
-import { Footer } from "@/components/layout";
 import SeedThemeSync from "./SeedThemeSync";
 import { ThemeProvider as ThemeWrapper } from "next-themes";
 
@@ -36,7 +35,6 @@ export default function ThemeProvider({ children }: IProps) {
       <SideMenuContext.Provider value={{ isSideMenuOpen, toggleSideMenu }}>
         {children}
       </SideMenuContext.Provider>
-      <Footer />
     </ThemeWrapper>
   );
 }

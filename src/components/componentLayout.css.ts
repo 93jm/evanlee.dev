@@ -30,6 +30,12 @@ const sideFadeUp = keyframes({
 //   backgroundColor: "tomato",
 // });
 
+export const appShell = style({
+  minHeight: "100dvh",
+  backgroundColor: vars.themeColor.semantic.appBackground,
+  color: vars.themeColor.semantic.textPrimary,
+});
+
 export const pageLayoutWrapper = style({
   maxWidth: 800,
   margin: "0 auto",
@@ -80,8 +86,14 @@ export const navSectionGrid = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "100% ",
+  width: "100%",
   height: "100%",
+  gap: 2,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      display: "none",
+    },
+  },
 });
 
 globalStyle(`${navSectionGrid} li`, {
@@ -94,22 +106,33 @@ globalStyle(`${navSectionGrid} li`, {
 export const navSectionButton = style([
   {
     minWidth: 70,
+    minHeight: 40,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
     fontWeight: 400,
+    borderRadius: 6,
 
-    color: vars.themeColor.fontColor.notActiveColor,
+    color: vars.themeColor.semantic.textMuted,
 
     ":hover": {
-      color: vars.themeColor.fontColor.activeColor,
+      color: vars.themeColor.semantic.textPrimary,
+      backgroundColor: vars.themeColor.hoverColor.color,
     },
   },
 ]);
 
 export const navSectionActiveButton = style({
   minWidth: 70,
+  minHeight: 40,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
   fontSize: 16,
-
   fontWeight: 600,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
+  borderRadius: 6,
+  backgroundColor: vars.themeColor.hoverColor.color,
 });
 
 export const navSectionBottomBar = style({
@@ -128,6 +151,11 @@ export const navRightSection = style({
   position: "relative",
 
   gap: 10,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      display: "none",
+    },
+  },
 });
 
 export const navRightBadge = style({
@@ -161,6 +189,11 @@ export const mobileNavContainer = style({
   transform: "translateX(40%)",
   animation: `400ms ease ${sideFadeUp}`,
   animationFillMode: "forwards",
+  "@media": {
+    "screen and (min-width: 801px)": {
+      display: "none",
+    },
+  },
 });
 
 export const mobileNavGrid = style({
@@ -179,17 +212,30 @@ export const mobileNavDim = style({
   width: "100%",
   height: "100%",
   backgroundColor: "rgb(0, 0, 0, 0.8)",
+  "@media": {
+    "screen and (min-width: 801px)": {
+      display: "none",
+    },
+  },
 });
 
 export const mobileNavMenuButton = style({
-  width: 30,
-  height: 30,
+  display: "none",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 36,
+  height: 36,
   padding: 2,
 
   backgroundColor: "transparent",
   border: "none",
   borderRadius: 5,
   cursor: "pointer",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      display: "inline-flex",
+    },
+  },
 });
 
 export const mobileNavMenuList = style({
@@ -198,18 +244,24 @@ export const mobileNavMenuList = style({
 });
 
 export const mobileNavSectionButton = style({
+  display: "inline-flex",
+  minHeight: 40,
+  alignItems: "center",
   fontWeight: 400,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textMuted,
 
   ":hover": {
-    color: vars.themeColor.fontColor.activeColor,
+    color: vars.themeColor.semantic.textPrimary,
   },
 });
 
 export const mobileNavSectionActiveButton = style({
+  display: "inline-flex",
+  minHeight: 40,
+  alignItems: "center",
   fontSize: 16,
   fontWeight: 600,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 //progress bar
@@ -279,5 +331,3 @@ export const notFoundBox = style({
   justifyContent: "center",
   gap: 15,
 });
-
-export const gitHubButton = style({});

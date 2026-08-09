@@ -32,6 +32,20 @@ const themeColor = createThemeContract({
   hoverColor: {
     color: null,
   },
+  semantic: {
+    appBackground: null,
+    surface: null,
+    surfaceMuted: null,
+    surfaceElevated: null,
+    textPrimary: null,
+    textSecondary: null,
+    textMuted: null,
+    border: null,
+    borderStrong: null,
+    accent: null,
+    accentHover: null,
+    focusRing: null,
+  },
 });
 
 export const lightTheme = createTheme(themeColor, {
@@ -57,6 +71,20 @@ export const lightTheme = createTheme(themeColor, {
   hoverColor: {
     color: gray[100],
   },
+  semantic: {
+    appBackground: white[100],
+    surface: white[100],
+    surfaceMuted: gray[100],
+    surfaceElevated: white[100],
+    textPrimary: black[100],
+    textSecondary: "#4b5563",
+    textMuted: gray[400],
+    border: gray[200],
+    borderStrong: black[100],
+    accent: "#0f766e",
+    accentHover: "#115e59",
+    focusRing: "#f59e0b",
+  },
 });
 
 export const darkTheme = createTheme(themeColor, {
@@ -81,6 +109,20 @@ export const darkTheme = createTheme(themeColor, {
   },
   hoverColor: {
     color: bgBlack[200],
+  },
+  semantic: {
+    appBackground: bgBlack[100],
+    surface: bgBlack[100],
+    surfaceMuted: bgBlack[200],
+    surfaceElevated: "rgb(48, 48, 48)",
+    textPrimary: white[100],
+    textSecondary: gray[200],
+    textMuted: gray[300],
+    border: "rgb(92, 92, 92)",
+    borderStrong: white[100],
+    accent: "#5eead4",
+    accentHover: "#99f6e4",
+    focusRing: "#fbbf24",
   },
 });
 

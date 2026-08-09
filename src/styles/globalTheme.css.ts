@@ -19,6 +19,11 @@ globalStyle("button", {
   cursor: "pointer",
 });
 
+globalStyle("button:focus-visible, a:focus-visible", {
+  outline: `2px solid ${vars.themeColor.semantic.focusRing}`,
+  outlineOffset: 3,
+});
+
 globalStyle("a", {
   textDecoration: "none",
 });
@@ -28,12 +33,8 @@ globalStyle("h1, h2, h3, h4, h5, b", {
   color: vars.themeColor.fontColor.activeColor,
 });
 
-globalStyle("p, span", {
-  color: vars.themeColor.fontColor.notActiveColor,
-});
-
 globalStyle("nav", {
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  backgroundColor: vars.themeColor.semantic.surface,
 });
 
 globalStyle("a", {
