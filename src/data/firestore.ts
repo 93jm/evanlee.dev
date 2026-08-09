@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, limit, orderBy, query } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { ProjectProps } from "@/types/project";
-import { signOut, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, signOut, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { GuestBookProps } from "@/types/guestbook";
 
 const firebaseConfig = {
@@ -18,6 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 //프로젝트 가져오기
 export async function fetchProjects() {
   const querySnapshot = await getDocs(collection(db, "projects"));
@@ -67,4 +68,4 @@ export async function fetchGuestBooks() {
 
 export async function addProjects() {}
 
-export { signOut, GithubAuthProvider, signInWithPopup };
+export { app, auth, db, signOut, GithubAuthProvider, signInWithPopup };

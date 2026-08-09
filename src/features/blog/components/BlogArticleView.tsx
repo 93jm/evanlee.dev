@@ -50,12 +50,12 @@ export function BlogArticleView({ post, toc, newerPost, olderPost }: BlogArticle
               </li>
             ))}
           </ul>
-          <BlogInteractionSlot />
         </header>
         <div className={css.articleBody}>
           <BlogMdx postSlug={post.slug} source={post.content} />
         </div>
         <AdjacentPostNavigation newerPost={newerPost} olderPost={olderPost} />
+        <BlogInteractionSlot slug={post.slug} />
       </article>
       <aside className={css.articleAside}>
         <TableOfContents items={toc} />

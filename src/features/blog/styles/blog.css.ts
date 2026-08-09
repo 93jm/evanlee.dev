@@ -213,13 +213,28 @@ export const articleMeta = style({
 });
 
 export const interactionSlot = style({
-  display: "grid",
-  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-  gap: 10,
-  marginTop: 10,
+  display: "flex",
+  flexDirection: "column",
+  gap: 22,
+  marginTop: 48,
+  paddingTop: 28,
+  borderTop: surfaceBorder,
 });
 
-globalStyle(`${interactionSlot} div, ${interactionSlot} button`, {
+export const interactionSummary = style([
+  {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: 10,
+  },
+  responsiveStyle({
+    mobile: {
+      gridTemplateColumns: "1fr",
+    },
+  }),
+]);
+
+export const interactionMetric = style({
   display: "flex",
   minHeight: 44,
   alignItems: "center",
@@ -232,13 +247,184 @@ globalStyle(`${interactionSlot} div, ${interactionSlot} button`, {
   font: "inherit",
 });
 
-globalStyle(`${interactionSlot} strong`, {
+export const likeButton = style({
+  cursor: "pointer",
+  transition: "border-color 160ms ease, color 160ms ease, background-color 160ms ease",
+  selectors: {
+    "&:hover:not(:disabled)": {
+      borderColor: "#0f8f6f",
+      color: vars.themeColor.fontColor.activeColor,
+    },
+    "&:disabled": {
+      cursor: "not-allowed",
+      opacity: 0.72,
+    },
+  },
+});
+
+export const likeButtonActive = style({
+  borderColor: "#0f8f6f",
+  backgroundColor: "rgba(15, 143, 111, 0.1)",
   color: vars.themeColor.fontColor.activeColor,
 });
 
-globalStyle(`${interactionSlot} button:disabled`, {
-  cursor: "not-allowed",
-  opacity: 0.72,
+globalStyle(`${interactionMetric} strong`, {
+  color: vars.themeColor.fontColor.activeColor,
+});
+
+export const interactionFeedback = style({
+  fontSize: 13,
+  lineHeight: 1.6,
+  color: vars.themeColor.fontColor.notActiveColor,
+});
+
+export const commentSection = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 16,
+});
+
+export const commentHeader = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: 12,
+});
+
+globalStyle(`${commentHeader} h2`, {
+  fontSize: 20,
+  lineHeight: 1.35,
+  color: vars.themeColor.fontColor.activeColor,
+});
+
+export const commentActions = style({
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  gap: 8,
+});
+
+export const textButton = style({
+  minHeight: 36,
+  padding: "8px 12px",
+  border: surfaceBorder,
+  borderRadius: 8,
+  backgroundColor: vars.themeColor.backgroundColor.color,
+  color: vars.themeColor.fontColor.activeColor,
+  cursor: "pointer",
+  font: "inherit",
+  fontSize: 13,
+  fontWeight: 700,
+  selectors: {
+    "&:hover:not(:disabled)": {
+      borderColor: "#0f8f6f",
+    },
+    "&:disabled": {
+      cursor: "not-allowed",
+      opacity: 0.7,
+    },
+  },
+});
+
+export const commentForm = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+  padding: 16,
+  border: surfaceBorder,
+  borderRadius: 8,
+  backgroundColor: vars.themeColor.backgroundColor.color,
+});
+
+export const commentTextarea = style({
+  minHeight: 116,
+  resize: "vertical",
+  padding: 12,
+  border: surfaceBorder,
+  borderRadius: 8,
+  backgroundColor: vars.themeColor.backgroundColor.color,
+  color: vars.themeColor.fontColor.color,
+  font: "inherit",
+  lineHeight: 1.7,
+});
+
+export const commentFormFooter = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: 12,
+});
+
+export const commentList = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+  padding: 0,
+  listStyle: "none",
+});
+
+export const commentItem = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+  padding: 16,
+  border: surfaceBorder,
+  borderRadius: 8,
+  backgroundColor: vars.themeColor.backgroundColor.color,
+});
+
+export const commentAuthorRow = style({
+  display: "flex",
+  alignItems: "center",
+  gap: 10,
+});
+
+export const commentAvatar = style({
+  width: 32,
+  height: 32,
+  borderRadius: "50%",
+  objectFit: "cover",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundColor: vars.themeColor.hoverColor.color,
+});
+
+export const commentAvatarFallback = style({
+  display: "flex",
+  width: 32,
+  height: 32,
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  backgroundColor: vars.themeColor.hoverColor.color,
+  color: vars.themeColor.fontColor.activeColor,
+  fontSize: 13,
+  fontWeight: 700,
+});
+
+export const commentMeta = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: 2,
+});
+
+globalStyle(`${commentMeta} strong`, {
+  color: vars.themeColor.fontColor.activeColor,
+  fontSize: 14,
+});
+
+globalStyle(`${commentMeta} time`, {
+  color: vars.themeColor.fontColor.notActiveColor,
+  fontSize: 12,
+});
+
+export const commentBody = style({
+  whiteSpace: "pre-wrap",
+  overflowWrap: "anywhere",
+  fontSize: 15,
+  lineHeight: 1.75,
+  color: vars.themeColor.fontColor.color,
 });
 
 export const articleBody = style({
