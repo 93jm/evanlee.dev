@@ -32,7 +32,7 @@ export default function MobileNavbar() {
     return () => {
       toggleSideMenu(false);
     };
-  }, []);
+  }, [toggleSideMenu]);
 
   if (!checkMobile || !isSideMenuOpen) {
     return null;

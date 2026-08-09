@@ -24,6 +24,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "seed-design/*": [
+        "./seed-design/*"
       ]
     },
     "target": "ES2017"

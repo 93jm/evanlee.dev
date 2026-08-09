@@ -1,9 +1,10 @@
 "use client";
 
 import { darkTheme, lightTheme } from "@/styles/theme.css";
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useCallback, useState } from "react";
 
 import { Footer } from "@/components/layout";
+import SeedThemeSync from "./SeedThemeSync";
 import { ThemeProvider as ThemeWrapper } from "next-themes";
 
 interface IProps {
@@ -18,9 +19,9 @@ export const SideMenuContext = createContext({
 export default function ThemeProvider({ children }: IProps) {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
-  const toggleSideMenu = (props: boolean) => {
+  const toggleSideMenu = useCallback((props: boolean) => {
     setIsSideMenuOpen(props);
-  };
+  }, []);
 
   return (
     <ThemeWrapper
@@ -31,6 +32,7 @@ export default function ThemeProvider({ children }: IProps) {
         dark: darkTheme,
       }}
     >
+      <SeedThemeSync />
       <SideMenuContext.Provider value={{ isSideMenuOpen, toggleSideMenu }}>
         {children}
       </SideMenuContext.Provider>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ActionButton } from "@seed-design/react";
 import { usePathname } from "next/navigation";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { User, getAuth } from "firebase/auth";
@@ -78,13 +79,15 @@ export default function Navbar({ target }: ProgressbarProps) {
         {checkDesktop && (
           <div className={css.navRightSection}>
             {/* <GithubButton /> */}
-            <Link
-              href="https://open.kakao.com/me/93jm"
-              target="_blank"
-              className={css.navRightBadge}
-            >
-              커피챗도 환영합니다
-            </Link>
+            <ActionButton asChild variant="neutralOutline" size="xsmall">
+              <Link
+                href="https://open.kakao.com/me/93jm"
+                target="_blank"
+                className={css.navRightBadge}
+              >
+                커피챗도 환영합니다
+              </Link>
+            </ActionButton>
             <ToggleTheme />
           </div>
         )}
@@ -132,7 +135,7 @@ export const GithubButton = () => {
       setCurrentName(user);
     });
     return () => unsubscribe();
-  }, []);
+  }, [auth]);
 
   return (
     <>

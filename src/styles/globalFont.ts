@@ -1,21 +1,17 @@
-import { Noto_Sans_KR } from "next/font/google";
+import localFont from "next/font/local";
 
-const bold = Noto_Sans_KR({
-  weight: "700",
-  display: "fallback",
-  subsets: ["latin"],
-  style: "normal",
-  variable: "--noto-sans_KR-bold",
-  fallback: ["system-ui"],
+const medium = localFont({
+  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--pretendard-medium",
+  weight: "600",
 });
 
-const medium = Noto_Sans_KR({
-  weight: "600",
-  // display: "fallback",
-  subsets: ["latin"],
-  // style: "normal",
-  variable: "--noto-sans_KR-regular",
-  // fallback: ["system-ui"],
+const bold = localFont({
+  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--pretendard-bold",
+  weight: "700",
 });
 
 export { bold as notoSansKrBold, medium as notoSansKrMedium };

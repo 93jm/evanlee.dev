@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
+import "@seed-design/css/all.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "@/styles/globalTheme.css";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider, ReactQueryProvider } from "@/provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const pretendard = localFont({
+  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--font-pretendard",
+});
 
 export const metadata: Metadata = {
   title: "Evan | Frontend Developer",
@@ -34,7 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html
+      lang="ko"
+      data-seed=""
+      data-seed-color-mode="system"
+      data-seed-user-color-scheme="light"
+      suppressHydrationWarning
+    >
       <meta
         name="google-site-verification"
         content="-oAemPV8KKPNAJ5WxgsK75aADtccbcqfmDkuKr-jQww"
@@ -44,7 +55,7 @@ export default function RootLayout({
         content="b82da0c0f804bcc1a23bd19659f094bd4c534cb4"
       />
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body className={inter.className}>
+      <body className={pretendard.className}>
         <ThemeProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>
