@@ -38,6 +38,8 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
+  const ogImage = project.cover.publicUrl;
+
   return {
     title: `${project.title} | Evanlee.dev`,
     description: project.description,
@@ -51,10 +53,16 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       publishedTime: project.date,
       images: [
         {
-          url: `https://evanlee.dev${project.cover.publicUrl}`,
+          url: ogImage,
           alt: project.cover.alt,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Evanlee.dev`,
+      description: project.description,
+      images: [ogImage],
     },
   };
 }

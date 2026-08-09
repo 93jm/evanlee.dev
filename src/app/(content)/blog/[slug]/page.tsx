@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
+  const ogImage = post.ogImage ?? post.cover?.publicUrl ?? "/ogImage.png";
+
   return {
     title: `${post.title} | Evanlee.dev`,
     description: post.description,
@@ -48,6 +50,18 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updatedAt,
+      images: [
+        {
+          url: ogImage,
+          alt: post.cover?.alt ?? post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
     },
   };
 }

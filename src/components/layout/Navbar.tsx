@@ -68,6 +68,7 @@ export default function Navbar({ target }: ProgressbarProps) {
             <Link
               href="https://open.kakao.com/me/93jm"
               target="_blank"
+              rel="noopener noreferrer"
               className={css.navRightBadge}
             >
               커피챗도 환영합니다

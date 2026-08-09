@@ -1,5 +1,5 @@
-"use client";
+import { permanentRedirect } from "next/navigation";
 
 export default function GuestBookMain() {
-  return <div>메인입니다</div>;
+  permanentRedirect("/about");
 }

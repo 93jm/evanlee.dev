@@ -36,6 +36,26 @@ export const appShell = style({
   color: vars.themeColor.semantic.textPrimary,
 });
 
+export const skipLink = style({
+  position: "fixed",
+  top: 8,
+  left: 8,
+  zIndex: 10000,
+  transform: "translateY(-140%)",
+  padding: "10px 12px",
+  borderRadius: 8,
+  backgroundColor: vars.themeColor.semantic.textPrimary,
+  color: vars.themeColor.semantic.surface,
+  fontSize: 14,
+  fontWeight: 800,
+  transition: "transform 120ms ease",
+  selectors: {
+    "&:focus": {
+      transform: "translateY(0)",
+    },
+  },
+});
+
 export const pageLayoutWrapper = style({
   maxWidth: 800,
   margin: "0 auto",

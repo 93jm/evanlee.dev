@@ -10,6 +10,21 @@ import {
 export const metadata: Metadata = {
   title: "Blog | Evanlee.dev",
   description: "Evan Lee가 프론트엔드, 아키텍처, 프로젝트 경험을 기록하는 기술 블로그입니다.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Evanlee.dev",
+    description: "Evan Lee가 프론트엔드, 아키텍처, 프로젝트 경험을 기록하는 기술 블로그입니다.",
+    url: "/blog",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Evanlee.dev",
+    description: "Evan Lee가 프론트엔드, 아키텍처, 프로젝트 경험을 기록하는 기술 블로그입니다.",
+    images: ["/ogImage.png"],
+  },
 };
 
 export default function BlogPage() {

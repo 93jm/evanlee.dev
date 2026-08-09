@@ -5,8 +5,6 @@ import IMG_GITHUB_BLACK from "/public/github.png";
 import IMG_GITHUB_WHITE from "/public/github_white.png";
 import IMG_INSTAGRAM_BLACK from "/public/instagram.png";
 import IMG_INSTAGRAM_WHITE from "/public/instagram_white.png";
-import IMG_NOTION_BLACK from "/public/notion.png";
-import IMG_NOTION_WHITE from "/public/notion_white.png";
 import IMG_KAKAO_BLACK from "/public/kakao.png";
 import IMG_KAKAO_WHITE from "/public/kakao_white.png";
 import IMG_BLOG_BLACK from "/public/blog.png";
@@ -19,12 +17,14 @@ import { useFirstRender } from "@/hooks";
 const IMG_ICON = [
   {
     id: "github",
+    label: "GitHub",
     lightSrc: IMG_GITHUB_BLACK,
     darkSrc: IMG_GITHUB_WHITE,
     link: "https://github.com/93jm",
   },
   {
     id: "instagram",
+    label: "Instagram",
     lightSrc: IMG_INSTAGRAM_BLACK,
     darkSrc: IMG_INSTAGRAM_WHITE,
     link: "https://www.instagram.com/meeeeen93",
@@ -37,12 +37,14 @@ const IMG_ICON = [
   // },
   {
     id: "kakao",
+    label: "Kakao open chat",
     lightSrc: IMG_KAKAO_BLACK,
     darkSrc: IMG_KAKAO_WHITE,
     link: "https://open.kakao.com/me/93jm",
   },
   {
     id: "blog",
+    label: "Tistory blog",
     lightSrc: IMG_BLOG_BLACK,
     darkSrc: IMG_BLOG_WHITE,
     link: "https://meeeeen93.tistory.com/",
@@ -63,10 +65,15 @@ export default function Footer() {
       <div className={css.footerLinkWrapper}>
         {IMG_ICON.map((item) => (
           <div key={item.id}>
-            <Link href={item.link} target="_blank">
+            <Link
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${item.label} 새 창에서 열기`}
+            >
               <Image
                 src={isDarkMode ? item.darkSrc : item.lightSrc}
-                alt={item.id}
+                alt=""
                 width={30}
                 height={30}
               />

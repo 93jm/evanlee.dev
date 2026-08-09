@@ -51,7 +51,7 @@ function ArticleLink({ href = "", children, ...props }: ComponentPropsWithoutRef
         href={href}
         className={css.articleLink}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         {...props}
       >
         {children}
