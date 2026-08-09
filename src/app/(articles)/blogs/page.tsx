@@ -1,7 +1,5 @@
-import React from "react";
+import { permanentRedirect } from "next/navigation";
 
-const BlogsPage = () => {
-  return <div>블로그페이지 입니다.</div>;
-};
-
-export default BlogsPage;
+export default function LegacyBlogsPage() {
+  permanentRedirect("/blog");
+}

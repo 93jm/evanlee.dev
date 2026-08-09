@@ -1,7 +1,19 @@
-import React from "react";
+import { permanentRedirect } from "next/navigation";
 
-const BlogDetailPage = () => {
-  return <div>블로그 상세 페이지 입니다.</div>;
-};
+import { isPublicContentSlug } from "@/features/blog/utils/public-routes";
 
-export default BlogDetailPage;
+interface LegacyBlogDetailPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default async function LegacyBlogDetailPage({ params }: LegacyBlogDetailPageProps) {
+  const { id } = await params;
+
+  if (!isPublicContentSlug(id)) {
+    permanentRedirect("/blog");
+  }
+
+  permanentRedirect(`/blog/${id}`);
+}

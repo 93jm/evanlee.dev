@@ -1,5 +1,6 @@
 export {
   assertContentAssetExists,
+  getContentAssetPublicUrl,
   getContentAssetPath,
   resolveContentAsset,
 } from "./assets";
