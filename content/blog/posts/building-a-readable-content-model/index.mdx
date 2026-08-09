@@ -1,0 +1,70 @@
+---
+title: "읽기 쉬운 개인 블로그 콘텐츠 모델 만들기"
+description: "Evanlee.dev v2에서 블로그와 프로젝트를 MDX 기반 콘텐츠로 설계하면서 정한 원칙과 폴더 구조를 정리합니다."
+date: "2026-08-09"
+updatedAt: "2026-08-09"
+category: "architecture"
+tags:
+  - nextjs
+  - mdx
+  - content-model
+  - portfolio
+slug: "building-a-readable-content-model"
+draft: false
+featured: true
+cover:
+  src: "./cover.png"
+  alt: "문서 구조와 콘텐츠 모델을 정리한 다이어그램"
+relatedProjects:
+  - "evanlee-v2-redesign"
+---
+
+## 문제의식
+
+개인 블로그는 글을 보여주는 화면만으로 완성되지 않는다. 글을 어떻게 저장하고, 어떤 기준으로 분류하고, 어떤 데이터가 SEO와 카드 UI에 쓰이는지까지 일관되어야 오래 유지할 수 있다.
+
+Evanlee.dev v2에서는 블로그 글과 프로젝트를 모두 MDX 문서로 다룬다. 화면은 바뀔 수 있지만 콘텐츠의 의미는 안정적으로 남아야 하기 때문이다.
+
+## 폴더 구조
+
+글은 slug 단위 디렉터리로 관리한다.
+
+```text
+content/blog/posts/building-a-readable-content-model/
+  index.mdx
+  cover.png
+```
+
+카테고리를 경로에 넣지 않는 이유는 간단하다. 글의 주제 분류는 시간이 지나면서 바뀔 수 있지만, 공개 URL의 slug는 쉽게 바뀌면 안 된다.
+
+## Frontmatter 원칙
+
+목록, 상세, SEO에서 필요한 최소 정보는 frontmatter에 둔다.
+
+```yaml
+title: "읽기 쉬운 개인 블로그 콘텐츠 모델 만들기"
+description: "Evanlee.dev v2의 콘텐츠 모델 설계 원칙"
+date: "2026-08-09"
+category: "architecture"
+tags:
+  - nextjs
+  - mdx
+draft: false
+```
+
+본문은 사람이 읽는 문서로 남긴다. 시각적인 이유로 heading을 건너뛰거나, 단순 강조를 위해 blockquote를 오용하지 않는다.
+
+## Loader가 지켜야 할 책임
+
+콘텐츠 loader는 문서를 읽고 검증하고 정렬하는 책임만 가진다.
+
+- 조회수 증가를 하지 않는다.
+- 좋아요 상태를 읽지 않는다.
+- 댓글을 가져오지 않는다.
+- 라우팅이나 리다이렉트를 하지 않는다.
+
+이렇게 분리하면 Blog Experience Agent는 article UI에 집중할 수 있고, Interaction Agent는 Firebase 정책을 독립적으로 설계할 수 있다.
+
+## 다음 단계
+
+이 콘텐츠 모델 위에 블로그 목록, 상세 article layout, 카테고리/태그 페이지, SEO metadata를 차례로 얹을 수 있다. 중요한 것은 각 단계가 서로의 내부 구현을 몰라도 public API를 통해 협업할 수 있게 만드는 것이다.

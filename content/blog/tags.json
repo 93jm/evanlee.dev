@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "react",
+    "label": "React"
+  },
+  {
+    "slug": "nextjs",
+    "label": "Next.js"
+  },
+  {
+    "slug": "typescript",
+    "label": "TypeScript"
+  },
+  {
+    "slug": "mdx",
+    "label": "MDX"
+  },
+  {
+    "slug": "seo",
+    "label": "SEO"
+  },
+  {
+    "slug": "seed-design",
+    "label": "SEED Design"
+  },
+  {
+    "slug": "firebase",
+    "label": "Firebase"
+  },
+  {
+    "slug": "vercel",
+    "label": "Vercel"
+  },
+  {
+    "slug": "portfolio",
+    "label": "Portfolio"
+  },
+  {
+    "slug": "content-model",
+    "label": "Content Model"
+  }
+]

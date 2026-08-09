@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "frontend",
+    "label": "Frontend",
+    "description": "React, Next.js, UI architecture, and frontend engineering notes."
+  },
+  {
+    "slug": "architecture",
+    "label": "Architecture",
+    "description": "System design, code structure, and maintainability decisions."
+  },
+  {
+    "slug": "performance",
+    "label": "Performance",
+    "description": "Rendering, loading, and runtime performance improvements."
+  },
+  {
+    "slug": "career",
+    "label": "Career",
+    "description": "Career notes, working style, and engineering growth."
+  },
+  {
+    "slug": "project",
+    "label": "Project",
+    "description": "Project build logs and case-study companion posts."
+  },
+  {
+    "slug": "retrospective",
+    "label": "Retrospective",
+    "description": "Retrospectives on decisions, failures, and lessons learned."
+  }
+]
