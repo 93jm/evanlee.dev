@@ -21,10 +21,10 @@ export function BlogTaxonomyNav({
   return (
     <aside className={css.taxonomyPanel} aria-label="블로그 분류">
       <section>
-        <h2 className={css.taxonomyTitle}>Categories</h2>
+        <h2 className={css.taxonomyTitle}>카테고리</h2>
         <div className={css.taxonomyList}>
           <Badge asChild tone={activeCategory ? "neutral" : "brand"} variant="weak">
-            <Link href="/blog">All</Link>
+            <Link href="/blog">전체</Link>
           </Badge>
           {categories.map((category) => (
             <Badge
@@ -39,7 +39,7 @@ export function BlogTaxonomyNav({
         </div>
       </section>
       <section>
-        <h2 className={css.taxonomyTitle}>Tags</h2>
+        <h2 className={css.taxonomyTitle}>태그</h2>
         <div className={css.taxonomyList}>
           {tags.map((tag) => (
             <Badge

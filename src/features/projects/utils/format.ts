@@ -7,9 +7,9 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("ko-KR", {
 });
 
 const STATUS_LABELS: Record<ProjectStatus, string> = {
-  completed: "Completed",
-  "in-progress": "In progress",
-  archived: "Archived",
+  completed: "완료",
+  "in-progress": "진행 중",
+  archived: "보관됨",
 };
 
 export function formatProjectDate(date: string): string {

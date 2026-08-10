@@ -12,7 +12,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <nav className={css.toc} aria-label="글 목차">
-      <h2>Contents</h2>
+      <h2>목차</h2>
       <ol>
         {items.map((item) => (
           <li key={item.id} className={item.depth === 3 ? css.tocDepthThree : undefined}>

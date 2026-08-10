@@ -38,7 +38,7 @@ export default function BlogPage() {
 
   return (
     <BlogIndexView
-      title="Technical Blog"
+      title="기술 블로그"
       description="프론트엔드 개발, 제품을 만드는 과정, 유지보수 가능한 코드 구조에 대해 기록합니다."
       posts={posts}
       categories={categories}

@@ -35,7 +35,7 @@ export function BlogArticleView({ post, toc, newerPost, olderPost }: BlogArticle
             {hasUpdatedDate && (
               <>
                 <span aria-hidden="true">/</span>
-                <span>Updated {formatPostDate(post.updatedAt)}</span>
+                <span>마지막 수정 {formatPostDate(post.updatedAt)}</span>
               </>
             )}
             <span aria-hidden="true">/</span>

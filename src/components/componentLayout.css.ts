@@ -2,6 +2,8 @@ import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { vars } from "@/styles/theme.css";
 import { responsiveStyle } from "../styles/media";
 
+const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
+
 const mainFadeIn = keyframes({
   "0%": { opacity: 0 },
   "100%": { opacity: 1 },
@@ -140,6 +142,10 @@ export const navSectionButton = style([
       color: vars.themeColor.semantic.textPrimary,
       backgroundColor: vars.themeColor.semantic.surfaceMuted,
     },
+    ":focus-visible": {
+      outline: focusRing,
+      outlineOffset: 2,
+    },
   },
 ]);
 
@@ -154,6 +160,10 @@ export const navSectionActiveButton = style({
   color: vars.themeColor.semantic.textPrimary,
   borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 2,
+  },
 });
 
 export const navSectionBottomBar = style({
@@ -191,6 +201,10 @@ export const navRightBadge = style({
     borderColor: vars.themeColor.semantic.borderStrong,
     backgroundColor: vars.themeColor.semantic.surfaceMuted,
   },
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 3,
+  },
 });
 
 //mobile nav bar
@@ -205,7 +219,7 @@ export const mobileNavContainer = style({
   flexDirection: "column",
   minWidth: "100px",
   padding: vars.themeColor.seed.space.x6,
-  width: "70%",
+  width: "min(360px, 86vw)",
   height: "100%",
 
   backgroundColor: vars.themeColor.semantic.surfaceElevated,
@@ -235,7 +249,7 @@ export const mobileNavDim = style({
   zIndex: 9998,
   width: "100%",
   height: "100%",
-  backgroundColor: "rgb(0, 0, 0, 0.8)",
+  backgroundColor: "rgba(0, 0, 0, 0.64)",
   "@media": {
     "screen and (min-width: 801px)": {
       display: "none",
@@ -255,6 +269,10 @@ export const mobileNavMenuButton = style({
   border: "none",
   borderRadius: vars.themeColor.seed.radius.md,
   cursor: "pointer",
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 3,
+  },
   "@media": {
     "screen and (max-width: 800px)": {
       display: "inline-flex",
@@ -277,6 +295,10 @@ export const mobileNavSectionButton = style({
   ":hover": {
     color: vars.themeColor.semantic.textPrimary,
   },
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 3,
+  },
 });
 
 export const mobileNavSectionActiveButton = style({
@@ -286,6 +308,10 @@ export const mobileNavSectionActiveButton = style({
   fontSize: 16,
   fontWeight: 600,
   color: vars.themeColor.semantic.textPrimary,
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 3,
+  },
 });
 
 //progress bar

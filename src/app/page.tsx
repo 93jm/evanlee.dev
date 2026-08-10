@@ -8,15 +8,15 @@ import * as css from "./home.css";
 
 const principles = [
   {
-    label: "Product-minded",
+    label: "제품 흐름을 먼저 봅니다",
     description: "기능 구현보다 사용자가 실제로 통과하는 흐름과 지표를 먼저 봅니다.",
   },
   {
-    label: "Readable architecture",
+    label: "읽히는 구조를 만듭니다",
     description: "동료와 미래의 내가 빠르게 이해하고 바꿀 수 있는 구조를 선호합니다.",
   },
   {
-    label: "Quality by default",
+    label: "품질을 기본값으로 둡니다",
     description: "접근성, SEO, 성능, 운영 리스크를 구현 후반이 아니라 설계 초반에 둡니다.",
   },
 ] as const;
@@ -35,22 +35,22 @@ const primaryLinks = [
 const profileLinks = [
   {
     href: "/about",
-    label: "About",
+    label: "소개",
     description: "일하는 방식과 관심사를 정리합니다.",
   },
   {
     href: "/resume",
-    label: "Resume",
+    label: "이력서",
     description: "경력, 경험, 이력 정보를 모아둡니다.",
   },
   {
     href: "/projects",
-    label: "Projects",
+    label: "프로젝트",
     description: "문제 해결 과정과 결과물을 보여줍니다.",
   },
   {
     href: "/blog",
-    label: "Blog",
+    label: "기술 블로그",
     description: "프론트엔드와 제품 개발 기록을 남깁니다.",
   },
 ] as const;
@@ -71,7 +71,7 @@ export default function Home() {
     <AppShell mainClassName={css.homeShell}>
       <section className={css.hero} aria-labelledby="home-title">
         <div className={css.heroCopy}>
-          <p className={css.eyebrow}>Evan Lee · Frontend Developer</p>
+          <p className={css.eyebrow}>Evan Lee · 프론트엔드 개발자</p>
           <h1 id="home-title" className={css.title}>
             제품의 흐름을 읽고, 오래 유지되는 프론트엔드를 만듭니다.
           </h1>
@@ -92,16 +92,16 @@ export default function Home() {
         <aside className={css.snapshot} aria-label="프로필 요약">
           <dl className={css.snapshotList}>
             <div>
-              <dt>Focus</dt>
-              <dd>Frontend, UX, Product Quality</dd>
+              <dt>관심 영역</dt>
+              <dd>프론트엔드, 사용자 경험, 제품 품질</dd>
             </div>
             <div>
-              <dt>Stack</dt>
+              <dt>주요 기술</dt>
               <dd>React, Next.js, TypeScript</dd>
             </div>
             <div>
-              <dt>Now</dt>
-              <dd>Portfolio Blog v2 redesign</dd>
+              <dt>현재</dt>
+              <dd>개인 블로그 포트폴리오 v2 개편</dd>
             </div>
           </dl>
         </aside>
@@ -109,7 +109,7 @@ export default function Home() {
 
       <section className={css.section} aria-labelledby="principles-title">
         <div className={css.sectionHeader}>
-          <p className={css.sectionLabel}>Working Principles</p>
+          <p className={css.sectionLabel}>일하는 기준</p>
           <h2 id="principles-title">좋은 제품을 만들기 위해 반복해서 확인하는 기준</h2>
         </div>
         <div className={css.principleGrid}>
@@ -125,7 +125,7 @@ export default function Home() {
       <section className={css.section} aria-labelledby="projects-title">
         <div className={css.sectionHeaderRow}>
           <div className={css.sectionHeader}>
-            <p className={css.sectionLabel}>Selected Work</p>
+            <p className={css.sectionLabel}>대표 프로젝트</p>
             <h2 id="projects-title">최근에 정리한 프로젝트</h2>
           </div>
           <Link href="/projects" className={css.textLink}>
@@ -135,7 +135,12 @@ export default function Home() {
         {featuredProjects.length > 0 ? (
           <div className={css.projectGrid}>
             {featuredProjects.map((project) => (
-              <article key={project.slug} className={css.projectItem}>
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className={css.projectItem}
+                aria-label={`${project.title} 프로젝트 자세히 보기`}
+              >
                 <div>
                   <p className={css.metaText}>
                     {project.role} · {project.period.start} - {project.period.end}
@@ -148,7 +153,7 @@ export default function Home() {
                     <li key={stack}>{stack}</li>
                   ))}
                 </ul>
-              </article>
+              </Link>
             ))}
           </div>
         ) : (
@@ -159,7 +164,7 @@ export default function Home() {
       <section className={css.section} aria-labelledby="posts-title">
         <div className={css.sectionHeaderRow}>
           <div className={css.sectionHeader}>
-            <p className={css.sectionLabel}>Writing</p>
+            <p className={css.sectionLabel}>기술 글</p>
             <h2 id="posts-title">최근 기술 글</h2>
           </div>
           <Link href="/blog" className={css.textLink}>

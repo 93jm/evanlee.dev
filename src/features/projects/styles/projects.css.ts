@@ -4,6 +4,7 @@ import { responsiveStyle } from "@/styles/media";
 import { vars } from "@/styles/theme.css";
 
 const surfaceBorder = `1px solid ${vars.themeColor.semantic.border}`;
+const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const projectIndex = style({
   display: "flex",
@@ -30,6 +31,11 @@ globalStyle(`${projectHero} h1`, {
   fontWeight: 760,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 32,
+    },
+  },
 });
 
 globalStyle(`${projectHero} p`, {
@@ -61,6 +67,10 @@ export const projectCard = style([
       "&:hover": {
         borderColor: vars.themeColor.semantic.accent,
         transform: "translateY(-2px)",
+      },
+      "&:focus-visible": {
+        outline: focusRing,
+        outlineOffset: 4,
       },
     },
   },
@@ -189,6 +199,10 @@ export const backLink = style({
     "&:hover": {
       color: vars.themeColor.semantic.textPrimary,
     },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
   },
 });
 
@@ -198,6 +212,11 @@ globalStyle(`${projectArticleHeader} h1`, {
   fontWeight: 780,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 32,
+    },
+  },
 });
 
 globalStyle(`${projectArticleHeader} p`, {
@@ -254,6 +273,11 @@ export const detailList = style({
   rowGap: 10,
   columnGap: 14,
   margin: 0,
+  "@media": {
+    "screen and (max-width: 520px)": {
+      gridTemplateColumns: "86px minmax(0, 1fr)",
+    },
+  },
 });
 
 globalStyle(`${detailList} dt`, {
@@ -304,6 +328,10 @@ export const actionLink = style({
     "&:hover": {
       borderColor: vars.themeColor.semantic.accent,
     },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
   },
 });
 
@@ -325,6 +353,10 @@ export const relatedLink = style({
   selectors: {
     "&:hover": {
       color: vars.themeColor.semantic.accent,
+    },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
     },
   },
 });
@@ -377,6 +409,12 @@ export const articleLink = style({
   color: vars.themeColor.semantic.accent,
   textDecoration: "underline",
   textUnderlineOffset: 3,
+  selectors: {
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
+  },
 });
 
 export const articleList = style({

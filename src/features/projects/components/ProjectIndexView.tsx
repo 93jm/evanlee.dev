@@ -14,11 +14,11 @@ export function ProjectIndexView({ projects }: ProjectIndexViewProps) {
   return (
     <section className={css.projectIndex} aria-labelledby="projects-title">
       <header className={css.projectHero}>
-        <p className={css.eyebrow}>Projects</p>
+        <p className={css.eyebrow}>프로젝트</p>
         <h1 id="projects-title">제품과 코드 사이의 기록</h1>
         <p>
           문제 정의, 역할, 구현 방향, 결과를 함께 남긴 프로젝트 기록입니다. 각 프로젝트는
-          MDX 기반 case study로 관리합니다.
+          MDX 기반 사례 문서로 관리합니다.
         </p>
       </header>
 

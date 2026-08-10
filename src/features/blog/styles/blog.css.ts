@@ -4,6 +4,7 @@ import { responsiveStyle } from "@/styles/media";
 import { vars } from "@/styles/theme.css";
 
 const surfaceBorder = `1px solid ${vars.themeColor.semantic.border}`;
+const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 const blogFadeIn = keyframes({
   "0%": { opacity: 0 },
@@ -17,6 +18,11 @@ export const blogShell = style({
   color: vars.themeColor.semantic.textPrimary,
   opacity: 0,
   animation: `${blogFadeIn} 360ms ease forwards`,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      padding: "84px 18px 64px",
+    },
+  },
 });
 
 export const blogIndex = style({
@@ -38,6 +44,11 @@ globalStyle(`${blogHero} h1`, {
   fontWeight: 760,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 34,
+    },
+  },
 });
 
 globalStyle(`${blogHero} p`, {
@@ -78,6 +89,11 @@ export const taxonomyPanel = style({
   border: surfaceBorder,
   borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      position: "static",
+    },
+  },
 });
 
 export const taxonomyTitle = style({
@@ -113,6 +129,9 @@ export const postCard = style({
       borderColor: vars.themeColor.semantic.accent,
       transform: "translateY(-2px)",
     },
+    "&:focus-within": {
+      borderColor: vars.themeColor.semantic.accent,
+    },
   },
 });
 
@@ -138,6 +157,11 @@ export const postCardTitle = style({
 
 globalStyle(`${postCardTitle} a`, {
   color: vars.themeColor.semantic.textPrimary,
+});
+
+globalStyle(`${postCardTitle} a:focus-visible`, {
+  outline: focusRing,
+  outlineOffset: 3,
 });
 
 export const postCardDescription = style({
@@ -196,6 +220,11 @@ globalStyle(`${articleHeader} h1`, {
   fontWeight: 780,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 32,
+    },
+  },
 });
 
 globalStyle(`${articleHeader} p`, {
@@ -255,6 +284,10 @@ export const likeButton = style({
       borderColor: vars.themeColor.semantic.accent,
       color: vars.themeColor.semantic.textPrimary,
     },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
     "&:disabled": {
       cursor: "not-allowed",
       opacity: 0.72,
@@ -289,6 +322,12 @@ export const commentHeader = style({
   alignItems: "center",
   justifyContent: "space-between",
   gap: 12,
+  "@media": {
+    "screen and (max-width: 640px)": {
+      alignItems: "flex-start",
+      flexDirection: "column",
+    },
+  },
 });
 
 globalStyle(`${commentHeader} h2`, {
@@ -320,6 +359,10 @@ export const textButton = style({
     "&:hover:not(:disabled)": {
       borderColor: vars.themeColor.semantic.accent,
     },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
     "&:disabled": {
       cursor: "not-allowed",
       opacity: 0.7,
@@ -347,6 +390,12 @@ export const commentTextarea = style({
   color: vars.themeColor.semantic.textPrimary,
   font: "inherit",
   lineHeight: 1.7,
+  selectors: {
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 2,
+    },
+  },
 });
 
 export const commentFormFooter = style({
@@ -470,6 +519,15 @@ globalStyle(`${toc} a`, {
   color: vars.themeColor.semantic.textSecondary,
 });
 
+globalStyle(`${toc} a:hover`, {
+  color: vars.themeColor.semantic.textPrimary,
+});
+
+globalStyle(`${toc} a:focus-visible`, {
+  outline: focusRing,
+  outlineOffset: 3,
+});
+
 export const tocDepthThree = style({
   paddingLeft: 12,
 });
@@ -517,6 +575,12 @@ export const articleLink = style({
   color: vars.themeColor.semantic.accent,
   textDecoration: "underline",
   textUnderlineOffset: 3,
+  selectors: {
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
+  },
 });
 
 export const articleList = style({
@@ -636,6 +700,15 @@ export const adjacentLink = style({
   padding: 18,
   border: surfaceBorder,
   borderRadius: vars.themeColor.seed.radius.md,
+  selectors: {
+    "&:hover": {
+      borderColor: vars.themeColor.semantic.accent,
+    },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 4,
+    },
+  },
 });
 
 globalStyle(`${adjacentLink} span`, {

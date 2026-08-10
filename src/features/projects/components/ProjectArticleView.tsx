@@ -15,7 +15,7 @@ interface ProjectArticleViewProps {
 const LINK_LABELS = {
   demo: "Demo",
   github: "GitHub",
-  caseStudy: "Case study",
+  caseStudy: "케이스 스터디",
 } as const;
 
 const PROJECT_LINK_KEYS = ["demo", "github", "caseStudy"] as const;
@@ -41,9 +41,9 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
     <article className={css.projectArticle}>
       <header className={css.projectArticleHeader}>
         <Link href="/projects" className={css.backLink}>
-          Back to projects
+          프로젝트 목록으로
         </Link>
-        <p className={css.eyebrow}>{project.company ?? "Project"}</p>
+        <p className={css.eyebrow}>{project.company ?? "프로젝트"}</p>
         <h1>{project.title}</h1>
         <p>{project.description}</p>
       </header>
@@ -62,19 +62,19 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
 
       <div className={css.summaryGrid}>
         <section className={css.detailSection} aria-labelledby="project-details-title">
-          <h2 id="project-details-title">Project Details</h2>
+          <h2 id="project-details-title">프로젝트 정보</h2>
           <dl className={css.detailList}>
-            <dt>Role</dt>
+            <dt>역할</dt>
             <dd>{project.role}</dd>
-            <dt>Team</dt>
+            <dt>팀</dt>
             <dd>{project.team}</dd>
-            <dt>Period</dt>
+            <dt>기간</dt>
             <dd>
               {project.period.start} - {project.period.end}
             </dd>
-            <dt>Status</dt>
+            <dt>상태</dt>
             <dd>{formatProjectStatus(project.status)}</dd>
-            <dt>Published</dt>
+            <dt>공개일</dt>
             <dd>
               <time dateTime={getProjectDateTime(project.date)}>
                 {formatProjectDate(project.date)}
@@ -84,7 +84,7 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
         </section>
 
         <section className={css.detailSection} aria-labelledby="project-stack-title">
-          <h2 id="project-stack-title">Stack</h2>
+          <h2 id="project-stack-title">기술 스택</h2>
           <ul className={css.tagList}>
             {project.stacks.map((stack) => (
               <li key={stack} className={css.tag}>
@@ -97,7 +97,7 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
 
       {project.metrics.length > 0 && (
         <section className={css.detailSection} aria-labelledby="project-metrics-title">
-          <h2 id="project-metrics-title">Metrics</h2>
+          <h2 id="project-metrics-title">주요 결과</h2>
           <ul className={css.metricList}>
             {project.metrics.map((metric) => (
               <li key={metric}>{metric}</li>
@@ -108,7 +108,7 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
 
       {projectLinks.length > 0 && (
         <nav className={css.detailSection} aria-labelledby="project-links-title">
-          <h2 id="project-links-title">Links</h2>
+          <h2 id="project-links-title">링크</h2>
           <ul className={css.linkList}>
             {projectLinks.map((link) => (
               <li key={link.key}>
@@ -121,7 +121,7 @@ export function ProjectArticleView({ project, relatedPosts }: ProjectArticleView
 
       {relatedPosts.length > 0 && (
         <section className={css.detailSection} aria-labelledby="project-related-posts-title">
-          <h2 id="project-related-posts-title">Related Posts</h2>
+          <h2 id="project-related-posts-title">관련 글</h2>
           <ul className={css.relatedList}>
             {relatedPosts.map((post) => (
               <li key={post.slug}>

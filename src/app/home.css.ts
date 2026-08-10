@@ -3,6 +3,7 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "@/styles/theme.css";
 
 const subtleBorder = `1px solid ${vars.themeColor.semantic.border}`;
+const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const homeShell = style({
   maxWidth: 1120,
@@ -27,6 +28,7 @@ export const hero = style({
       gridTemplateColumns: "1fr",
       minHeight: "auto",
       gap: 32,
+      paddingBottom: 36,
     },
   },
 });
@@ -61,6 +63,11 @@ export const description = style({
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 18,
   lineHeight: 1.85,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 16,
+    },
+  },
 });
 
 export const actionRow = style({
@@ -85,6 +92,10 @@ export const primaryLink = style({
   ":hover": {
     opacity: 0.86,
     transform: "translateY(-1px)",
+  },
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 3,
   },
 });
 
@@ -113,7 +124,6 @@ globalStyle(`${snapshotList} dt`, {
   color: vars.themeColor.semantic.textMuted,
   fontSize: 12,
   fontWeight: 800,
-  textTransform: "uppercase",
 });
 
 globalStyle(`${snapshotList} dd`, {
@@ -157,7 +167,6 @@ export const sectionLabel = style({
   color: vars.themeColor.semantic.accent,
   fontSize: 12,
   fontWeight: 850,
-  textTransform: "uppercase",
 });
 
 export const principleGrid = style({
@@ -213,6 +222,19 @@ export const projectItem = style({
   border: subtleBorder,
   borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
+  color: "inherit",
+  textDecoration: "none",
+  transition: "border-color 160ms ease, transform 160ms ease",
+  selectors: {
+    "&:hover": {
+      borderColor: vars.themeColor.semantic.accent,
+      transform: "translateY(-2px)",
+    },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 4,
+    },
+  },
 });
 
 globalStyle(`${projectItem} h3`, {
@@ -240,6 +262,10 @@ export const postItem = style({
   color: vars.themeColor.semantic.textSecondary,
   ":hover": {
     color: vars.themeColor.semantic.textPrimary,
+  },
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 4,
   },
 });
 
@@ -276,6 +302,15 @@ export const textLink = style({
   color: vars.themeColor.semantic.textPrimary,
   fontSize: 14,
   fontWeight: 800,
+  selectors: {
+    "&:hover": {
+      color: vars.themeColor.semantic.accent,
+    },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
+  },
 });
 
 export const metaText = style({
@@ -315,6 +350,10 @@ export const profileItem = style({
   ":hover": {
     borderColor: vars.themeColor.semantic.accent,
     backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  },
+  ":focus-visible": {
+    outline: focusRing,
+    outlineOffset: 4,
   },
 });
 

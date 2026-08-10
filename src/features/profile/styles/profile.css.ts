@@ -4,6 +4,7 @@ import { responsiveStyle } from "@/styles/media";
 import { vars } from "@/styles/theme.css";
 
 const surfaceBorder = `1px solid ${vars.themeColor.semantic.border}`;
+const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const page = style({
   display: "flex",
@@ -46,6 +47,11 @@ globalStyle(`${heroCopy} h1`, {
   lineHeight: 1.16,
   fontWeight: 800,
   letterSpacing: 0,
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 32,
+    },
+  },
 });
 
 globalStyle(`${heroCopy} p`, {
@@ -95,7 +101,6 @@ globalStyle(`${quickFacts} dt`, {
   color: vars.themeColor.semantic.textMuted,
   fontSize: 12,
   fontWeight: 800,
-  textTransform: "uppercase",
 });
 
 globalStyle(`${quickFacts} dd`, {
@@ -201,6 +206,10 @@ export const contactLink = style({
     "&:hover": {
       borderColor: vars.themeColor.semantic.accent,
     },
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
   },
 });
 
@@ -297,6 +306,12 @@ export const projectLink = style({
   color: vars.themeColor.semantic.accent,
   fontSize: 13,
   fontWeight: 800,
+  selectors: {
+    "&:focus-visible": {
+      outline: focusRing,
+      outlineOffset: 3,
+    },
+  },
 });
 
 export const metaText = style({
