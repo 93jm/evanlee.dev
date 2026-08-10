@@ -5,6 +5,7 @@ import "@/styles/globalTheme.css";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider, ReactQueryProvider } from "@/provider";
+import { siteConfig } from "@/config/site";
 
 const seedThemeInitScript = `
 (function () {
@@ -29,11 +30,14 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://evanlee-dev.com"),
-  title: "Evan | Frontend Developer",
-  description: "Just Evan, 프론트엔드 개발자 블로그, 포트폴리오, 웹사이트",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
   },
   verification: {
     google: "-oAemPV8KKPNAJ5WxgsK75aADtccbcqfmDkuKr-jQww",
@@ -45,10 +49,10 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Evan | Frontend Developer",
-    description: "Just Evan, 프론트엔드 개발자 블로그, 포트폴리오, 웹사이트",
+    title: siteConfig.title,
+    description: siteConfig.description,
     url: "/",
-    siteName: "Evanlee.dev",
+    siteName: siteConfig.name,
     locale: "ko_KR",
     type: "website",
     images: [
@@ -61,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evan | Frontend Developer",
-    description: "Just Evan, 프론트엔드 개발자 블로그, 포트폴리오, 웹사이트",
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: ["/ogImage.png"],
   },
 };
