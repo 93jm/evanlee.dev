@@ -1,7 +1,7 @@
 export const profileSummary = {
   name: "이정민",
   englishName: "Evan Lee",
-  role: "Frontend Engineer",
+  role: "프론트엔드 엔지니어",
   location: "Seoul, Korea",
   email: "jm.lee.frontend@gmail.com",
   github: "https://github.com/93jm",
@@ -26,26 +26,6 @@ export const aboutPrinciples = [
     description:
       "SEO, 접근성, 성능, 에러 상태, 빈 상태를 마무리 단계의 보완이 아니라 설계와 구현의 기본 조건으로 둡니다.",
   },
-] as const;
-
-export const resumeHighlights = [
-  "Next.js, React, TypeScript 기반 제품 프론트엔드 개발",
-  "QA 경력을 바탕으로 요구사항과 품질 리스크를 함께 검토",
-  "B2C, B2B, Admin, WebView, Partner Center 등 다양한 제품 표면 경험",
-  "SEO, Lighthouse, A/B 테스트, 지표 개선 프로젝트 참여",
-] as const;
-
-export const coreSkills = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "React Query",
-  "GraphQL",
-  "Zustand",
-  "React Hook Form",
-  "Storybook",
-  "Vanilla Extract",
-  "MSW",
 ] as const;
 
 export const workExperiences = [

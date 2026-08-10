@@ -1,14 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import {
-  coreSkills,
-  credentials,
-  earlierExperiences,
-  profileSummary,
-  resumeHighlights,
-  workExperiences,
-} from "../data/profile";
+import { credentials, earlierExperiences, profileSummary, workExperiences } from "../data/profile";
 import * as css from "../styles/profile.css";
 
 export function ResumeView() {
@@ -46,37 +39,9 @@ export function ResumeView() {
         </ul>
       </header>
 
-      <section className={css.section} aria-labelledby="resume-summary-title">
-        <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Summary</p>
-          <h2 id="resume-summary-title">핵심 요약</h2>
-        </div>
-        <ul className={css.highlightList}>
-          {resumeHighlights.map((highlight) => (
-            <li key={highlight} className={css.highlightItem}>
-              {highlight}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className={css.section} aria-labelledby="resume-skills-title">
-        <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Skills</p>
-          <h2 id="resume-skills-title">주요 기술</h2>
-        </div>
-        <ul className={css.skillList}>
-          {coreSkills.map((skill) => (
-            <li key={skill} className={css.skill}>
-              {skill}
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <section className={css.section} aria-labelledby="resume-experience-title">
         <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Experience</p>
+          <p className={css.eyebrow}>경력</p>
           <h2 id="resume-experience-title">경력</h2>
           <p>가장 최근 경력과 제품 영향도가 큰 프로젝트 중심으로 정리했습니다.</p>
         </div>
@@ -136,13 +101,13 @@ export function ResumeView() {
 
       <section className={css.section} aria-labelledby="resume-background-title">
         <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Background</p>
+          <p className={css.eyebrow}>배경</p>
           <h2 id="resume-background-title">이전 경험과 자격</h2>
         </div>
         <div className={css.compactGrid}>
           <section aria-labelledby="earlier-experiences-title">
             <h3 id="earlier-experiences-title" className={css.eyebrow}>
-              Earlier
+              이전 경험
             </h3>
             <ul className={css.compactList}>
               {earlierExperiences.map((experience) => (
@@ -152,7 +117,7 @@ export function ResumeView() {
           </section>
           <section aria-labelledby="credentials-title">
             <h3 id="credentials-title" className={css.eyebrow}>
-              Credentials
+              자격
             </h3>
             <ul className={css.compactList}>
               {credentials.map((credential) => (

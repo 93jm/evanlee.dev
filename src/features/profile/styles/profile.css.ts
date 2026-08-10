@@ -204,31 +204,6 @@ export const contactLink = style({
   },
 });
 
-export const highlightList = style([
-  {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: 10,
-    padding: 0,
-    listStyle: "none",
-  },
-  responsiveStyle({
-    mobile: {
-      gridTemplateColumns: "1fr",
-    },
-  }),
-]);
-
-export const highlightItem = style({
-  padding: 14,
-  border: surfaceBorder,
-  borderRadius: vars.themeColor.seed.radius.md,
-  color: vars.themeColor.semantic.textPrimary,
-  backgroundColor: vars.themeColor.semantic.surface,
-  fontSize: 14,
-  lineHeight: 1.65,
-});
-
 export const skillList = style({
   display: "flex",
   flexWrap: "wrap",

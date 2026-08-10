@@ -7,10 +7,10 @@ import * as css from "../styles/profile.css";
 import profileImage from "/public/standMe1.jpeg";
 
 const quickFacts = [
-  ["Role", profileSummary.role],
-  ["Focus", "Frontend, UX, Product Quality"],
-  ["Base", profileSummary.location],
-  ["Stack", "React, Next.js, TypeScript"],
+  ["역할", profileSummary.role],
+  ["관심 영역", "프론트엔드, 사용자 경험, 제품 품질"],
+  ["위치", profileSummary.location],
+  ["주요 기술", "React, Next.js, TypeScript"],
 ] as const;
 
 export function AboutView() {
@@ -50,7 +50,7 @@ export function AboutView() {
 
       <section className={css.section} aria-labelledby="about-principles-title">
         <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Working Principles</p>
+          <p className={css.eyebrow}>일하는 기준</p>
           <h2 id="about-principles-title">일할 때 반복해서 지키는 기준</h2>
         </div>
         <div className={css.principleGrid}>
@@ -65,7 +65,7 @@ export function AboutView() {
 
       <section className={css.section} aria-labelledby="about-now-title">
         <div className={css.sectionHeader}>
-          <p className={css.eyebrow}>Now</p>
+          <p className={css.eyebrow}>현재</p>
           <h2 id="about-now-title">지금 집중하고 있는 것</h2>
           <p>
             개인 블로그 포트폴리오 v2를 다시 만들며 콘텐츠 모델, SEO, 접근성, 디자인
