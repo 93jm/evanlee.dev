@@ -1,14 +1,71 @@
-import {
-  createGlobalTheme,
-  createTheme,
-  createThemeContract,
-  globalStyle,
-} from "@vanilla-extract/css";
-import { begie, bgBlack, black, gray, white } from "./colors";
+import { createGlobalTheme, createTheme, createThemeContract } from "@vanilla-extract/css";
 
 const root = createGlobalTheme(":root", {});
 
+const seed = {
+  color: {
+    bg: {
+      brandSolidPressed: "var(--seed-color-bg-brand-solid-pressed)",
+      layerDefault: "var(--seed-color-bg-layer-default)",
+      layerFill: "var(--seed-color-bg-layer-fill)",
+      layerFloating: "var(--seed-color-bg-layer-floating)",
+      neutralSolid: "var(--seed-color-bg-neutral-solid)",
+      neutralWeak: "var(--seed-color-bg-neutral-weak)",
+    },
+    fg: {
+      brand: "var(--seed-color-fg-brand)",
+      neutral: "var(--seed-color-fg-neutral)",
+      neutralMuted: "var(--seed-color-fg-neutral-muted)",
+      neutralSubtle: "var(--seed-color-fg-neutral-subtle)",
+    },
+    stroke: {
+      brandSolid: "var(--seed-color-stroke-brand-solid)",
+      focusRing: "var(--seed-color-stroke-focus-ring)",
+      neutralSolid: "var(--seed-color-stroke-neutral-solid)",
+      neutralWeak: "var(--seed-color-stroke-neutral-weak)",
+    },
+  },
+  dimension: {
+    x1: "var(--seed-dimension-x1)",
+    x2: "var(--seed-dimension-x2)",
+    x3: "var(--seed-dimension-x3)",
+    x4: "var(--seed-dimension-x4)",
+    x5: "var(--seed-dimension-x5)",
+    x6: "var(--seed-dimension-x6)",
+    x8: "var(--seed-dimension-x8)",
+    x10: "var(--seed-dimension-x10)",
+    x12: "var(--seed-dimension-x12)",
+    x16: "var(--seed-dimension-x16)",
+  },
+  radius: {
+    r2: "var(--seed-radius-r2)",
+    r3: "var(--seed-radius-r3)",
+    r4: "var(--seed-radius-r4)",
+    full: "var(--seed-radius-full)",
+  },
+} as const;
+
 const themeColor = createThemeContract({
+  seed: {
+    space: {
+      x1: null,
+      x2: null,
+      x3: null,
+      x4: null,
+      x5: null,
+      x6: null,
+      x8: null,
+      x10: null,
+      x12: null,
+      x16: null,
+    },
+    radius: {
+      sm: null,
+      md: null,
+      lg: null,
+      pill: null,
+    },
+  },
   backgroundColor: {
     color: null,
     resumeColor: null,
@@ -48,86 +105,105 @@ const themeColor = createThemeContract({
   },
 });
 
+const seedScale = {
+  space: {
+    x1: seed.dimension.x1,
+    x2: seed.dimension.x2,
+    x3: seed.dimension.x3,
+    x4: seed.dimension.x4,
+    x5: seed.dimension.x5,
+    x6: seed.dimension.x6,
+    x8: seed.dimension.x8,
+    x10: seed.dimension.x10,
+    x12: seed.dimension.x12,
+    x16: seed.dimension.x16,
+  },
+  radius: {
+    sm: seed.radius.r2,
+    md: seed.radius.r3,
+    lg: seed.radius.r4,
+    pill: seed.radius.full,
+  },
+};
+
 export const lightTheme = createTheme(themeColor, {
+  seed: seedScale,
   backgroundColor: {
-    color: white[100],
-    resumeColor: begie[100],
-    resumeSectionColor: begie[200],
-    footerColor: gray[100],
+    color: seed.color.bg.layerDefault,
+    resumeColor: seed.color.bg.layerDefault,
+    resumeSectionColor: seed.color.bg.layerFill,
+    footerColor: seed.color.bg.layerFill,
   },
   borderColor: {
-    color: gray[100],
-    resumeColor: "transparent",
-    blackToWhite: black[100],
+    color: seed.color.stroke.neutralWeak,
+    resumeColor: seed.color.stroke.neutralWeak,
+    blackToWhite: seed.color.stroke.brandSolid,
   },
   buttonColor: {
-    color: black[100],
+    color: seed.color.bg.neutralSolid,
   },
   fontColor: {
-    color: black[100],
-    activeColor: black[100],
-    notActiveColor: gray[400],
+    color: seed.color.fg.neutral,
+    activeColor: seed.color.fg.neutral,
+    notActiveColor: seed.color.fg.neutralMuted,
   },
   hoverColor: {
-    color: gray[100],
+    color: seed.color.bg.neutralWeak,
   },
   semantic: {
-    appBackground: white[100],
-    surface: white[100],
-    surfaceMuted: gray[100],
-    surfaceElevated: white[100],
-    textPrimary: black[100],
-    textSecondary: "#4b5563",
-    textMuted: gray[400],
-    border: gray[200],
-    borderStrong: black[100],
-    accent: "#0f766e",
-    accentHover: "#115e59",
-    focusRing: "#f59e0b",
+    appBackground: seed.color.bg.layerDefault,
+    surface: seed.color.bg.layerDefault,
+    surfaceMuted: seed.color.bg.layerFill,
+    surfaceElevated: seed.color.bg.layerFloating,
+    textPrimary: seed.color.fg.neutral,
+    textSecondary: seed.color.fg.neutralMuted,
+    textMuted: seed.color.fg.neutralSubtle,
+    border: seed.color.stroke.neutralWeak,
+    borderStrong: seed.color.stroke.neutralSolid,
+    accent: seed.color.fg.brand,
+    accentHover: seed.color.bg.brandSolidPressed,
+    focusRing: seed.color.stroke.focusRing,
   },
 });
 
 export const darkTheme = createTheme(themeColor, {
+  seed: seedScale,
   backgroundColor: {
-    color: bgBlack[100],
-    resumeColor: "transparent",
-    resumeSectionColor: "transparent",
-    footerColor: bgBlack[100],
+    color: seed.color.bg.layerDefault,
+    resumeColor: seed.color.bg.layerDefault,
+    resumeSectionColor: seed.color.bg.layerFill,
+    footerColor: seed.color.bg.layerFill,
   },
   borderColor: {
-    color: gray[200],
-    resumeColor: gray[200],
-    blackToWhite: white[100],
+    color: seed.color.stroke.neutralWeak,
+    resumeColor: seed.color.stroke.neutralWeak,
+    blackToWhite: seed.color.stroke.brandSolid,
   },
   buttonColor: {
-    color: white[100],
+    color: seed.color.bg.neutralSolid,
   },
   fontColor: {
-    color: white[100],
-    activeColor: gray[100],
-    notActiveColor: gray[300],
+    color: seed.color.fg.neutral,
+    activeColor: seed.color.fg.neutral,
+    notActiveColor: seed.color.fg.neutralMuted,
   },
   hoverColor: {
-    color: bgBlack[200],
+    color: seed.color.bg.neutralWeak,
   },
   semantic: {
-    appBackground: bgBlack[100],
-    surface: bgBlack[100],
-    surfaceMuted: bgBlack[200],
-    surfaceElevated: "rgb(48, 48, 48)",
-    textPrimary: white[100],
-    textSecondary: gray[200],
-    textMuted: gray[300],
-    border: "rgb(92, 92, 92)",
-    borderStrong: white[100],
-    accent: "#5eead4",
-    accentHover: "#99f6e4",
-    focusRing: "#fbbf24",
+    appBackground: seed.color.bg.layerDefault,
+    surface: seed.color.bg.layerDefault,
+    surfaceMuted: seed.color.bg.layerFill,
+    surfaceElevated: seed.color.bg.layerFloating,
+    textPrimary: seed.color.fg.neutral,
+    textSecondary: seed.color.fg.neutralMuted,
+    textMuted: seed.color.fg.neutralSubtle,
+    border: seed.color.stroke.neutralWeak,
+    borderStrong: seed.color.stroke.neutralSolid,
+    accent: seed.color.fg.brand,
+    accentHover: seed.color.bg.brandSolidPressed,
+    focusRing: seed.color.stroke.focusRing,
   },
 });
 
 export const vars = { ...root, themeColor };
-
-// globalStyle("body", {
-//   backgroundColor: themeColor.backgroundColor.color,
-// });

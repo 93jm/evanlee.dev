@@ -10,6 +10,8 @@ globalStyle("*", {
 globalStyle("html, body", {
   maxWidth: "100dvw",
   overflowX: "hidden",
+  backgroundColor: vars.themeColor.semantic.appBackground,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle("button", {
@@ -30,18 +32,19 @@ globalStyle("a", {
 
 globalStyle("h1, h2, h3, h4, h5, b", {
   margin: 0,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
+  letterSpacing: 0,
 });
 
 globalStyle("nav", {
-  backgroundColor: vars.themeColor.semantic.surface,
+  backgroundColor: vars.themeColor.semantic.surfaceElevated,
 });
 
 globalStyle("a", {
-  color: vars.themeColor.fontColor.color,
+  color: "inherit",
 });
 
 globalStyle("footer", {
   backgroundColor: vars.themeColor.backgroundColor.footerColor,
-  borderTop: `2px solid ${vars.themeColor.borderColor.color}`,
+  borderTop: `1px solid ${vars.themeColor.semantic.border}`,
 });

@@ -76,7 +76,7 @@ export const primaryLink = style({
   justifyContent: "center",
   padding: "0 16px",
   border: subtleBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.textPrimary,
   color: vars.themeColor.semantic.surface,
   fontSize: 14,
@@ -90,7 +90,7 @@ export const primaryLink = style({
 
 export const snapshot = style({
   border: subtleBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
 });
 
@@ -176,7 +176,7 @@ export const principleItem = style({
   gap: 10,
   padding: 18,
   border: subtleBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
 });
 
@@ -211,7 +211,7 @@ export const projectItem = style({
   gap: 22,
   padding: 20,
   border: subtleBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
 });
 
@@ -265,7 +265,7 @@ export const tagList = style({
 
 globalStyle(`${tagList} li`, {
   padding: "5px 8px",
-  borderRadius: 999,
+  borderRadius: vars.themeColor.seed.radius.pill,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 12,
@@ -309,7 +309,7 @@ export const profileItem = style({
   justifyContent: "space-between",
   padding: 16,
   border: subtleBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
   transition: "border-color 160ms ease, background-color 160ms ease",
   ":hover": {

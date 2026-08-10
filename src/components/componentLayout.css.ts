@@ -1,5 +1,4 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css";
-import { colors } from "@/styles/colors";
 import { vars } from "@/styles/theme.css";
 import { responsiveStyle } from "../styles/media";
 
@@ -43,7 +42,7 @@ export const skipLink = style({
   zIndex: 10000,
   transform: "translateY(-140%)",
   padding: "10px 12px",
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.textPrimary,
   color: vars.themeColor.semantic.surface,
   fontSize: 14,
@@ -61,7 +60,7 @@ export const pageLayoutWrapper = style({
   margin: "0 auto",
   marginTop: "56px",
   minHeight: "100dvh",
-  padding: "30px 20px 64px",
+  padding: `${vars.themeColor.seed.space.x8} ${vars.themeColor.seed.space.x5} ${vars.themeColor.seed.space.x16}`,
   opacity: 0,
   animation: `400ms ease ${mainFadeIn}`,
   animationFillMode: "forwards",
@@ -75,6 +74,7 @@ export const navSectionWrapper = style({
   right: 0,
   height: 56,
   backdropFilter: "saturate(180%) blur(10px)",
+  backgroundColor: vars.themeColor.semantic.surfaceElevated,
   zIndex: 999,
 });
 
@@ -83,7 +83,7 @@ export const navSectionFlex = style({
   alignItems: "center",
   justifyContent: "space-between",
   height: "100%",
-  padding: "0 16px",
+  padding: `0 ${vars.themeColor.seed.space.x4}`,
 });
 
 export const navLeftSection = style([
@@ -108,7 +108,7 @@ export const navSectionGrid = style({
   justifyContent: "center",
   width: "100%",
   height: "100%",
-  gap: 2,
+  gap: vars.themeColor.seed.space.x1,
   "@media": {
     "screen and (max-width: 800px)": {
       display: "none",
@@ -130,14 +130,15 @@ export const navSectionButton = style([
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    fontWeight: 400,
-    borderRadius: 6,
+    fontSize: 14,
+    fontWeight: 700,
+    borderRadius: vars.themeColor.seed.radius.md,
 
     color: vars.themeColor.semantic.textMuted,
 
     ":hover": {
       color: vars.themeColor.semantic.textPrimary,
-      backgroundColor: vars.themeColor.hoverColor.color,
+      backgroundColor: vars.themeColor.semantic.surfaceMuted,
     },
   },
 ]);
@@ -148,16 +149,16 @@ export const navSectionActiveButton = style({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: 16,
-  fontWeight: 600,
+  fontSize: 14,
+  fontWeight: 800,
   color: vars.themeColor.semantic.textPrimary,
-  borderRadius: 6,
-  backgroundColor: vars.themeColor.hoverColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
 export const navSectionBottomBar = style({
   width: "100%",
-  borderBottom: `2px solid ${vars.themeColor.borderColor.color}`,
+  borderBottom: `1px solid ${vars.themeColor.semantic.border}`,
 });
 
 export const imageBox = style({
@@ -170,7 +171,7 @@ export const navRightSection = style({
   justifyContent: "center",
   position: "relative",
 
-  gap: 10,
+  gap: vars.themeColor.seed.space.x3,
   "@media": {
     "screen and (max-width: 800px)": {
       display: "none",
@@ -179,13 +180,16 @@ export const navRightSection = style({
 });
 
 export const navRightBadge = style({
-  padding: "6px 8px",
-  fontSize: 11,
-  border: `2px solid ${vars.themeColor.borderColor.color}`,
-  borderRadius: 10,
+  padding: `${vars.themeColor.seed.space.x2} ${vars.themeColor.seed.space.x3}`,
+  fontSize: 12,
+  fontWeight: 800,
+  border: `1px solid ${vars.themeColor.semantic.border}`,
+  borderRadius: vars.themeColor.seed.radius.pill,
+  color: vars.themeColor.semantic.textPrimary,
 
   ":hover": {
-    color: colors.gray,
+    borderColor: vars.themeColor.semantic.borderStrong,
+    backgroundColor: vars.themeColor.semantic.surfaceMuted,
   },
 });
 
@@ -200,11 +204,11 @@ export const mobileNavContainer = style({
   display: "flex",
   flexDirection: "column",
   minWidth: "100px",
-  padding: 24,
+  padding: vars.themeColor.seed.space.x6,
   width: "70%",
   height: "100%",
 
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  backgroundColor: vars.themeColor.semantic.surfaceElevated,
   opacity: 0,
   transform: "translateX(40%)",
   animation: `400ms ease ${sideFadeUp}`,
@@ -220,7 +224,7 @@ export const mobileNavGrid = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
-  gap: 10,
+  gap: vars.themeColor.seed.space.x2,
 
   listStyleType: "none",
 });
@@ -249,7 +253,7 @@ export const mobileNavMenuButton = style({
 
   backgroundColor: "transparent",
   border: "none",
-  borderRadius: 5,
+  borderRadius: vars.themeColor.seed.radius.md,
   cursor: "pointer",
   "@media": {
     "screen and (max-width: 800px)": {
@@ -259,7 +263,7 @@ export const mobileNavMenuButton = style({
 });
 
 export const mobileNavMenuList = style({
-  padding: "12px 0px",
+  padding: `${vars.themeColor.seed.space.x3} 0`,
   width: "100%",
 });
 
@@ -289,12 +293,12 @@ export const mobileNavSectionActiveButton = style({
 export const progressBarWrapper = style({
   position: "fixed",
   width: "100%",
-  top: 58,
+  top: 56,
 });
 
 export const progressBar = style({
-  height: 3,
-  backgroundColor: vars.themeColor.borderColor.blackToWhite,
+  height: 2,
+  backgroundColor: vars.themeColor.semantic.accent,
 });
 
 //footer
@@ -305,10 +309,10 @@ export const footerSectionWrapper = style({
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  padding: "64px 0px",
-  color: vars.themeColor.fontColor.activeColor,
+  padding: `${vars.themeColor.seed.space.x16} 0`,
+  color: vars.themeColor.semantic.textPrimary,
   fontSize: 14,
-  gap: 20,
+  gap: vars.themeColor.seed.space.x5,
 });
 
 export const footerLinkWrapper = style({
@@ -316,23 +320,22 @@ export const footerLinkWrapper = style({
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  gap: 20,
+  gap: vars.themeColor.seed.space.x5,
 });
 
 //title, description
 
 export const titleSection = style({
   fontSize: 28,
-  fontWeight: 600,
-  color: vars.themeColor.fontColor.activeColor,
+  fontWeight: 800,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const descriptionSection = style({
   paddingTop: 20,
   fontSize: 14,
   lineHeight: 1.5,
-  // color: colors.gray,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 //not found

@@ -54,7 +54,7 @@ export const projectCard = style([
     minHeight: 180,
     overflow: "hidden",
     border: surfaceBorder,
-    borderRadius: 8,
+    borderRadius: vars.themeColor.seed.radius.md,
     backgroundColor: vars.themeColor.semantic.surface,
     transition: "border-color 160ms ease, transform 160ms ease",
     selectors: {
@@ -120,7 +120,7 @@ export const projectStatus = style({
   width: "fit-content",
   padding: "4px 8px",
   border: surfaceBorder,
-  borderRadius: 999,
+  borderRadius: vars.themeColor.seed.radius.pill,
   fontSize: 12,
   fontWeight: 700,
   color: vars.themeColor.semantic.textSecondary,
@@ -151,7 +151,7 @@ export const tagList = style({
 export const tag = style({
   width: "fit-content",
   padding: "3px 7px",
-  borderRadius: 6,
+  borderRadius: vars.themeColor.seed.radius.sm,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 12,
@@ -161,7 +161,7 @@ export const tag = style({
 export const emptyState = style({
   padding: 24,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   color: vars.themeColor.semantic.textSecondary,
 });
 
@@ -211,7 +211,7 @@ export const projectCover = style({
   aspectRatio: "16 / 9",
   overflow: "hidden",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
@@ -296,7 +296,7 @@ export const actionLink = style({
   alignItems: "center",
   padding: "8px 12px",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   color: vars.themeColor.semantic.textPrimary,
   fontSize: 13,
   fontWeight: 700,
@@ -395,7 +395,7 @@ export const articleListItem = style({
 
 export const inlineCode = style({
   padding: "2px 6px",
-  borderRadius: 6,
+  borderRadius: vars.themeColor.seed.radius.sm,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
   color: vars.themeColor.semantic.textPrimary,
   fontSize: "0.9em",
@@ -406,7 +406,7 @@ export const codeBlock = style({
   padding: "18px 20px",
   overflowX: "auto",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
   color: vars.themeColor.semantic.textPrimary,
   lineHeight: 1.7,
@@ -432,7 +432,7 @@ export const callout = style({
   margin: "24px 0",
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
@@ -461,7 +461,7 @@ export const articleImage = style({
   width: "100%",
   height: "auto",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 

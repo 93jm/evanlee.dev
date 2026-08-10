@@ -3,7 +3,7 @@ import { globalStyle, keyframes, style } from "@vanilla-extract/css";
 import { responsiveStyle } from "@/styles/media";
 import { vars } from "@/styles/theme.css";
 
-const surfaceBorder = `1px solid ${vars.themeColor.borderColor.color}`;
+const surfaceBorder = `1px solid ${vars.themeColor.semantic.border}`;
 
 const blogFadeIn = keyframes({
   "0%": { opacity: 0 },
@@ -14,7 +14,7 @@ export const blogShell = style({
   width: "100%",
   minHeight: "100dvh",
   padding: "96px 24px 80px",
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.semantic.textPrimary,
   opacity: 0,
   animation: `${blogFadeIn} 360ms ease forwards`,
 });
@@ -37,20 +37,20 @@ globalStyle(`${blogHero} h1`, {
   lineHeight: 1.08,
   fontWeight: 760,
   letterSpacing: 0,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle(`${blogHero} p`, {
   maxWidth: 680,
   fontSize: 17,
   lineHeight: 1.75,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const eyebrow = style({
   fontSize: 13,
   fontWeight: 700,
-  color: "#0f8f6f",
+  color: vars.themeColor.semantic.accent,
 });
 
 export const blogIndexGrid = style([
@@ -76,15 +76,15 @@ export const taxonomyPanel = style({
   gap: 22,
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
 });
 
 export const taxonomyTitle = style({
   marginBottom: 10,
   fontSize: 13,
   fontWeight: 700,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const taxonomyList = style({
@@ -105,12 +105,12 @@ export const postCard = style({
   gap: 12,
   padding: 24,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
   transition: "border-color 160ms ease, transform 160ms ease",
   selectors: {
     "&:hover": {
-      borderColor: "#0f8f6f",
+      borderColor: vars.themeColor.semantic.accent,
       transform: "translateY(-2px)",
     },
   },
@@ -122,12 +122,12 @@ export const postCardMeta = style({
   alignItems: "center",
   gap: 8,
   fontSize: 13,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const categoryLink = style({
   fontWeight: 700,
-  color: "#0f8f6f",
+  color: vars.themeColor.semantic.accent,
 });
 
 export const postCardTitle = style({
@@ -137,13 +137,13 @@ export const postCardTitle = style({
 });
 
 globalStyle(`${postCardTitle} a`, {
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const postCardDescription = style({
   fontSize: 15,
   lineHeight: 1.75,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const tagList = style({
@@ -157,8 +157,8 @@ export const tagList = style({
 export const emptyState = style({
   padding: 32,
   border: surfaceBorder,
-  borderRadius: 8,
-  color: vars.themeColor.fontColor.notActiveColor,
+  borderRadius: vars.themeColor.seed.radius.md,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const articleGrid = style([
@@ -195,13 +195,13 @@ globalStyle(`${articleHeader} h1`, {
   lineHeight: 1.16,
   fontWeight: 780,
   letterSpacing: 0,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle(`${articleHeader} p`, {
   fontSize: 17,
   lineHeight: 1.75,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const articleMeta = style({
@@ -209,7 +209,7 @@ export const articleMeta = style({
   flexWrap: "wrap",
   gap: 8,
   fontSize: 13,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const interactionSlot = style({
@@ -242,8 +242,8 @@ export const interactionMetric = style({
   gap: 6,
   padding: "10px 12px",
   border: surfaceBorder,
-  borderRadius: 8,
-  color: vars.themeColor.fontColor.notActiveColor,
+  borderRadius: vars.themeColor.seed.radius.md,
+  color: vars.themeColor.semantic.textSecondary,
   font: "inherit",
 });
 
@@ -252,8 +252,8 @@ export const likeButton = style({
   transition: "border-color 160ms ease, color 160ms ease, background-color 160ms ease",
   selectors: {
     "&:hover:not(:disabled)": {
-      borderColor: "#0f8f6f",
-      color: vars.themeColor.fontColor.activeColor,
+      borderColor: vars.themeColor.semantic.accent,
+      color: vars.themeColor.semantic.textPrimary,
     },
     "&:disabled": {
       cursor: "not-allowed",
@@ -263,19 +263,19 @@ export const likeButton = style({
 });
 
 export const likeButtonActive = style({
-  borderColor: "#0f8f6f",
-  backgroundColor: "rgba(15, 143, 111, 0.1)",
-  color: vars.themeColor.fontColor.activeColor,
+  borderColor: vars.themeColor.semantic.accent,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle(`${interactionMetric} strong`, {
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const interactionFeedback = style({
   fontSize: 13,
   lineHeight: 1.6,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const commentSection = style({
@@ -294,7 +294,7 @@ export const commentHeader = style({
 globalStyle(`${commentHeader} h2`, {
   fontSize: 20,
   lineHeight: 1.35,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const commentActions = style({
@@ -309,16 +309,16 @@ export const textButton = style({
   minHeight: 36,
   padding: "8px 12px",
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
-  color: vars.themeColor.fontColor.activeColor,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
+  color: vars.themeColor.semantic.textPrimary,
   cursor: "pointer",
   font: "inherit",
   fontSize: 13,
   fontWeight: 700,
   selectors: {
     "&:hover:not(:disabled)": {
-      borderColor: "#0f8f6f",
+      borderColor: vars.themeColor.semantic.accent,
     },
     "&:disabled": {
       cursor: "not-allowed",
@@ -333,8 +333,8 @@ export const commentForm = style({
   gap: 10,
   padding: 16,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
 });
 
 export const commentTextarea = style({
@@ -342,9 +342,9 @@ export const commentTextarea = style({
   resize: "vertical",
   padding: 12,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
-  color: vars.themeColor.fontColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
+  color: vars.themeColor.semantic.textPrimary,
   font: "inherit",
   lineHeight: 1.7,
 });
@@ -370,8 +370,8 @@ export const commentItem = style({
   gap: 10,
   padding: 16,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.backgroundColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surface,
 });
 
 export const commentAuthorRow = style({
@@ -383,11 +383,11 @@ export const commentAuthorRow = style({
 export const commentAvatar = style({
   width: 32,
   height: 32,
-  borderRadius: "50%",
+  borderRadius: vars.themeColor.seed.radius.pill,
   objectFit: "cover",
   backgroundPosition: "center",
   backgroundSize: "cover",
-  backgroundColor: vars.themeColor.hoverColor.color,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
 export const commentAvatarFallback = style({
@@ -396,9 +396,9 @@ export const commentAvatarFallback = style({
   height: 32,
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: "50%",
-  backgroundColor: vars.themeColor.hoverColor.color,
-  color: vars.themeColor.fontColor.activeColor,
+  borderRadius: vars.themeColor.seed.radius.pill,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  color: vars.themeColor.semantic.textPrimary,
   fontSize: 13,
   fontWeight: 700,
 });
@@ -410,12 +410,12 @@ export const commentMeta = style({
 });
 
 globalStyle(`${commentMeta} strong`, {
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
   fontSize: 14,
 });
 
 globalStyle(`${commentMeta} time`, {
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
   fontSize: 12,
 });
 
@@ -424,7 +424,7 @@ export const commentBody = style({
   overflowWrap: "anywhere",
   fontSize: 15,
   lineHeight: 1.75,
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const articleBody = style({
@@ -446,14 +446,14 @@ export const articleAside = style([
 export const toc = style({
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
 });
 
 globalStyle(`${toc} h2`, {
   marginBottom: 12,
   fontSize: 13,
   fontWeight: 760,
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle(`${toc} ol`, {
@@ -467,7 +467,7 @@ globalStyle(`${toc} ol`, {
 globalStyle(`${toc} a`, {
   fontSize: 13,
   lineHeight: 1.45,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const tocDepthThree = style({
@@ -486,7 +486,7 @@ export const articleParagraph = style({
   margin: "18px 0",
   fontSize: 16,
   lineHeight: 1.88,
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 globalStyle(`${articleBody} h1`, {
@@ -514,7 +514,7 @@ globalStyle(`${articleBody} h4`, {
 });
 
 export const articleLink = style({
-  color: "#0f8f6f",
+  color: vars.themeColor.semantic.accent,
   textDecoration: "underline",
   textUnderlineOffset: 3,
 });
@@ -530,14 +530,14 @@ export const articleList = style({
 export const articleListItem = style({
   fontSize: 16,
   lineHeight: 1.8,
-  color: vars.themeColor.fontColor.color,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const inlineCode = style({
   padding: "2px 6px",
-  borderRadius: 6,
-  backgroundColor: vars.themeColor.hoverColor.color,
-  color: vars.themeColor.fontColor.activeColor,
+  borderRadius: vars.themeColor.seed.radius.sm,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  color: vars.themeColor.semantic.textPrimary,
   fontSize: "0.9em",
 });
 
@@ -546,9 +546,9 @@ export const codeBlock = style({
   padding: "18px 20px",
   overflowX: "auto",
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.hoverColor.color,
-  color: vars.themeColor.fontColor.activeColor,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  color: vars.themeColor.semantic.textPrimary,
   lineHeight: 1.7,
 });
 
@@ -563,17 +563,17 @@ globalStyle(`${articleBody} [data-rehype-pretty-code-figure] pre`, {
 export const blockquote = style({
   margin: "24px 0",
   padding: "14px 18px",
-  borderLeft: "4px solid #0f8f6f",
-  backgroundColor: vars.themeColor.hoverColor.color,
-  color: vars.themeColor.fontColor.color,
+  borderLeft: `4px solid ${vars.themeColor.semantic.accent}`,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
+  color: vars.themeColor.semantic.textPrimary,
 });
 
 export const callout = style({
   margin: "24px 0",
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.hoverColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
 export const tableScrollArea = style({
@@ -601,14 +601,14 @@ export const articleImage = style({
   width: "100%",
   height: "auto",
   border: surfaceBorder,
-  borderRadius: 8,
-  backgroundColor: vars.themeColor.hoverColor.color,
+  borderRadius: vars.themeColor.seed.radius.md,
+  backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
 globalStyle(`${articleFigure} figcaption`, {
   marginTop: 8,
   fontSize: 13,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 export const adjacentNav = style([
@@ -635,15 +635,15 @@ export const adjacentLink = style({
   gap: 8,
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
 });
 
 globalStyle(`${adjacentLink} span`, {
   fontSize: 13,
-  color: vars.themeColor.fontColor.notActiveColor,
+  color: vars.themeColor.semantic.textSecondary,
 });
 
 globalStyle(`${adjacentLink} strong`, {
-  color: vars.themeColor.fontColor.activeColor,
+  color: vars.themeColor.semantic.textPrimary,
   lineHeight: 1.45,
 });

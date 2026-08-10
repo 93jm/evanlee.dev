@@ -60,7 +60,7 @@ export const profilePhoto = style({
   aspectRatio: "4 / 5",
   overflow: "hidden",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
 });
 
@@ -87,7 +87,7 @@ export const quickFactItem = style({
   gap: 6,
   padding: 16,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
 });
 
@@ -153,7 +153,7 @@ export const principleItem = style({
   gap: 10,
   padding: 18,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
 });
 
@@ -193,7 +193,7 @@ export const contactLink = style({
   alignItems: "center",
   padding: "7px 11px",
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   color: vars.themeColor.semantic.textPrimary,
   fontSize: 13,
   fontWeight: 800,
@@ -222,7 +222,7 @@ export const highlightList = style([
 export const highlightItem = style({
   padding: 14,
   border: surfaceBorder,
-  borderRadius: 8,
+  borderRadius: vars.themeColor.seed.radius.md,
   color: vars.themeColor.semantic.textPrimary,
   backgroundColor: vars.themeColor.semantic.surface,
   fontSize: 14,
@@ -240,7 +240,7 @@ export const skillList = style({
 export const skill = style({
   width: "fit-content",
   padding: "5px 8px",
-  borderRadius: 999,
+  borderRadius: vars.themeColor.seed.radius.pill,
   backgroundColor: vars.themeColor.semantic.surfaceMuted,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 12,

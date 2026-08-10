@@ -6,6 +6,22 @@ import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider, ReactQueryProvider } from "@/provider";
 
+const seedThemeInitScript = `
+(function () {
+  try {
+    var storedTheme = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var resolvedTheme = storedTheme === "dark" || (storedTheme !== "light" && prefersDark) ? "dark" : "light";
+    var seedColorMode = storedTheme === "light" ? "light-only" : storedTheme === "dark" ? "dark-only" : "system";
+    var root = document.documentElement;
+
+    root.dataset.seed = "";
+    root.dataset.seedColorMode = seedColorMode;
+    root.dataset.seedUserColorScheme = resolvedTheme;
+  } catch (error) {}
+})();
+`;
+
 const pretendard = localFont({
   src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
   display: "swap",
@@ -61,9 +77,11 @@ export default function RootLayout({
       lang="ko"
       data-seed=""
       data-seed-color-mode="system"
-      data-seed-user-color-scheme="light"
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: seedThemeInitScript }} />
+      </head>
       <body className={`${pretendard.className} ${pretendard.variable}`}>
         <ThemeProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
