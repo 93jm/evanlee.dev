@@ -1,15 +1,19 @@
 import {
   doc,
   getDoc,
-  deleteDoc,
+  increment,
+  runTransaction,
   serverTimestamp,
-  setDoc,
 } from "firebase/firestore";
 
 import { db } from "@/data/firestore";
 
 import { getOrCreateAnonymousInteractionUser, waitForAuthReady } from "../auth";
-import { POST_LIKE_USERS_SUBCOLLECTION, POST_LIKES_COLLECTION } from "../constants";
+import {
+  POST_LIKE_USERS_SUBCOLLECTION,
+  POST_LIKES_COLLECTION,
+  POST_STATS_COLLECTION,
+} from "../constants";
 import type { PostLikeState } from "../types";
 
 function getLikeDocumentRef(slug: string, uid: string) {
@@ -41,25 +45,45 @@ export async function getPostLikeState(
 export async function togglePostLike(slug: string): Promise<PostLikeState> {
   const user = await getOrCreateAnonymousInteractionUser();
   const likeRef = getLikeDocumentRef(slug, user.uid);
-  const likeSnapshot = await getDoc(likeRef);
+  const statsRef = doc(db, POST_STATS_COLLECTION, slug);
 
-  if (likeSnapshot.exists()) {
-    await deleteDoc(likeRef);
+  return runTransaction(db, async (transaction) => {
+    const likeSnapshot = await transaction.get(likeRef);
 
-    return {
-      slug,
-      liked: false,
-    };
-  }
+    if (likeSnapshot.exists()) {
+      transaction.delete(likeRef);
+      transaction.set(
+        statsRef,
+        {
+          likeCount: increment(-1),
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
 
-  await setDoc(likeRef, {
+      return {
+        slug,
+        liked: false,
+      };
+    }
+
+    transaction.set(likeRef, {
       slug,
       uid: user.uid,
       createdAt: serverTimestamp(),
-  });
+    });
+    transaction.set(
+      statsRef,
+      {
+        likeCount: increment(1),
+        updatedAt: serverTimestamp(),
+      },
+      { merge: true }
+    );
 
-  return {
-    slug,
-    liked: true,
-  };
+    return {
+      slug,
+      liked: true,
+    };
+  });
 }

@@ -17,6 +17,13 @@ service cloud.firestore {
         );
     }
 
+    function isKnownPostSlug(slug) {
+      return slug is string
+        && slug in [
+          "building-a-readable-content-model"
+        ];
+    }
+
     function changedKeys() {
       return request.resource.data.diff(resource.data).affectedKeys();
     }
@@ -45,8 +52,30 @@ service cloud.firestore {
       return hasAuthName() ? request.auth.token.name : "GitHub 사용자";
     }
 
+    function postStatsPath(slug) {
+      return /databases/$(database)/documents/postStats/$(slug);
+    }
+
+    function postViewMarkerPath(slug, uid) {
+      return /databases/$(database)/documents/postViews/$(slug)/users/$(uid);
+    }
+
+    function postLikeMarkerPath(slug, uid) {
+      return /databases/$(database)/documents/postLikes/$(slug)/users/$(uid);
+    }
+
     function existingCount(field) {
       return field in resource.data ? resource.data[field] : 0;
+    }
+
+    function existingStoredCount(slug, field) {
+      return field in get(postStatsPath(slug)).data
+        ? get(postStatsPath(slug)).data[field]
+        : 0;
+    }
+
+    function afterStoredCount(slug, field) {
+      return getAfter(postStatsPath(slug)).data[field];
     }
 
     function nextCount(field) {
@@ -58,47 +87,101 @@ service cloud.firestore {
         || isNonNegativeInt(request.resource.data[field]);
     }
 
+    function isStatsShapeValid() {
+      return request.resource.data.keys().hasOnly([
+          "viewCount",
+          "likeCount",
+          "updatedAt"
+        ])
+        && optionalCounterIsValid("viewCount")
+        && optionalCounterIsValid("likeCount")
+        && hasUpdatedAt();
+    }
+
     function isInitialStatsCreate(counter) {
       return request.resource.data.keys().hasOnly([counter, "updatedAt"])
         && request.resource.data[counter] == 1
         && hasUpdatedAt();
     }
 
-    function isStatsShapeValid() {
-      return request.resource.data.keys().hasOnly([
-          "viewCount",
-          "updatedAt"
-        ])
-        && optionalCounterIsValid("viewCount")
-        && hasUpdatedAt();
-    }
-
-    function isStatsUpdateValid(slug) {
+    function isStatsCounterIncrement(counter) {
       return isStatsShapeValid()
-        && changedKeys().hasOnly([
-          "viewCount",
-          "updatedAt"
-        ])
-        && changedKeys().hasAny(["updatedAt"])
-        && isViewStatsUpdate();
+        && changedKeys().hasOnly([counter, "updatedAt"])
+        && changedKeys().hasAll([counter, "updatedAt"])
+        && nextCount(counter) == existingCount(counter) + 1;
     }
 
-    function isViewStatsUpdate() {
-      return changedKeys().hasOnly(["viewCount", "updatedAt"])
-        && changedKeys().hasAny(["viewCount"])
-        && nextCount("viewCount") == existingCount("viewCount") + 1;
+    function isStatsCounterDecrement(counter) {
+      return isStatsShapeValid()
+        && changedKeys().hasOnly([counter, "updatedAt"])
+        && changedKeys().hasAll([counter, "updatedAt"])
+        && nextCount(counter) == existingCount(counter) - 1;
     }
 
-    function isOwnLike(uid) {
+    function isOwnInteractionUser(uid) {
       return isSignedIn()
         && uid == request.auth.uid;
     }
 
-    function isValidLikeCreate(slug, uid) {
-      return request.resource.data.keys().hasOnly(["slug", "uid", "createdAt"])
+    function createsOwnViewMarker(slug) {
+      return isSignedIn()
+        && !exists(postViewMarkerPath(slug, request.auth.uid))
+        && existsAfter(postViewMarkerPath(slug, request.auth.uid));
+    }
+
+    function createsOwnLikeMarker(slug) {
+      return isSignedIn()
+        && !exists(postLikeMarkerPath(slug, request.auth.uid))
+        && existsAfter(postLikeMarkerPath(slug, request.auth.uid));
+    }
+
+    function deletesOwnLikeMarker(slug) {
+      return isSignedIn()
+        && exists(postLikeMarkerPath(slug, request.auth.uid))
+        && !existsAfter(postLikeMarkerPath(slug, request.auth.uid));
+    }
+
+    function statsCounterIncrementsAfter(slug, counter) {
+      return existsAfter(postStatsPath(slug))
+        && counter in getAfter(postStatsPath(slug)).data
+        && isNonNegativeInt(afterStoredCount(slug, counter))
+        && getAfter(postStatsPath(slug)).data.updatedAt == request.time
+        && (
+          (
+            !exists(postStatsPath(slug))
+            && afterStoredCount(slug, counter) == 1
+          )
+          || (
+            exists(postStatsPath(slug))
+            && afterStoredCount(slug, counter) == existingStoredCount(slug, counter) + 1
+          )
+        );
+    }
+
+    function statsCounterDecrementsAfter(slug, counter) {
+      return exists(postStatsPath(slug))
+        && existsAfter(postStatsPath(slug))
+        && counter in getAfter(postStatsPath(slug)).data
+        && isNonNegativeInt(afterStoredCount(slug, counter))
+        && getAfter(postStatsPath(slug)).data.updatedAt == request.time
+        && afterStoredCount(slug, counter) == existingStoredCount(slug, counter) - 1;
+    }
+
+    function isValidViewMarkerCreate(slug, uid) {
+      return isOwnInteractionUser(uid)
+        && isKnownPostSlug(slug)
+        && request.resource.data.keys().hasOnly(["slug", "uid", "createdAt"])
         && request.resource.data.slug == slug
         && request.resource.data.uid == uid
-        && uid == request.auth.uid
+        && hasCreatedAt();
+    }
+
+    function isValidLikeCreate(slug, uid) {
+      return isOwnInteractionUser(uid)
+        && isKnownPostSlug(slug)
+        && request.resource.data.keys().hasOnly(["slug", "uid", "createdAt"])
+        && request.resource.data.slug == slug
+        && request.resource.data.uid == uid
         && hasCreatedAt();
     }
 
@@ -111,8 +194,7 @@ service cloud.firestore {
           "status",
           "createdAt"
         ])
-        && request.resource.data.slug is string
-        && request.resource.data.slug.size() > 0
+        && isKnownPostSlug(request.resource.data.slug)
         && request.resource.data.body is string
         && request.resource.data.body.size() > 0
         && request.resource.data.body.size() <= 1000
@@ -133,23 +215,47 @@ service cloud.firestore {
     }
 
     match /postStats/{slug} {
-      allow read: if true;
-      allow create: if isSignedIn()
-        && isInitialStatsCreate("viewCount");
-      allow update: if isSignedIn() && isStatsUpdateValid(slug);
+      allow get: if isKnownPostSlug(slug);
+      allow list: if false;
+      allow create: if isKnownPostSlug(slug)
+        && (
+          (isInitialStatsCreate("viewCount") && createsOwnViewMarker(slug))
+          || (isInitialStatsCreate("likeCount") && createsOwnLikeMarker(slug))
+        );
+      allow update: if isKnownPostSlug(slug)
+        && (
+          (isStatsCounterIncrement("viewCount") && createsOwnViewMarker(slug))
+          || (isStatsCounterIncrement("likeCount") && createsOwnLikeMarker(slug))
+          || (isStatsCounterDecrement("likeCount") && deletesOwnLikeMarker(slug))
+        );
       allow delete: if false;
     }
 
-    match /postLikes/{slug}/users/{uid} {
-      allow get: if isOwnLike(uid);
+    match /postViews/{slug}/users/{uid} {
+      allow get: if isOwnInteractionUser(uid) && isKnownPostSlug(slug);
       allow list: if false;
-      allow create: if isOwnLike(uid) && isValidLikeCreate(slug, uid);
+      allow create: if isValidViewMarkerCreate(slug, uid)
+        && statsCounterIncrementsAfter(slug, "viewCount");
+      allow update, delete: if false;
+    }
+
+    match /postLikes/{slug}/users/{uid} {
+      allow get: if isOwnInteractionUser(uid) && isKnownPostSlug(slug);
+      allow list: if false;
+      allow create: if isValidLikeCreate(slug, uid)
+        && statsCounterIncrementsAfter(slug, "likeCount");
       allow update: if false;
-      allow delete: if isOwnLike(uid);
+      allow delete: if isOwnInteractionUser(uid)
+        && isKnownPostSlug(slug)
+        && statsCounterDecrementsAfter(slug, "likeCount");
     }
 
     match /postComments/{commentId} {
-      allow read: if resource.data.status == "visible";
+      allow get: if resource.data.status == "visible"
+        && isKnownPostSlug(resource.data.slug);
+      allow list: if request.query.limit <= 50
+        && resource.data.status == "visible"
+        && isKnownPostSlug(resource.data.slug);
       allow create: if isGithubUser() && isValidCommentCreate();
       allow update, delete: if false;
     }

@@ -10,6 +10,7 @@ const CATEGORIES_PATH = path.join(BLOG_ROOT, "categories.json");
 const TAGS_PATH = path.join(BLOG_ROOT, "tags.json");
 const PROJECTS_ROOT = path.join(CONTENT_ROOT, "projects");
 const PROJECT_ORDER_PATH = path.join(PROJECTS_ROOT, "project-order.json");
+const FIRESTORE_RULES_PATH = path.join(process.cwd(), "firestore.rules");
 const PROJECT_STATUSES = new Set(["completed", "in-progress", "archived"]);
 
 function validateContent() {
@@ -23,6 +24,7 @@ function validateContent() {
 
   validateProjectOrder(projects);
   validateRelatedReferences(posts, projects);
+  validateFirestoreKnownPostSlugs(posts);
 
   return {
     categories: categories.length,
@@ -98,7 +100,7 @@ function validateBlogPosts({ categorySlugs, tagSlugs }) {
       }
     });
 
-    validateRequiredPostFields(data, sourceName);
+    const { draft } = validateRequiredPostFields(data, sourceName);
 
     if (cover !== undefined) {
       assertContentAssetExists(resolveContentAsset({ type: "blog", slug, asset: cover }));
@@ -106,6 +108,7 @@ function validateBlogPosts({ categorySlugs, tagSlugs }) {
 
     return {
       slug,
+      draft,
       relatedPosts: getOptionalStringArray(data, "relatedPosts", sourceName).map(normalizeContentSlug),
       relatedProjects: getOptionalStringArray(data, "relatedProjects", sourceName).map(
         normalizeContentSlug,
@@ -119,12 +122,16 @@ function validateRequiredPostFields(data, sourceName) {
   getRequiredString(data, "description", sourceName);
   getRequiredDateString(data, "date", sourceName);
   getOptionalDateString(data, "updatedAt", sourceName);
-  getRequiredBoolean(data, "draft", sourceName);
+  const draft = getRequiredBoolean(data, "draft", sourceName);
   getOptionalBoolean(data, "featured", sourceName);
   getOptionalPositiveNumber(data, "readingTimeOverride", sourceName);
   getOptionalString(data, "canonicalUrl", sourceName);
   getOptionalString(data, "ogImage", sourceName);
   validateOptionalSeries(data, sourceName);
+
+  return {
+    draft,
+  };
 }
 
 function validateProjects() {
@@ -232,6 +239,47 @@ function validateRelatedReferences(posts, projects) {
       }
     });
   });
+}
+
+function validateFirestoreKnownPostSlugs(posts) {
+  const expectedSlugs = posts
+    .filter((post) => !post.draft)
+    .map((post) => post.slug)
+    .sort();
+
+  if (!fs.existsSync(FIRESTORE_RULES_PATH)) {
+    throw new Error("Missing firestore.rules for public post slug validation.");
+  }
+
+  const rulesSource = fs.readFileSync(FIRESTORE_RULES_PATH, "utf8");
+  const match = rulesSource.match(
+    /function isKnownPostSlug\(slug\) \{[\s\S]*?slug in \[([\s\S]*?)\];[\s\S]*?\}/,
+  );
+
+  if (!match) {
+    throw new Error("Missing isKnownPostSlug allowlist in firestore.rules.");
+  }
+
+  const actualSlugs = Array.from(match[1].matchAll(/"([^"]+)"/g), (slugMatch) =>
+    slugMatch[1],
+  ).sort();
+
+  actualSlugs.forEach((slug) => {
+    assertContentSlug(slug, "firestore.rules isKnownPostSlug");
+  });
+  assertUniqueSlugs(actualSlugs, "firestore.rules isKnownPostSlug");
+
+  const isSameSlugList =
+    actualSlugs.length === expectedSlugs.length
+    && actualSlugs.every((slug, index) => slug === expectedSlugs[index]);
+
+  if (!isSameSlugList) {
+    throw new Error(
+      `Firestore post slug allowlist mismatch. Expected [${expectedSlugs.join(
+        ", ",
+      )}], received [${actualSlugs.join(", ")}].`,
+    );
+  }
 }
 
 function getContentDirectorySlugs(rootPath, sourceName) {

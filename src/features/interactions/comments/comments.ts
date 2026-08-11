@@ -3,6 +3,8 @@ import {
   addDoc,
   collection,
   getDocs,
+  limit,
+  orderBy,
   query,
   serverTimestamp,
   where,
@@ -22,6 +24,7 @@ import {
   COMMENT_STATUS_VISIBLE,
   GITHUB_PROVIDER_ID,
   POST_COMMENTS_COLLECTION,
+  POST_COMMENTS_PAGE_SIZE,
 } from "../constants";
 import type {
   CommentAuthor,
@@ -140,32 +143,28 @@ export async function getPostComments(slug: string): Promise<PostComment[]> {
   const commentsQuery = query(
     commentsRef,
     where("slug", "==", slug),
-    where("status", "==", COMMENT_STATUS_VISIBLE)
+    where("status", "==", COMMENT_STATUS_VISIBLE),
+    orderBy("createdAt", "asc"),
+    limit(POST_COMMENTS_PAGE_SIZE)
   );
   const snapshot = await getDocs(commentsQuery);
 
-  return snapshot.docs
-    .map((commentDoc) => {
-      const data = commentDoc.data();
+  return snapshot.docs.map((commentDoc) => {
+    const data = commentDoc.data();
 
-      return {
-        id: commentDoc.id,
-        slug: String(data.slug ?? slug),
-        body: String(data.body ?? ""),
-        authorName: String(data.authorName ?? "GitHub 사용자"),
-        authorPhotoURL:
-          typeof data.authorPhotoURL === "string" ? data.authorPhotoURL : undefined,
-        authorUid: String(data.authorUid ?? ""),
-        status: toCommentStatus(data.status),
-        createdAt: toDate(data.createdAt),
-        updatedAt: toDate(data.updatedAt),
-      };
-    })
-    .sort((a, b) => {
-      const aTime = a.createdAt?.getTime() ?? 0;
-      const bTime = b.createdAt?.getTime() ?? 0;
-      return aTime - bTime;
-    });
+    return {
+      id: commentDoc.id,
+      slug: String(data.slug ?? slug),
+      body: String(data.body ?? ""),
+      authorName: String(data.authorName ?? "GitHub 사용자"),
+      authorPhotoURL:
+        typeof data.authorPhotoURL === "string" ? data.authorPhotoURL : undefined,
+      authorUid: String(data.authorUid ?? ""),
+      status: toCommentStatus(data.status),
+      createdAt: toDate(data.createdAt),
+      updatedAt: toDate(data.updatedAt),
+    };
+  });
 }
 
 export async function createPostComment(input: CreatePostCommentInput) {

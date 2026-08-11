@@ -38,6 +38,7 @@ export function usePostLike(slug: string) {
       ),
     enabled: userKey !== null,
     retry: false,
+    refetchOnWindowFocus: false,
   });
   const likeMutation = useMutation({
     mutationFn: () => togglePostLike(slug),

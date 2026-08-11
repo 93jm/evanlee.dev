@@ -39,5 +39,7 @@ export function usePostStats(slug: string) {
   return useQuery({
     queryKey: interactionQueryKeys.stats(slug),
     queryFn: () => getPostStats(slug),
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 }

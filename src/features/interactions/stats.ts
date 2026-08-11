@@ -15,5 +15,9 @@ export async function getPostStats(slug: string): Promise<PostStats> {
       typeof data?.viewCount === "number"
         ? data.viewCount
         : DEFAULT_POST_STATS_COUNTS.viewCount,
+    likeCount:
+      typeof data?.likeCount === "number"
+        ? data.likeCount
+        : DEFAULT_POST_STATS_COUNTS.likeCount,
   };
 }

@@ -117,7 +117,7 @@ export function BlogInteractionSlot({ slug }: BlogInteractionSlotProps) {
           aria-pressed={likeState?.liked ?? false}
         >
           <span>{likeState?.liked ? "좋아요 취소" : "좋아요"}</span>
-          <strong>{likeState?.liked ? "완료" : "누르기"}</strong>
+          <strong>{isStatsLoading ? "-" : formatCount(stats?.likeCount)}</strong>
         </button>
         <div className={css.interactionMetric}>
           <span>댓글</span>

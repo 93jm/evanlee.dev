@@ -5,6 +5,7 @@ export type CommentStatus = "visible" | "hidden" | "deleted";
 export interface PostStats {
   slug: string;
   viewCount: number;
+  likeCount: number;
 }
 
 export interface PostLikeState {

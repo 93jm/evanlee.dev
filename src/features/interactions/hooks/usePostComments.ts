@@ -39,18 +39,15 @@ export function usePostComments(slug: string) {
   const commentsQuery = useQuery({
     queryKey: interactionQueryKeys.comments(slug),
     queryFn: () => getPostComments(slug),
+    retry: false,
+    refetchOnWindowFocus: false,
   });
   const createCommentMutation = useMutation({
     mutationFn: (body: string) => createPostComment({ slug, body }),
     onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: interactionQueryKeys.comments(slug),
-        }),
-        queryClient.invalidateQueries({
-          queryKey: interactionQueryKeys.stats(slug),
-        }),
-      ]);
+      await queryClient.invalidateQueries({
+        queryKey: interactionQueryKeys.comments(slug),
+      });
     },
   });
 

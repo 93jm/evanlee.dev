@@ -1,4 +1,4 @@
-import { doc, increment, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, increment, runTransaction, serverTimestamp } from "firebase/firestore";
 
 import { db } from "@/data/firestore";
 
@@ -6,22 +6,14 @@ import { getOrCreateAnonymousInteractionUser } from "../auth";
 import {
   LOCAL_VIEW_MARKER_PREFIX,
   POST_STATS_COLLECTION,
+  POST_VIEW_USERS_SUBCOLLECTION,
+  POST_VIEWS_COLLECTION,
 } from "../constants";
 
 const inMemoryViewMarkers = new Set<string>();
-const LOCAL_STORAGE_PROBE_KEY = `${LOCAL_VIEW_MARKER_PREFIX}:storage-probe`;
 
-function getKoreanDateKey(date: Date) {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Seoul",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-}
-
-function getDailyViewMarkerKey(slug: string, date = new Date()) {
-  return `${LOCAL_VIEW_MARKER_PREFIX}:${slug}:${getKoreanDateKey(date)}`;
+function getViewMarkerKey(slug: string) {
+  return `${LOCAL_VIEW_MARKER_PREFIX}:${slug}`;
 }
 
 function getViewMarkerState(markerKey: string) {
@@ -46,20 +38,6 @@ function getViewMarkerState(markerKey: string) {
   }
 }
 
-function canPersistViewMarker() {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  try {
-    window.localStorage.setItem(LOCAL_STORAGE_PROBE_KEY, "1");
-    window.localStorage.removeItem(LOCAL_STORAGE_PROBE_KEY);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 function markViewTracked(markerKey: string) {
   inMemoryViewMarkers.add(markerKey);
 
@@ -79,33 +57,47 @@ function clearInMemoryViewMarker(markerKey: string) {
 }
 
 export async function trackPostView(slug: string) {
-  const markerKey = getDailyViewMarkerKey(slug);
+  const markerKey = getViewMarkerKey(slug);
   const markerState = getViewMarkerState(markerKey);
 
   if (markerState !== "untracked") {
     return;
   }
 
-  if (!canPersistViewMarker()) {
-    inMemoryViewMarkers.add(markerKey);
-    return;
-  }
-
   inMemoryViewMarkers.add(markerKey);
 
   try {
-    await getOrCreateAnonymousInteractionUser();
-
+    const user = await getOrCreateAnonymousInteractionUser();
     const statsRef = doc(db, POST_STATS_COLLECTION, slug);
-
-    await setDoc(
-      statsRef,
-      {
-        viewCount: increment(1),
-        updatedAt: serverTimestamp(),
-      },
-      { merge: true }
+    const viewRef = doc(
+      db,
+      POST_VIEWS_COLLECTION,
+      slug,
+      POST_VIEW_USERS_SUBCOLLECTION,
+      user.uid
     );
+
+    await runTransaction(db, async (transaction) => {
+      const viewSnapshot = await transaction.get(viewRef);
+
+      if (viewSnapshot.exists()) {
+        return;
+      }
+
+      transaction.set(viewRef, {
+        slug,
+        uid: user.uid,
+        createdAt: serverTimestamp(),
+      });
+      transaction.set(
+        statsRef,
+        {
+          viewCount: increment(1),
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+    });
 
     markViewTracked(markerKey);
   } catch (error) {
