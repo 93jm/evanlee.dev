@@ -1,15 +1,11 @@
 "use client";
 
 import * as css from "@/components/componentLayout.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { SideMenuContext } from "@/provider/ThemeProvider";
 import { NAV_DATA, isV2NavItemActive } from "@/mocks/common";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import X_BLACK from "/public/x-black.png";
-import X_WHITE from "/public/x-white.png";
-import Image from "next/image";
 import { flexRowBetween } from "@/styles/layout";
 import { ToggleTheme } from "@/components";
 
@@ -22,9 +18,8 @@ type Props = {
 
 export default function MobileNavbar() {
   const pathname = usePathname();
-  const { resolvedTheme } = useTheme();
   const { isSideMenuOpen, toggleSideMenu } = useContext(SideMenuContext);
-  const isDarkMode = resolvedTheme === "dark";
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     //페이지 이탈하여 컴포넌트 언마운트가 될때에
@@ -33,14 +28,53 @@ export default function MobileNavbar() {
     };
   }, [toggleSideMenu]);
 
+  useEffect(() => {
+    if (!isSideMenuOpen) {
+      return;
+    }
+
+    const previousActiveElement = document.activeElement;
+
+    closeButtonRef.current?.focus();
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        toggleSideMenu(false);
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+
+      if (previousActiveElement instanceof HTMLElement) {
+        previousActiveElement.focus();
+      }
+    };
+  }, [isSideMenuOpen, toggleSideMenu]);
+
   if (!isSideMenuOpen) {
     return null;
   }
 
   return (
     <>
-      <div className={css.mobileNavDim} onClick={() => toggleSideMenu(false)} />
-      <nav className={css.mobileNavContainer} aria-label="모바일 메뉴">
+      <div
+        className={css.mobileNavDim}
+        aria-hidden="true"
+        onClick={() => toggleSideMenu(false)}
+      />
+      <aside
+        id="mobile-navigation"
+        className={css.mobileNavContainer}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-navigation-title"
+      >
+        <h2 id="mobile-navigation-title" className={css.visuallyHidden}>
+          모바일 메뉴
+        </h2>
         <div
           style={{
             ...flexRowBetween,
@@ -51,25 +85,28 @@ export default function MobileNavbar() {
             type="button"
             className={css.mobileNavMenuButton}
             aria-label="메뉴 닫기"
+            ref={closeButtonRef}
             onClick={() => toggleSideMenu(false)}
           >
-            <Image src={isDarkMode ? X_WHITE : X_BLACK} alt="" width={25} />
+            <span className={css.closeIcon} aria-hidden="true" />
           </button>
           <ToggleTheme />
         </div>
 
-        <ul className={css.mobileNavGrid}>
-          {NAV_DATA.map((nav) => (
-            <MobileNavButton
-              key={nav.id}
-              label={nav.label}
-              href={nav.href}
-              active={isV2NavItemActive(pathname, nav)}
-              onSelect={() => toggleSideMenu(false)}
-            />
-          ))}
-        </ul>
-      </nav>
+        <nav aria-label="모바일 사이트 메뉴">
+          <ul className={css.mobileNavGrid}>
+            {NAV_DATA.map((nav) => (
+              <MobileNavButton
+                key={nav.id}
+                label={nav.label}
+                href={nav.href}
+                active={isV2NavItemActive(pathname, nav)}
+                onSelect={() => toggleSideMenu(false)}
+              />
+            ))}
+          </ul>
+        </nav>
+      </aside>
     </>
   );
 }

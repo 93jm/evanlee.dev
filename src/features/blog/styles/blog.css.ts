@@ -13,6 +13,7 @@ const blogFadeIn = keyframes({
 
 export const blogShell = style({
   width: "100%",
+  minWidth: 0,
   minHeight: "100dvh",
   padding: "96px 24px 80px",
   color: vars.themeColor.semantic.textPrimary,
@@ -26,36 +27,46 @@ export const blogShell = style({
 });
 
 export const blogIndex = style({
+  minWidth: 0,
   width: "min(1120px, 100%)",
   margin: "0 auto",
 });
 
 export const blogHero = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 14,
   padding: "24px 0 32px",
 });
 
 globalStyle(`${blogHero} h1`, {
+  width: "100%",
   maxWidth: 760,
   fontSize: 44,
   lineHeight: 1.08,
   fontWeight: 760,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 34,
+      maxWidth: "100%",
+      fontSize: 32,
+      lineHeight: 1.22,
     },
   },
 });
 
 globalStyle(`${blogHero} p`, {
+  width: "100%",
   maxWidth: 680,
   fontSize: 17,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const eyebrow = style({
@@ -83,6 +94,7 @@ export const taxonomyPanel = style({
   position: "sticky",
   top: 88,
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 22,
   padding: 18,
@@ -111,12 +123,14 @@ export const taxonomyList = style({
 
 export const postList = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 18,
 });
 
 export const postCard = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 12,
   padding: 24,
@@ -137,6 +151,7 @@ export const postCard = style({
 
 export const postCardMeta = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   alignItems: "center",
   gap: 8,
@@ -153,6 +168,14 @@ export const postCardTitle = style({
   fontSize: 24,
   lineHeight: 1.3,
   fontWeight: 760,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 22,
+      lineHeight: 1.36,
+    },
+  },
 });
 
 globalStyle(`${postCardTitle} a`, {
@@ -168,10 +191,13 @@ export const postCardDescription = style({
   fontSize: 15,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const tagList = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   gap: 8,
   padding: 0,
@@ -188,6 +214,7 @@ export const emptyState = style({
 export const articleGrid = style([
   {
     display: "grid",
+    minWidth: 0,
     gridTemplateColumns: "minmax(0, 760px) 240px",
     gap: 40,
     width: "min(1080px, 100%)",
@@ -208,6 +235,7 @@ export const article = style({
 
 export const articleHeader = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 16,
   paddingBottom: 34,
@@ -215,26 +243,34 @@ export const articleHeader = style({
 });
 
 globalStyle(`${articleHeader} h1`, {
+  width: "100%",
   fontSize: 42,
   lineHeight: 1.16,
   fontWeight: 780,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 32,
+      fontSize: 30,
+      lineHeight: 1.24,
     },
   },
 });
 
 globalStyle(`${articleHeader} p`, {
+  width: "100%",
   fontSize: 17,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const articleMeta = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   gap: 8,
   fontSize: 13,
@@ -243,6 +279,7 @@ export const articleMeta = style({
 
 export const interactionSlot = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 22,
   marginTop: 48,
@@ -313,6 +350,7 @@ export const interactionFeedback = style({
 
 export const commentSection = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 16,
 });
@@ -372,6 +410,7 @@ export const textButton = style({
 
 export const commentForm = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 10,
   padding: 16,
@@ -400,6 +439,7 @@ export const commentTextarea = style({
 
 export const commentFormFooter = style({
   display: "flex",
+  minWidth: 0,
   alignItems: "center",
   justifyContent: "space-between",
   gap: 12,
@@ -407,6 +447,7 @@ export const commentFormFooter = style({
 
 export const commentList = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 12,
   padding: 0,
@@ -415,6 +456,7 @@ export const commentList = style({
 
 export const commentItem = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 10,
   padding: 16,
@@ -477,6 +519,7 @@ export const commentBody = style({
 });
 
 export const articleBody = style({
+  minWidth: 0,
   paddingTop: 34,
 });
 
@@ -545,24 +588,44 @@ export const articleParagraph = style({
   fontSize: 16,
   lineHeight: 1.88,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 globalStyle(`${articleBody} h1`, {
   margin: "40px 0 16px",
   fontSize: 32,
   lineHeight: 1.3,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 28,
+      lineHeight: 1.34,
+    },
+  },
 });
 
 globalStyle(`${articleBody} h2`, {
   margin: "42px 0 16px",
   fontSize: 28,
   lineHeight: 1.34,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 26,
+      lineHeight: 1.38,
+    },
+  },
 });
 
 globalStyle(`${articleBody} h3`, {
   margin: "34px 0 12px",
   fontSize: 22,
   lineHeight: 1.4,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 globalStyle(`${articleBody} h4`, {
@@ -595,6 +658,8 @@ export const articleListItem = style({
   fontSize: 16,
   lineHeight: 1.8,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const inlineCode = style({
@@ -606,6 +671,7 @@ export const inlineCode = style({
 });
 
 export const codeBlock = style({
+  maxWidth: "100%",
   margin: "22px 0",
   padding: "18px 20px",
   overflowX: "auto",

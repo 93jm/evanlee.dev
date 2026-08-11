@@ -8,12 +8,14 @@ const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const projectIndex = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 28,
 });
 
 export const projectHero = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 12,
   padding: "10px 0 8px",
@@ -26,27 +28,35 @@ export const eyebrow = style({
 });
 
 globalStyle(`${projectHero} h1`, {
+  width: "100%",
   fontSize: 36,
   lineHeight: 1.18,
   fontWeight: 760,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 32,
+      fontSize: 30,
+      lineHeight: 1.24,
     },
   },
 });
 
 globalStyle(`${projectHero} p`, {
+  width: "100%",
   maxWidth: 680,
   fontSize: 16,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const projectList = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 18,
   padding: 0,
@@ -56,6 +66,7 @@ export const projectList = style({
 export const projectCard = style([
   {
     display: "grid",
+    minWidth: 0,
     gridTemplateColumns: "220px minmax(0, 1fr)",
     minHeight: 180,
     overflow: "hidden",
@@ -84,6 +95,7 @@ export const projectCard = style([
 export const projectCardMedia = style([
   {
     position: "relative",
+    width: "100%",
     minHeight: 180,
     borderRight: surfaceBorder,
     backgroundColor: vars.themeColor.semantic.surfaceMuted,
@@ -112,6 +124,7 @@ export const projectCardBody = style({
 
 export const projectCardHeader = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   alignItems: "center",
   justifyContent: "space-between",
@@ -124,6 +137,14 @@ globalStyle(`${projectCardHeader} h2`, {
   fontWeight: 740,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 21,
+      lineHeight: 1.35,
+    },
+  },
 });
 
 export const projectStatus = style({
@@ -140,10 +161,13 @@ export const projectDescription = style({
   fontSize: 15,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const projectCardMeta = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   gap: 8,
   fontSize: 13,
@@ -152,6 +176,7 @@ export const projectCardMeta = style({
 
 export const tagList = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   gap: 6,
   padding: 0,
@@ -159,6 +184,7 @@ export const tagList = style({
 });
 
 export const tag = style({
+  maxWidth: "100%",
   width: "fit-content",
   padding: "3px 7px",
   borderRadius: vars.themeColor.seed.radius.sm,
@@ -184,6 +210,7 @@ export const projectArticle = style({
 
 export const projectArticleHeader = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 16,
   paddingBottom: 28,
@@ -207,26 +234,34 @@ export const backLink = style({
 });
 
 globalStyle(`${projectArticleHeader} h1`, {
+  width: "100%",
   fontSize: 40,
   lineHeight: 1.16,
   fontWeight: 780,
   letterSpacing: 0,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 32,
+      fontSize: 30,
+      lineHeight: 1.24,
     },
   },
 });
 
 globalStyle(`${projectArticleHeader} p`, {
+  width: "100%",
   fontSize: 17,
   lineHeight: 1.75,
   color: vars.themeColor.semantic.textSecondary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const projectCover = style({
   position: "relative",
+  width: "100%",
   aspectRatio: "16 / 9",
   overflow: "hidden",
   border: surfaceBorder,
@@ -253,6 +288,7 @@ export const summaryGrid = style([
 
 export const detailSection = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 12,
   paddingTop: 20,
@@ -269,6 +305,7 @@ globalStyle(`${detailSection} h2`, {
 
 export const detailList = style({
   display: "grid",
+  minWidth: 0,
   gridTemplateColumns: "112px minmax(0, 1fr)",
   rowGap: 10,
   columnGap: 14,
@@ -362,6 +399,7 @@ export const relatedLink = style({
 });
 
 export const articleBody = style({
+  minWidth: 0,
   paddingTop: 2,
   borderTop: surfaceBorder,
 });
@@ -379,24 +417,44 @@ export const articleParagraph = style({
   fontSize: 16,
   lineHeight: 1.88,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 globalStyle(`${articleBody} h1`, {
   margin: "40px 0 16px",
   fontSize: 32,
   lineHeight: 1.3,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 28,
+      lineHeight: 1.34,
+    },
+  },
 });
 
 globalStyle(`${articleBody} h2`, {
   margin: "42px 0 16px",
   fontSize: 28,
   lineHeight: 1.34,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
+  "@media": {
+    "screen and (max-width: 800px)": {
+      fontSize: 26,
+      lineHeight: 1.38,
+    },
+  },
 });
 
 globalStyle(`${articleBody} h3`, {
   margin: "34px 0 12px",
   fontSize: 22,
   lineHeight: 1.4,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 globalStyle(`${articleBody} h4`, {
@@ -429,6 +487,8 @@ export const articleListItem = style({
   fontSize: 16,
   lineHeight: 1.8,
   color: vars.themeColor.semantic.textPrimary,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const inlineCode = style({
@@ -440,6 +500,7 @@ export const inlineCode = style({
 });
 
 export const codeBlock = style({
+  maxWidth: "100%",
   margin: "22px 0",
   padding: "18px 20px",
   overflowX: "auto",

@@ -12,8 +12,6 @@ import { NAV_DATA, isV2NavItemActive } from "@/mocks/common";
 import * as css from "@/components/componentLayout.css";
 import logoBlack from "/public/logo-dark.svg";
 import logoWhite from "/public/logo-light.svg";
-import MENU_BLACK from "/public/menu-black.png";
-import MENU_WHITE from "/public/menu-white.png";
 
 type Props = {
   label: string;
@@ -52,15 +50,17 @@ export default function Navbar({ target }: ProgressbarProps) {
           <button
             type="button"
             className={css.mobileNavMenuButton}
-            aria-label="메뉴 열기"
+            aria-label={isSideMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-controls="mobile-navigation"
             aria-expanded={isSideMenuOpen}
+            aria-haspopup="dialog"
             onClick={() => toggleSideMenu(!isSideMenuOpen)}
           >
-            <Image
-              src={isDarkMode ? MENU_WHITE : MENU_BLACK}
-              width={25}
-              alt=""
-            />
+            <span className={css.menuIcon} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
           </button>
         </div>
         <div className={css.navRightSection}>

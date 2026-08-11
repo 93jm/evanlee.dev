@@ -6,6 +6,7 @@ const subtleBorder = `1px solid ${vars.themeColor.semantic.border}`;
 const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const homeShell = style({
+  width: "min(1120px, 100%)",
   maxWidth: 1120,
   margin: "0 auto",
   padding: "112px 20px 88px",
@@ -35,6 +36,7 @@ export const hero = style({
 
 export const heroCopy = style({
   display: "grid",
+  minWidth: 0,
   gap: 24,
 });
 
@@ -45,26 +47,35 @@ export const eyebrow = style({
 });
 
 export const title = style({
+  width: "100%",
   maxWidth: 820,
   color: vars.themeColor.semantic.textPrimary,
   fontSize: 56,
   lineHeight: 1.12,
   fontWeight: 850,
   letterSpacing: 0,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 36,
+      maxWidth: "100%",
+      fontSize: 34,
+      lineHeight: 1.18,
     },
   },
 });
 
 export const description = style({
+  width: "100%",
   maxWidth: 700,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 18,
   lineHeight: 1.85,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
+      maxWidth: "100%",
       fontSize: 16,
     },
   },
@@ -100,6 +111,8 @@ export const primaryLink = style({
 });
 
 export const snapshot = style({
+  minWidth: 0,
+  width: "100%",
   border: subtleBorder,
   borderRadius: vars.themeColor.seed.radius.md,
   backgroundColor: vars.themeColor.semantic.surface,
@@ -182,6 +195,7 @@ export const principleGrid = style({
 
 export const principleItem = style({
   display: "grid",
+  minWidth: 0,
   gap: 10,
   padding: 18,
   border: subtleBorder,
@@ -214,6 +228,7 @@ export const projectGrid = style({
 
 export const projectItem = style({
   display: "flex",
+  minWidth: 0,
   minHeight: 220,
   flexDirection: "column",
   justifyContent: "space-between",

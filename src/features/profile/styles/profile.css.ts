@@ -8,6 +8,7 @@ const focusRing = `2px solid ${vars.themeColor.semantic.focusRing}`;
 
 export const page = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 42,
 });
@@ -15,6 +16,8 @@ export const page = style({
 export const hero = style([
   {
     display: "grid",
+    minWidth: 0,
+    width: "100%",
     gridTemplateColumns: "minmax(0, 1fr) 280px",
     gap: 36,
     alignItems: "end",
@@ -41,28 +44,37 @@ export const eyebrow = style({
 });
 
 globalStyle(`${heroCopy} h1`, {
+  width: "100%",
   maxWidth: 780,
   color: vars.themeColor.semantic.textPrimary,
   fontSize: 40,
   lineHeight: 1.16,
   fontWeight: 800,
   letterSpacing: 0,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
   "@media": {
     "screen and (max-width: 800px)": {
-      fontSize: 32,
+      maxWidth: "100%",
+      fontSize: 30,
+      lineHeight: 1.24,
     },
   },
 });
 
 globalStyle(`${heroCopy} p`, {
+  width: "100%",
   maxWidth: 720,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 16,
   lineHeight: 1.78,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const profilePhoto = style({
   position: "relative",
+  width: "100%",
   aspectRatio: "4 / 5",
   overflow: "hidden",
   border: surfaceBorder,
@@ -90,6 +102,7 @@ export const quickFacts = style({
 
 export const quickFactItem = style({
   display: "grid",
+  minWidth: 0,
   gap: 6,
   padding: 16,
   border: surfaceBorder,
@@ -111,6 +124,7 @@ globalStyle(`${quickFacts} dd`, {
 
 export const section = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 18,
   paddingTop: 28,
@@ -129,13 +143,18 @@ globalStyle(`${sectionHeader} h2`, {
   lineHeight: 1.32,
   fontWeight: 780,
   letterSpacing: 0,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 globalStyle(`${sectionHeader} p`, {
+  width: "100%",
   maxWidth: 680,
   color: vars.themeColor.semantic.textSecondary,
   fontSize: 15,
   lineHeight: 1.75,
+  overflowWrap: "break-word",
+  wordBreak: "keep-all",
 });
 
 export const principleGrid = style([
@@ -177,6 +196,7 @@ globalStyle(`${principleItem} p`, {
 
 export const resumeHeader = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   justifyContent: "space-between",
   gap: 20,
@@ -186,6 +206,7 @@ export const resumeHeader = style({
 
 export const contactList = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   gap: 8,
   padding: 0,
@@ -222,6 +243,7 @@ export const skillList = style({
 });
 
 export const skill = style({
+  maxWidth: "100%",
   width: "fit-content",
   padding: "5px 8px",
   borderRadius: vars.themeColor.seed.radius.pill,
@@ -233,12 +255,14 @@ export const skill = style({
 
 export const experienceList = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 28,
 });
 
 export const companyBlock = style({
   display: "grid",
+  minWidth: 0,
   gridTemplateColumns: "180px minmax(0, 1fr)",
   gap: 24,
   paddingTop: 24,
@@ -259,6 +283,7 @@ export const companyBlock = style({
 
 export const companyMeta = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 8,
 });
@@ -278,18 +303,21 @@ globalStyle(`${companyMeta} p`, {
 
 export const projectStack = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 18,
 });
 
 export const resumeProject = style({
   display: "flex",
+  minWidth: 0,
   flexDirection: "column",
   gap: 10,
 });
 
 export const projectTitleRow = style({
   display: "flex",
+  minWidth: 0,
   flexWrap: "wrap",
   alignItems: "center",
   gap: 8,

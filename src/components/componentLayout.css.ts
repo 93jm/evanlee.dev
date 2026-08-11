@@ -57,6 +57,17 @@ export const skipLink = style({
   },
 });
 
+export const visuallyHidden = style({
+  position: "absolute",
+  width: 1,
+  height: 1,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0 0 0 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+});
+
 export const pageLayoutWrapper = style({
   maxWidth: 800,
   margin: "0 auto",
@@ -278,6 +289,53 @@ export const mobileNavMenuButton = style({
       display: "inline-flex",
     },
   },
+});
+
+export const menuIcon = style({
+  display: "inline-flex",
+  width: 24,
+  height: 24,
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 4,
+  color: vars.themeColor.semantic.textPrimary,
+});
+
+globalStyle(`${menuIcon} span`, {
+  display: "block",
+  width: 20,
+  height: 2,
+  borderRadius: vars.themeColor.seed.radius.pill,
+  backgroundColor: "currentColor",
+});
+
+export const closeIcon = style({
+  position: "relative",
+  display: "inline-block",
+  width: 24,
+  height: 24,
+  color: vars.themeColor.semantic.textPrimary,
+});
+
+globalStyle(`${closeIcon}::before, ${closeIcon}::after`, {
+  position: "absolute",
+  top: 11,
+  left: 3,
+  display: "block",
+  width: 18,
+  height: 2,
+  borderRadius: vars.themeColor.seed.radius.pill,
+  backgroundColor: "currentColor",
+  content: "",
+});
+
+globalStyle(`${closeIcon}::before`, {
+  transform: "rotate(45deg)",
+});
+
+globalStyle(`${closeIcon}::after`, {
+  transform: "rotate(-45deg)",
 });
 
 export const mobileNavMenuList = style({

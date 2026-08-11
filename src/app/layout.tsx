@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@seed-design/css/all.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "@/styles/globalTheme.css";
@@ -69,6 +69,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/ogImage.png"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

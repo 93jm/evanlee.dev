@@ -8,7 +8,9 @@ globalStyle("*", {
 });
 
 globalStyle("html, body", {
-  maxWidth: "100dvw",
+  width: "100%",
+  minWidth: 0,
+  maxWidth: "100%",
   overflowX: "hidden",
   backgroundColor: vars.themeColor.semantic.appBackground,
   color: vars.themeColor.semantic.textPrimary,
