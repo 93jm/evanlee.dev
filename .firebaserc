@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "evanlee-dev"
+    "default": "evanlee-dev",
+    "production": "evanlee-dev",
+    "preview": "evanlee-dev-preview"
   }
 }
